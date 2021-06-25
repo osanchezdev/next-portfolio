@@ -1,10 +1,12 @@
 import styled from "styled-components";
+// import { device } from "../../../styles/mediaQueries";
 
+// TODO: Add later a condition to handle aside in mobile
 export const LayoutWrapper = styled.div`
   height: 100vh;
-  display: grid;
-  grid-template-columns: 253px 1fr;
+  display: flex;
 `;
 export const MainWrapper = styled.main`
-  padding: 0 10rem;
+  flex: 1 1 auto;
+  padding: 0 0 0 2rem;
 `;

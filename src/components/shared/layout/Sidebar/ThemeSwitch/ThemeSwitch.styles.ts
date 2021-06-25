@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const ThemeSwitchWrapper = styled.div`
   display: flex;
@@ -10,4 +10,4 @@ export const ThemeSwitchWrapper = styled.div`
     height: 20px;
     width: 20px;
   }
-`
+`;
