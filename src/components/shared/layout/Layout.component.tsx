@@ -5,8 +5,8 @@ import { LayoutWrapper, MainWrapper } from "./Layout.styles";
 import Sidebar from "./Sidebar/Sidebar.component";
 
 type LayoutProps = {
-  children: any;
-  switchTheme: any;
+  children: React.ReactNode;
+  switchTheme: Function;
 };
 
 const Layout: React.FC<LayoutProps> = ({ children, switchTheme }) => {
@@ -18,7 +18,10 @@ const Layout: React.FC<LayoutProps> = ({ children, switchTheme }) => {
   );
 };
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   switchTheme: PropTypes.func.isRequired,
 };
 

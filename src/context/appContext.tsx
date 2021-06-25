@@ -1,12 +1,11 @@
 import React, {
   createContext,
   useState,
-  ReactChild,
-  ReactChildren,
   ReactElement,
   Dispatch,
   SetStateAction,
 } from "react";
+import PropTypes from "prop-types";
 
 type AppState = {
   isSidebarExpanded: boolean;
@@ -23,7 +22,7 @@ const initialState: AppState = {
 export const AppContext = createContext<AppState>(initialState);
 
 interface Props {
-  children: ReactChild | ReactChild[] | ReactChildren | ReactChildren[];
+  children: React.ReactNode;
 }
 
 const AppProvider = ({ children }: Props): ReactElement => {
@@ -46,4 +45,15 @@ const AppProvider = ({ children }: Props): ReactElement => {
     </AppContext.Provider>
   );
 };
+
+AppProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  isOnline: PropTypes.bool.isRequired,
+  isSidebarExpanded: PropTypes.bool.isRequired,
+  setIsSidebarExpanded: PropTypes.func.isRequired,
+};
+
 export default AppProvider;
