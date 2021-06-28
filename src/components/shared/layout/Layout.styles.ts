@@ -8,5 +8,4 @@ export const LayoutWrapper = styled.div`
 `;
 export const MainWrapper = styled.main`
   flex: 1 1 auto;
-  padding: 0 0 0 2rem;
 `;

@@ -1,8 +1,8 @@
 import { DefaultTheme } from "styled-components";
 
-// TODO: re check theme colors, add sidebarColor
+// TODO: re check theme colors, add sidebarColor?, particles?, particlesLink?
 const darkTheme: DefaultTheme = {
-  font: "Roboto",
+  font: "Istok Web",
   colors: {
     primary: "#f49d37",
     secondary: "#e40066",
@@ -15,7 +15,7 @@ const darkTheme: DefaultTheme = {
 };
 
 const lightTheme: DefaultTheme = {
-  font: "Roboto",
+  font: "Istok Web",
   colors: {
     primary: "#f49d37",
     secondary: "#e40066",

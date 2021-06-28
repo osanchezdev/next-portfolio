@@ -5,7 +5,6 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react";
-import PropTypes from "prop-types";
 
 type AppState = {
   isSidebarExpanded: boolean;
@@ -14,7 +13,7 @@ type AppState = {
 };
 
 const initialState: AppState = {
-  isSidebarExpanded: true,
+  isSidebarExpanded: false,
   isOnline: true,
   setIsSidebarExpanded: () => {},
 };
@@ -26,7 +25,7 @@ interface Props {
 }
 
 const AppProvider = ({ children }: Props): ReactElement => {
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
 
   const checkConnection = async () => {
@@ -44,16 +43,6 @@ const AppProvider = ({ children }: Props): ReactElement => {
       {children}
     </AppContext.Provider>
   );
-};
-
-AppProvider.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  isOnline: PropTypes.bool.isRequired,
-  isSidebarExpanded: PropTypes.bool.isRequired,
-  setIsSidebarExpanded: PropTypes.func.isRequired,
 };
 
 export default AppProvider;
