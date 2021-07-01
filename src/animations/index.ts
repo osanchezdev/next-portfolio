@@ -1,17 +1,13 @@
-import { Variant } from "framer-motion";
-
-interface AnimationItemI {
-  initial: Variant;
-  animate: Variant;
-}
-
-interface AnimationsI {
-  [key: string]: AnimationItemI;
-}
+import { IAnimations } from "../../types";
 
 const animationBase = {};
 
-const animations: AnimationsI = {
+const rubberBandKeyframes = {
+  scaleX: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
+  scaleY: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1],
+};
+
+const animations: IAnimations = {
   fade: {
     initial: {
       opacity: 0,
@@ -26,15 +22,11 @@ const animations: AnimationsI = {
   },
   rubberBand: {
     initial: {
-      scaleX: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
-      scaleY: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1],
+      scaleX: 1,
+      scaleY: 1,
     },
     animate: {
-      scaleX: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
-      scaleY: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1],
-      transition: {
-        ease: "easeOut",
-      },
+      ...rubberBandKeyframes,
     },
   },
   horizontalFlip: {

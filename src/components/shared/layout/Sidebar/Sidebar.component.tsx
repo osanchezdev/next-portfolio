@@ -28,10 +28,10 @@ import {
   ExpandSidebarArrow,
 } from "./Sidebar.styles";
 import {
-  SidebarVariants,
-  SidebarContentVariants,
-  ArrowButtonVariants,
-} from "../../../../animations/variants";
+  sidebarVariants,
+  sidebarContentVariants,
+  arrowButtonVariants,
+} from "./Sidebar.variants";
 
 type SidebarProps = {
   switchTheme: Function;
@@ -44,9 +44,9 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
     <SidebarWrapper
       initial={isSidebarExpanded ? "expanded" : "collapsed"}
       animate={isSidebarExpanded ? "expanded" : "collapsed"}
-      variants={SidebarVariants}
+      variants={sidebarVariants}
     >
-      <StyledSidebar variants={SidebarContentVariants()}>
+      <StyledSidebar variants={sidebarContentVariants()}>
         <SidebarTitle>Oscar Sánchez</SidebarTitle>
         <LogoWrapper>
           <Logo src="https://cdn.fakercloud.com/avatars/axel_128.jpg" />
@@ -71,23 +71,23 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
           {/* TODO: pass to loop */}
           <NavbarList>
             <NavbarItem>
-              <FaUserAlt /> <span>Welcome me</span>
+              <FaUserAlt /> <span>About me</span>
             </NavbarItem>
             <NavbarItem>
               <FaBriefcase />
-              <span>Services</span>
+              <span>Experience</span>
             </NavbarItem>
             <NavbarItem>
               <FaLaptopCode />
               <span>Portfolio</span>
             </NavbarItem>
             <NavbarItem>
-              <FaFileAlt />
-              <span>Resume</span>
-            </NavbarItem>
-            <NavbarItem>
               <FaEnvelopeOpenText />
               <span>Contact</span>
+            </NavbarItem>
+            <NavbarItem>
+              <FaFileAlt />
+              <span>Resume</span>
             </NavbarItem>
           </NavbarList>
         </Navbar>
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
         <ExpandSidebarArrowButton
           initial="collapsed"
           animate={isSidebarExpanded ? "expanded" : "collapsed"}
-          variants={ArrowButtonVariants()}
+          variants={arrowButtonVariants()}
           onClick={() => setIsSidebarExpanded(!isSidebarExpanded)}
         >
           <ExpandSidebarArrow>

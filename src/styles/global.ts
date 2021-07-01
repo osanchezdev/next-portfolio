@@ -3,13 +3,13 @@ import { createGlobalStyle } from "styled-components";
 import { device } from "./mediaQueries";
 
 export const GlobalStyles = createGlobalStyle`
-	${normalize}
+	${normalize()}
 	
 	body {
 		font-family: ${({ theme }) => theme.font}, sans-serif;
 		color: ${({ theme }) => theme.colors.text};
-    font-size:15px;
-    line-height:1.6;
+    font-size: 15px;
+    line-height: 1.6;
 		background: ${({ theme }) => theme.colors.neutral_primary};
 
 		@media ${device.mobileS} {

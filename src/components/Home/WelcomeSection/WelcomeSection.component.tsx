@@ -8,97 +8,67 @@ import {
   WelcomeTitleWord,
   WelcomeTitleChar,
   WelcomeHelloButton,
+  WelcomeScrollDown,
 } from "./WelcomeSection.styles";
-import Rubber from "../../shared/Rubber/Rubber.component";
-import Fade from "../../shared/layout/Fade/Fade.component";
-import { WelcomeTitleVariants } from "../../../animations/variants";
+import {
+  welcomeTitleCharsVariants,
+  // WelcomeTitleVariants,
+} from "./WelcomeSection.variants";
 import { ABOUT_TITLE } from "../../../constants";
-
-const IMAGE_URL = "http://placeimg.com/640/480/animals";
-const IMAGE_ALT = "Animals";
+import Button from "../../shared/Button/Button.component";
+import ScrollDown from "../../shared/ScrollDown/ScrollDown.component";
+import { welcomeParticlesConfig } from "../../../animations/particles";
 
 interface Props {}
 
 const WelcomeSection = (props: Props) => {
+  let delayCount = 0;
   const aboutSplittedTitle = ABOUT_TITLE.split("\n");
-  console.log(aboutSplittedTitle);
+  const getCharDelay = () => {
+    delayCount++;
+    return welcomeTitleCharsVariants(delayCount);
+  };
   return (
     <>
       <WelcomeSectionWrapper>
-        <TSParticles
-          width="100%"
-          height="100vh"
-          params={{
-            retina_detect: true,
-            background: {
-              position: "relative",
-            },
-            fullScreen: {
-              enable: false,
-              zIndex: 0,
-            },
-            particles: {
-              color: {
-                value: "#b0bec5",
-              },
-              twinkle: {
-                particles: {
-                  enable: true,
-                  frequency: 0.5,
-                },
-              },
-              size: {
-                value: {
-                  min: 1,
-                  max: 1,
-                },
-              },
-              number: {
-                density: {
-                  enable: true,
-                  value_area: 1000,
-                },
-              },
-              links: {
-                enable: true,
-                color: "#455a64",
-                opacity: 0.7,
-              },
-              move: {
-                enable: true,
-                speed: {
-                  min: 0.5,
-                  max: 0.5,
-                },
-                attract: {
-                  enable: true,
-                },
-                direction: "bottom",
-              },
-            },
-          }}
-        />
-        <WelcomeTitleWrapper
-          initial="initial"
-          animate="animate"
-          variants={WelcomeTitleVariants()}
-        >
+        <TSParticles {...welcomeParticlesConfig} />
+        <WelcomeTitleWrapper>
           <WelcomeTitle>
-            {aboutSplittedTitle.map((titleItem, i) => (
-              <WelcomeTitleWord key={`${titleItem}-${i}`}>
+            {aboutSplittedTitle.map((titleItem, parentI) => (
+              <WelcomeTitleWord key={`word-${parentI}`}>
                 {Array.from(titleItem).map((charItem, i) => (
-                  <Fade key={`${charItem}-${i}`} isAnimatedParent={false}>
-                    <Rubber isAnimatedParent={false} playOnHover>
-                      <WelcomeTitleChar>{charItem}</WelcomeTitleChar>
-                    </Rubber>
-                  </Fade>
+                  <WelcomeTitleChar
+                    key={`${charItem}-${i}`}
+                    initial="hidden"
+                    animate={"show"}
+                    whileHover={"hover"}
+                    variants={getCharDelay()}
+                  >
+                    {charItem}
+                  </WelcomeTitleChar>
                 ))}
               </WelcomeTitleWord>
             ))}
           </WelcomeTitle>
         </WelcomeTitleWrapper>
         {/* TODO: Continue here, "say hello" button */}
-        <WelcomeHelloButton>Want a say hello?</WelcomeHelloButton>
+        <WelcomeHelloButton>
+          <Button variantColor="text">
+            <span>Default</span>
+          </Button>
+          <Button variantColor="secondary">
+            <span>Secondary</span>
+          </Button>
+          <Button variantColor="tertiary">
+            <span>Tertiary</span>
+          </Button>
+          <Button variantColor="primary">
+            <span>Transparent</span>
+          </Button>
+        </WelcomeHelloButton>
+        <WelcomeScrollDown>
+          <ScrollDown />
+        </WelcomeScrollDown>
       </WelcomeSectionWrapper>
     </>
   );
