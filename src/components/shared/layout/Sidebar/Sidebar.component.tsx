@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { AppContext } from "../../../../context/appContext";
 import {
   FaLinkedin,
@@ -9,7 +8,7 @@ import {
   FaBriefcase,
   FaFileAlt,
   FaEnvelopeOpenText,
-  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component";
 import {
@@ -25,46 +24,17 @@ import {
   NavbarList,
   NavbarItem,
   ExpandSidebarArrowWrapper,
+  ExpandSidebarArrowButton,
   ExpandSidebarArrow,
 } from "./Sidebar.styles";
+import {
+  sidebarVariants,
+  sidebarContentVariants,
+  arrowButtonVariants,
+} from "./Sidebar.variants";
 
 type SidebarProps = {
   switchTheme: Function;
-};
-
-const COLLAPSED_WIDTH = "0";
-const EXPANDED_WIDTH = "213px";
-
-export const SidebarVariants = {
-  expanded: {
-    width: EXPANDED_WIDTH,
-    transition: { when: "beforeChildren" },
-  },
-  collapsed: {
-    width: COLLAPSED_WIDTH,
-    transition: { when: "afterChildren" },
-  },
-};
-
-export const SidebarContentVariants = {
-  expanded: {
-    opacity: 1,
-    display: "block",
-  },
-  collapsed: {
-    opacity: 0,
-    transitionEnd: {
-      display: "none",
-    },
-  },
-};
-export const ArrowButtonVariants = {
-  expanded: {
-    rotateZ: 0,
-  },
-  collapsed: {
-    rotateZ: 180,
-  },
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
@@ -74,16 +44,16 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
     <SidebarWrapper
       initial={isSidebarExpanded ? "expanded" : "collapsed"}
       animate={isSidebarExpanded ? "expanded" : "collapsed"}
-      variants={SidebarVariants}
+      variants={sidebarVariants}
     >
-      <StyledSidebar variants={SidebarContentVariants}>
+      <StyledSidebar variants={sidebarContentVariants()}>
         <SidebarTitle>Oscar Sánchez</SidebarTitle>
         <LogoWrapper>
-          <Logo src="https://via.placeholder.com/100x100.png?text=Image+Profile" />
+          <Logo src="https://cdn.fakercloud.com/avatars/axel_128.jpg" />
         </LogoWrapper>
         <SidebarDescription>
-          Hi, my name is Oscar Sánchez and I&apos;m a Full Stack Web Developer.
-          Welcome to my personal website!
+          Illum omnis quasi dicta exercitationem accusamus dicta et qui.
+          Praesentium et reiciendis. Harum voluptatum.
         </SidebarDescription>
         <SidebarProfileLinks>
           <ProfileItem>
@@ -104,39 +74,38 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
             </NavbarItem>
             <NavbarItem>
               <FaBriefcase />
-              <span>Services</span>
+              <span>Experience</span>
             </NavbarItem>
             <NavbarItem>
               <FaLaptopCode />
               <span>Portfolio</span>
             </NavbarItem>
             <NavbarItem>
-              <FaFileAlt />
-              <span>Resume</span>
-            </NavbarItem>
-            <NavbarItem>
               <FaEnvelopeOpenText />
               <span>Contact</span>
+            </NavbarItem>
+            <NavbarItem>
+              <FaFileAlt />
+              <span>Resume</span>
             </NavbarItem>
           </NavbarList>
         </Navbar>
         <ThemeSwitch switchTheme={switchTheme} />
       </StyledSidebar>
       <ExpandSidebarArrowWrapper>
-        <ExpandSidebarArrow
+        <ExpandSidebarArrowButton
+          initial="collapsed"
           animate={isSidebarExpanded ? "expanded" : "collapsed"}
-          variants={ArrowButtonVariants}
+          variants={arrowButtonVariants()}
           onClick={() => setIsSidebarExpanded(!isSidebarExpanded)}
         >
-          <FaChevronLeft />
-        </ExpandSidebarArrow>
+          <ExpandSidebarArrow>
+            <FaChevronRight />
+          </ExpandSidebarArrow>
+        </ExpandSidebarArrowButton>
       </ExpandSidebarArrowWrapper>
     </SidebarWrapper>
   );
-};
-
-Sidebar.propTypes = {
-  switchTheme: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

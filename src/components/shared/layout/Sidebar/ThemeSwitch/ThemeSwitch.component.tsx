@@ -1,29 +1,31 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import Switch from "react-switch"
-import { FaSun, FaMoon } from "react-icons/fa"
-import { ThemeSwitchWrapper } from "./ThemeSwitch.styles"
-import { bool } from "prop-types"
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "styled-components";
+import Switch from "react-switch";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { ThemeSwitchWrapper } from "./ThemeSwitch.styles";
+import { bool } from "prop-types";
+import { lighten } from "polished";
 
 type ThemeSwitchProps = {
-  switchTheme: any
-}
+  switchTheme: any;
+};
 
 const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ switchTheme }) => {
-  const [checked, setChecked] = useState(false)
-  const updateTheme = (newValue:any) => {
-    setChecked(newValue)
+  const themeContext = useContext(ThemeContext);
+  const [checked, setChecked] = useState(false);
+  const updateTheme = (newValue: any) => {
+    setChecked(newValue);
     // Call upper switchTheme from indexPage
-    switchTheme(newValue)
-  }
+    switchTheme(newValue);
+  };
   return (
     <ThemeSwitchWrapper>
       <FaMoon />
       <Switch
         onChange={updateTheme}
         checked={checked}
-        onColor="#f074ab"
-        onHandleColor="#e40066"
+        onColor={lighten(0.3, themeContext.colors.primary)}
+        onHandleColor={themeContext.colors.primary}
         handleDiameter={30}
         uncheckedIcon={false}
         checkedIcon={false}
@@ -36,11 +38,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ switchTheme }) => {
       />
       <FaSun />
     </ThemeSwitchWrapper>
-  )
-}
+  );
+};
 
-ThemeSwitch.propTypes = {
-  switchTheme: PropTypes.func.isRequired,
-}
-
-export default ThemeSwitch
+export default ThemeSwitch;

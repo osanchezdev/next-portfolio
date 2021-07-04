@@ -8,34 +8,40 @@ export const SidebarWrapper = styled(motion.aside)`
   position: relative;
   background: ${({ theme }) => darken(0.08, theme.colors.neutral_primary)};
   text-align: center;
-  box-shadow: 1px 0px 10px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 0px 10px -4px rgba(0, 0, 0, 0.5);
 `;
 export const Sidebar = styled(motion.div)`
   padding: 20px;
+  display: none;
 `;
 
 export const ExpandSidebarArrowWrapper = styled.div`
-  display: flex;
-  padding: 20px 0;
   background: ${({ theme }) => darken(0.08, theme.colors.neutral_primary)};
-  color: rgb(0, 0, 0);
   position: absolute;
   right: -35px;
   top: 25px;
   z-index: 1;
   border-radius: 0 10px 10px 0;
+  box-shadow: 5px 4px 10px -6px rgba(0, 0, 0, 0.5);
 `;
 
-export const ExpandSidebarArrow = styled(motion.button)`
-  color: ${({ theme }) => darken(0.08, theme.colors.text)};
+export const ExpandSidebarArrowButton = styled(motion.button)`
+  cursor: pointer;
   background: transparent;
   border: none;
   outline: none;
-  height: 16px;
-  padding: 0 10px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const SidebarTitle = styled.h3`
+export const ExpandSidebarArrow = styled.div`
+  color: ${({ theme }) => darken(0.08, theme.colors.text)};
+  height: 16px;
+`;
+
+export const SidebarTitle = styled.h5`
   letter-spacing: 1px;
   margin-top: 0;
 `;

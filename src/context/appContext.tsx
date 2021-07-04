@@ -1,8 +1,6 @@
 import React, {
   createContext,
   useState,
-  ReactChild,
-  ReactChildren,
   ReactElement,
   Dispatch,
   SetStateAction,
@@ -15,7 +13,7 @@ type AppState = {
 };
 
 const initialState: AppState = {
-  isSidebarExpanded: true,
+  isSidebarExpanded: false,
   isOnline: true,
   setIsSidebarExpanded: () => {},
 };
@@ -23,11 +21,11 @@ const initialState: AppState = {
 export const AppContext = createContext<AppState>(initialState);
 
 interface Props {
-  children: ReactChild | ReactChild[] | ReactChildren | ReactChildren[];
+  children: React.ReactNode;
 }
 
 const AppProvider = ({ children }: Props): ReactElement => {
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
 
   const checkConnection = async () => {
@@ -46,4 +44,5 @@ const AppProvider = ({ children }: Props): ReactElement => {
     </AppContext.Provider>
   );
 };
+
 export default AppProvider;
