@@ -13,7 +13,8 @@ export const ScrollDownWrapper = styled.div`
 
 export const ScrollDownThumb = styled(motion.div)`
   background: ${({ theme }) => theme.colors.text};
-  opacity: 0;
+  opacity: 1;
+  height: 10px;
   top: 5px;
   width: 10px;
   position: absolute;

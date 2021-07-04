@@ -81,4 +81,6 @@ export const ButtonAnimatedBg = styled(motion.div)<SButtonVariantsProps>`
   ${({ theme, variantColor }) => getButtonBg(variantColor, theme)};
 `;
 
-export const ButtonContentWrapper = styled(motion.div)``;
+export const ButtonContentWrapper = styled(motion.div)`
+  font-weight: 400;
+`;

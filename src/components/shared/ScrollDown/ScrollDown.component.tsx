@@ -7,8 +7,8 @@ import {
   ChevronDown,
 } from "./ScrollDown.styles";
 import {
-  scrollDownThumbVarians,
-  chevronDownVarians,
+  scrollDownThumbVariants,
+  chevronDownVariants,
 } from "./ScrollDown.variants";
 
 interface Props {}
@@ -16,12 +16,9 @@ interface Props {}
 const ScrollDown = (props: Props) => {
   return (
     <ScrollDownWrapper>
-      <ScrollDownThumb
-        animate={["initial", "animate"]}
-        variants={scrollDownThumbVarians}
-      />
+      <ScrollDownThumb animate="animate" variants={scrollDownThumbVariants} />
       <ChevronsWrapper>
-        <ChevronDown animate={["animate"]} variants={chevronDownVarians}>
+        <ChevronDown animate="animate" variants={chevronDownVariants}>
           <FaChevronDown />
         </ChevronDown>
       </ChevronsWrapper>

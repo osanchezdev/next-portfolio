@@ -39,6 +39,4 @@ const animations: IAnimations = {
   },
 };
 
-export type AnimationTypes = "fade" | "rubberBand" | "horizontalFlip";
-
 export default animations;

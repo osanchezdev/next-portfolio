@@ -25,7 +25,6 @@ const Particles = (props: Props) => {
           particles: {
             reduceDuplicates: false,
             color: {
-              // TODO /FIXME: search color
               // value: themeContext.colors.text,
               value: opacify(0.9, themeContext.colors.text),
             },

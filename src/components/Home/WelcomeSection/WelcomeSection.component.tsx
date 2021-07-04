@@ -7,10 +7,12 @@ import {
   WelcomeTitle,
   WelcomeTitleWord,
   WelcomeTitleChar,
-  WelcomeHelloButton,
+  WelcomeButton,
   WelcomeScrollDown,
 } from "./WelcomeSection.styles";
 import {
+  welcomeButtonVariants,
+  welcomeScrollDownVariants,
   welcomeTitleCharsVariants,
   // WelcomeTitleVariants,
 } from "./WelcomeSection.variants";
@@ -40,8 +42,9 @@ const WelcomeSection = (props: Props) => {
                   <WelcomeTitleChar
                     key={`${charItem}-${i}`}
                     initial="hidden"
-                    animate={"show"}
-                    whileHover={"hover"}
+                    animate="show"
+                    whileHover="hover"
+                    whileTap="hover"
                     variants={getCharDelay()}
                   >
                     {charItem}
@@ -51,22 +54,22 @@ const WelcomeSection = (props: Props) => {
             ))}
           </WelcomeTitle>
         </WelcomeTitleWrapper>
-        {/* TODO: Continue here, "say hello" button */}
-        <WelcomeHelloButton>
-          <Button variantColor="text">
-            <span>Default</span>
+        <WelcomeButton
+          initial="initial"
+          animate="animate"
+          whileHover="hover"
+          whileTap="tapped"
+          variants={welcomeButtonVariants}
+        >
+          <Button variantColor="primary" solid>
+            <span>Contact</span>
           </Button>
-          <Button variantColor="secondary">
-            <span>Secondary</span>
-          </Button>
-          <Button variantColor="tertiary">
-            <span>Tertiary</span>
-          </Button>
-          <Button variantColor="primary">
-            <span>Transparent</span>
-          </Button>
-        </WelcomeHelloButton>
-        <WelcomeScrollDown>
+        </WelcomeButton>
+        <WelcomeScrollDown
+          initial="initial"
+          animate="animate"
+          variants={welcomeScrollDownVariants}
+        >
           <ScrollDown />
         </WelcomeScrollDown>
       </WelcomeSectionWrapper>

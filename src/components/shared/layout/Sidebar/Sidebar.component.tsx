@@ -68,7 +68,6 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
           </ProfileItem>
         </SidebarProfileLinks>
         <Navbar>
-          {/* TODO: pass to loop */}
           <NavbarList>
             <NavbarItem>
               <FaUserAlt /> <span>About me</span>
