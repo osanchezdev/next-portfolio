@@ -40,6 +40,7 @@ export const WelcomeTitleWord = styled.div`
 export const WelcomeTitleChar = styled(motion.span)`
   cursor: default;
   font-weight: bold;
+  user-select: none;
   text-shadow: 4px 5px rgba(0, 0, 0, 0.3);
   &:hover {
     color: ${({ theme }) => theme.colors.primary};

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { darken } from "polished";
+import { device } from "../../../../styles/mediaQueries";
 // import { device } from "../../../../styles/mediaQueries";
 
 export const SidebarWrapper = styled(motion.aside)`
@@ -11,7 +12,7 @@ export const SidebarWrapper = styled(motion.aside)`
   box-shadow: 1px 0px 10px -4px rgba(0, 0, 0, 0.5);
 `;
 export const Sidebar = styled(motion.div)`
-  padding: 20px;
+  padding: 15px 15px 0 15px;
   display: none;
 `;
 
@@ -44,17 +45,37 @@ export const ExpandSidebarArrow = styled.div`
 export const SidebarTitle = styled.h5`
   letter-spacing: 1px;
   margin-top: 0;
+
+  @media ${device.mobileS} {
+    margin-bottom: 5px;
+  }
 `;
 
 export const LogoWrapper = styled.div``;
 
 export const Logo = styled.img`
   border-radius: 15%;
+  max-width: 100%;
+
+  @media ${device.mobileS} {
+    max-width: 60%;
+  }
+  @media ${device.mobileM} {
+    max-width: 70%;
+  }
 `;
 export const SidebarDescription = styled.p`
   font-size: 12px;
   line-height: 20px;
   font-weight: 300;
+
+  @media ${device.mobileS} {
+    margin: 5px 0;
+    line-height: 18px;
+  }
+  @media ${device.tablet} {
+    line-height: 20px;
+  }
 `;
 export const SidebarProfileLinks = styled.div`
   display: flex;
@@ -92,5 +113,12 @@ export const NavbarItem = styled.li`
   }
   & svg {
     margin-right: 10px;
+  }
+
+  @media ${device.mobileS} {
+    line-height: 35px;
+  }
+  @media ${device.mobileM} {
+    line-height: 40px;
   }
 `;

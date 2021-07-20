@@ -14,6 +14,7 @@ interface Props {
   variantColor?: ButtonVariantTypes;
   variantAnimation?: ButtonAnimationTypes;
   solid?: boolean;
+  onClick?: React.MouseEventHandler;
 }
 
 const Button = ({
@@ -21,10 +22,16 @@ const Button = ({
   variantColor = "primary",
   variantAnimation = "diagonal",
   solid = false,
+  onClick,
 }: Props) => {
   return (
     <ButtonWrapper>
-      <SButton variantColor={variantColor} initial="initial" whileHover="hover">
+      <SButton
+        onClick={onClick}
+        variantColor={variantColor}
+        initial="initial"
+        whileHover="hover"
+      >
         <ButtonAnimatedBg
           variantColor={variantColor}
           variants={{ ...getButtonBgVariants(variantAnimation, solid) }}

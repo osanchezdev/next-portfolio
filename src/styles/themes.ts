@@ -1,8 +1,9 @@
 import { DefaultTheme } from "styled-components";
 
-// TODO: re check theme colors, add sidebarColor?, particles?, particlesLink?, shadow?
+// TODO (late): re check theme colors, add sidebarColor?, particles?, particlesLink?, shadow?
 const darkTheme: DefaultTheme = {
   font: "Istok Web",
+  maxWidth: 1366,
   colors: {
     primary: "#e40066",
     secondary: "#FF8000",
@@ -20,6 +21,7 @@ const darkTheme: DefaultTheme = {
 
 const lightTheme: DefaultTheme = {
   font: "Istok Web",
+  maxWidth: 1366,
   colors: {
     primary: "#e40066",
     secondary: "#FF8000",

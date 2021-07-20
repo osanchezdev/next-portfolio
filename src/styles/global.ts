@@ -4,12 +4,14 @@ import { device } from "./mediaQueries";
 
 export const GlobalStyles = createGlobalStyle`
 	${normalize()}
+	* {
+		user-select: none;
+	}
 	
 	body {
 		font-family: ${({ theme }) => theme.font}, sans-serif;
 		color: ${({ theme }) => theme.colors.text};
     font-size: 15px;
-    line-height: 1.6;
 		background: ${({ theme }) => theme.colors.neutral_primary};
 
 		@media ${device.mobileS} {
@@ -24,6 +26,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 	h1, h2, h3, h4, h5, h6, p, span {
 		transition: all 100ms ease;
+    line-height: 1.6;
 	}
 	
 	h1 { font-size: 2.4rem;}
