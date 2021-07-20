@@ -9,13 +9,14 @@ import React, {
 type AppState = {
   isSidebarExpanded: boolean;
   isOnline: boolean;
-  setIsSidebarExpanded: Dispatch<SetStateAction<boolean>>;
+  // toggleExpandSidebar: Dispatch<SetStateAction<boolean>>;
+  toggleExpandSidebar: Function;
 };
 
 const initialState: AppState = {
   isSidebarExpanded: false,
   isOnline: true,
-  setIsSidebarExpanded: () => {},
+  toggleExpandSidebar: () => {},
 };
 
 export const AppContext = createContext<AppState>(initialState);
@@ -32,12 +33,17 @@ const AppProvider = ({ children }: Props): ReactElement => {
     setIsOnline(window.navigator.onLine);
   };
 
+  const toggleExpandSidebar = (): void => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+    window.dispatchEvent(new Event("resize"));
+  };
+
   return (
     <AppContext.Provider
       value={{
         isOnline,
         isSidebarExpanded,
-        setIsSidebarExpanded,
+        toggleExpandSidebar,
       }}
     >
       {children}

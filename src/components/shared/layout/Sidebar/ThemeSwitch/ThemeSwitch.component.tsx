@@ -3,7 +3,6 @@ import { ThemeContext } from "styled-components";
 import Switch from "react-switch";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { ThemeSwitchWrapper } from "./ThemeSwitch.styles";
-import { bool } from "prop-types";
 import { lighten } from "polished";
 
 type ThemeSwitchProps = {

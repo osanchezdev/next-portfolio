@@ -20,6 +20,7 @@ import { ABOUT_TITLE } from "../../../constants";
 import Button from "../../shared/Button/Button.component";
 import ScrollDown from "../../shared/ScrollDown/ScrollDown.component";
 import { welcomeParticlesConfig } from "../../../animations/particles";
+import Emoji from "../../shared/Emoji/Emoji.component";
 
 interface Props {}
 
@@ -30,6 +31,8 @@ const WelcomeSection = (props: Props) => {
     delayCount++;
     return welcomeTitleCharsVariants(delayCount);
   };
+  // TODO: Use separators?
+  // ? https://speckyboy.com/horizontal-rules-dividers-css/
   return (
     <>
       <WelcomeSectionWrapper>
@@ -62,7 +65,9 @@ const WelcomeSection = (props: Props) => {
           variants={welcomeButtonVariants}
         >
           <Button variantColor="primary" solid>
-            <span>Contact</span>
+            <span>
+              Say Hello <Emoji symbol="👋" label="hello" />
+            </span>
           </Button>
         </WelcomeButton>
         <WelcomeScrollDown

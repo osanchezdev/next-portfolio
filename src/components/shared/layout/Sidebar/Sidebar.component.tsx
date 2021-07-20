@@ -38,7 +38,7 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
-  const { isSidebarExpanded, setIsSidebarExpanded } = useContext(AppContext);
+  const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext);
 
   return (
     <SidebarWrapper
@@ -70,7 +70,8 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
         <Navbar>
           <NavbarList>
             <NavbarItem>
-              <FaUserAlt /> <span>About me</span>
+              <FaUserAlt />
+              <span>About me</span>
             </NavbarItem>
             <NavbarItem>
               <FaBriefcase />
@@ -97,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
           initial="collapsed"
           animate={isSidebarExpanded ? "expanded" : "collapsed"}
           variants={arrowButtonVariants()}
-          onClick={() => setIsSidebarExpanded(!isSidebarExpanded)}
+          onClick={() => toggleExpandSidebar()}
         >
           <ExpandSidebarArrow>
             <FaChevronRight />
