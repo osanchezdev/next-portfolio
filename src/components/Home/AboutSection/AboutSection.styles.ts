@@ -19,14 +19,13 @@ export const AboutSectionWrapper = styled.div`
 
 export const AboutSectionTextWrapper = styled.div`
   box-sizing: border-box;
+  padding: 1rem;
 
   @media ${device.mobileS} {
     flex: 0 0 100%;
-    padding: 1rem;
   }
   @media ${device.laptop} {
     flex: 0 0 40%;
-    padding: 3rem;
   }
 `
 

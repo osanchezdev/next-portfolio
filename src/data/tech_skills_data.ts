@@ -1,7 +1,7 @@
 import _ from "lodash"
 import { ITechSkillItem, ITechSkillsByRoles, SkillRoleTypes } from "../../types"
 
-interface completeGridColumnsProps {
+interface CompleteGridColumnsProps {
   techSkills: Array<number>
 }
 
@@ -9,7 +9,7 @@ const MAX_TECH_ITEMS = 40
 
 const completeGridColumns = ({
   techSkills,
-}: completeGridColumnsProps): number[] =>
+}: CompleteGridColumnsProps): number[] =>
   _.shuffle([
     ...techSkills,
     ...new Array(MAX_TECH_ITEMS - techSkills.length).fill(null),
@@ -22,6 +22,7 @@ export const TECH_ROLES: SkillRoleTypes[] = [
   "desktop",
 ]
 
+// ? Should change logo images for icons
 export const TECH_SKILLS_DATA: ITechSkillItem[] = [
   { key: "angular", text: "Angular", bgColor: "#ff002e" },
   { key: "css3", text: "CSS3", bgColor: "#379AD6" },
@@ -41,9 +42,9 @@ export const TECH_SKILLS_DATA: ITechSkillItem[] = [
   { key: "ionic", text: "Ionic", bgColor: "#008FFB" },
   { key: "jest", text: "Jest", bgColor: "#E53B07" },
   { key: "js", text: "Javascript", bgColor: "#F0DB4F" },
-  { key: "jss", text: "JS in CSS", bgColor: "#F272B3" },
+  { key: "jss", text: "JS in CSS", bgColor: "#F272B3" }, // No icon
   { key: "laravel", text: "Laravel", bgColor: "#F35045" },
-  { key: "less", text: "LESS", bgColor: "#003F71" },
+  { key: "less", text: "Less", bgColor: "#003F71" },
   { key: "materialui", text: "Material UI", bgColor: "#008AD5" },
   { key: "mongodb", text: "Mongo DB", bgColor: "#439936" },
   { key: "mysql", text: "MySQL", bgColor: "#4479A1" },
@@ -56,21 +57,21 @@ export const TECH_SKILLS_DATA: ITechSkillItem[] = [
   { key: "python", text: "Python", bgColor: "#5166BC" },
   { key: "redux", text: "Redux", bgColor: "#8448C0" },
   { key: "react", text: "ReactJS", bgColor: "#35D8FF" },
-  { key: "sass", text: "SASS", bgColor: "#E5669F" },
+  { key: "sass", text: "Sass", bgColor: "#E5669F" },
   { key: "sencha", text: "SenchaJS", bgColor: "#95CA40" },
-  { key: "snowpack", text: "Snowpack", bgColor: "#535EFF" },
+  { key: "snowpack", text: "Snowpack", bgColor: "#535EFF" }, // No icon
   { key: "svelte", text: "Svelte", bgColor: "#FF3B00" },
   { key: "tailwind", text: "TailwindCSS", bgColor: "#00CAB8" },
   { key: "ts", text: "Typescript", bgColor: "#0079CA" },
   { key: "vue", text: "VueJS", bgColor: "#41B783" },
   { key: "webpack", text: "WebpackJS", bgColor: "#0079C4" },
-  { key: "yarn", text: "YARN", bgColor: "#0099C5" },
+  { key: "yarn", text: "Yarn", bgColor: "#0099C5" },
   { key: "reactnative", text: "ReactNative", bgColor: "#4F1CFF" },
-  { key: "airbnbenzyme", text: "Airbnb Enzyme", bgColor: "#FC5C64" },
-  { key: "express", text: "ExpressJS", bgColor: "#404040" },
+  { key: "airbnbenzyme", text: "Airbnb Enzyme", bgColor: "#FC5C64" }, // No icon
+  { key: "express", text: "ExpressJS", bgColor: "#404040" }, // No icon
   { key: "styledcomponents", text: "Styled Components", bgColor: "#DD6F93" },
   { key: "cssmodules", text: "CSS Modules", bgColor: "#FF595D" },
-  { key: "handlebars", text: "Handlebars", bgColor: "#F0772B" },
+  { key: "handlebars", text: "Handlebars", bgColor: "#F0772B" }, // No icon
 ]
 
 export const TECH_SKILLS_BY_ROLE: ITechSkillsByRoles = {

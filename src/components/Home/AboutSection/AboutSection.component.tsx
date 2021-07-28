@@ -1,8 +1,4 @@
 import React from "react"
-// import TSParticles, { DestroyMode } from "react-tsparticles";
-// import { charsParticlesConfig } from "../../../animations/particles";
-// import { TECHNOLOGIES } from "../../../constants";
-import LazyImage from "../../shared/LazyImage/LazyImage.component"
 import {
   AboutSectionParagraph,
   AboutSectionTextWrapper,

@@ -6,6 +6,8 @@ import { darken, linearGradient } from "polished"
 export const SkillsSectionWrapper = styled.div`
   box-sizing: border-box;
   position: relative;
+  // overflow: hidden;
+  // height: 70vh;
 
   @media ${device.mobileS} {
     flex: 0 0 100%;
@@ -50,10 +52,18 @@ export const TechSkillRoleItem = styled.span<TechSkillRoleItemProps>`
       isActive ? "500ms cubic-bezier(1, -0.22, 0.83, 0.67)" : "300ms ease"};
 `
 
-export const TechSkillsWrapper = styled.div`
+interface TechSkillsWrapperProps {
+  animatingTab: boolean
+}
+
+export const TechSkillsWrapper = styled.div<TechSkillsWrapperProps>`
   display: grid;
   position: relative;
   width: 100%;
+  min-height: 0;
+  min-width: 0;
+  height: 540px;
+  overflow: ${({ animatingTab }) => (animatingTab ? "hidden" : "inherit")};
 
   @media ${device.mobileS} {
     grid-template-columns: repeat(5, 1fr);
@@ -103,6 +113,8 @@ export const TechSkillsEmptyWrapper = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 540px;
+  padding: 1.5rem 0;
 `
 
 export const TechSkillsEmptyText = styled.p`

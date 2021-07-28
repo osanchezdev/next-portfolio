@@ -1,21 +1,36 @@
 import React from "react"
+import _ from "lodash"
 import { useMotionValue } from "framer-motion"
-import { debounce } from "debounce"
+import { useDebounce } from "react-use"
 import { ActiveTabWrapper } from "./ActiveRoleTab.styles"
+import { ITabsRefs } from "../../../../../../types"
 
-const ActiveRoleTab = ({
-  refs,
-  activeRoute,
-  finishAnimating,
-  animating,
-}: any) => {
+interface ActiveRoleTabProps {
+  refs: ITabsRefs
+  activeRoute: string | undefined
+}
+
+const ActiveRoleTab = ({ refs, activeRoute }: ActiveRoleTabProps) => {
   const x = useMotionValue(0)
   const width = useMotionValue(0)
 
+  const [, recalculateAttrs] = useDebounce(
+    () => {
+      updateAttributes()
+    },
+    200,
+    []
+  )
+
   const updateAttributes = React.useCallback(() => {
-    if (refs && refs[activeRoute]) {
-      x.set(refs[activeRoute].current.offsetLeft)
-      width.set(refs[activeRoute].current.getBoundingClientRect().width)
+    let activeRouteRef = activeRoute ? refs[activeRoute] : null
+    if (!_.isNull(activeRouteRef)) {
+      x.set(activeRouteRef.current ? activeRouteRef.current.offsetLeft : 0)
+      width.set(
+        activeRouteRef.current
+          ? activeRouteRef.current.getBoundingClientRect().width
+          : 0
+      )
     }
   }, [activeRoute, refs, x, width])
 
@@ -24,15 +39,11 @@ const ActiveRoleTab = ({
   }, [activeRoute, refs, updateAttributes])
 
   React.useEffect(() => {
-    const recalculateAttrs = debounce(() => {
-      updateAttributes()
-    }, 200)
-
     window.addEventListener("resize", recalculateAttrs)
     return () => {
       window.removeEventListener("resize", recalculateAttrs)
     }
-  }, [updateAttributes])
+  }, [recalculateAttrs, updateAttributes])
 
   return (
     <ActiveTabWrapper
@@ -40,8 +51,6 @@ const ActiveRoleTab = ({
         translateX: x,
         width: width,
       }}
-      animating={animating}
-      onAnimationComplete={finishAnimating}
     />
   )
 }

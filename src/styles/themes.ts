@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme } from "styled-components"
 
 // TODO (late): re check theme colors, add sidebarColor?, particles?, particlesLink?, shadow?
 const darkTheme: DefaultTheme = {
@@ -13,11 +13,11 @@ const darkTheme: DefaultTheme = {
     // primary: "#f49d37",
     tertiary: "#78c0e0",
     // neutral_primary: "#2D3142",
-    neutral_secondary: "#4f5d75",
+    neutral_secondary: "#2D3142",
     text: "#fff",
     link: "#78c0e0",
   },
-};
+}
 
 const lightTheme: DefaultTheme = {
   font: "Istok Web",
@@ -27,10 +27,10 @@ const lightTheme: DefaultTheme = {
     secondary: "#FF8000",
     tertiary: "#78c0e0",
     neutral_primary: "#fafafa",
-    neutral_secondary: "#4f5d75",
+    neutral_secondary: "#2D3142",
     text: "#2D3142",
     link: "#78c0e0",
   },
-};
+}
 
-export { lightTheme, darkTheme };
+export { lightTheme, darkTheme }
