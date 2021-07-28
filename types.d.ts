@@ -1,52 +1,57 @@
-import { Variant } from "framer-motion";
-import React, { RefObject } from "react";
-import { IParticlesParams } from "react-tsparticles";
+import { Variant } from "framer-motion"
+import React, { RefObject } from "react"
+import { IParticlesParams } from "react-tsparticles"
 
-type SkillRoleTypes = "frontend" | "backend" | "mobile" | "desktop";
+export type SkillRoleTypes = "frontend" | "backend" | "mobile" | "desktop"
 
-type ButtonVariantTypes =
+export type ButtonVariantTypes =
   | "primary"
   | "secondary"
   | "tertiary"
   | "text"
-  | undefined;
+  | undefined
 
-type ButtonAnimationTypes =
+export type ButtonAnimationTypes =
   | "right"
   | "left"
   | "top"
   | "bottom"
   | "scale"
-  | "diagonal";
+  | "diagonal"
 
-type AnimationTypes = "fade" | "rubberBand" | "horizontalFlip";
+export type AnimationTypes = "fade" | "rubberBand" | "horizontalFlip"
 
-interface IEmptyProps {}
-
-interface IVariants {
-  [key: string]: Variant;
+export interface IVariants {
+  [key: string]: Variant
 }
 
-interface IAnimations {
-  [key: string]: IVariants;
-}
-interface ITechSkillItem {
-  key: string;
-  text: string;
-  bgColor: string;
-}
-interface ITechSkillsByRoles {
-  [key: string]: number[];
+export interface IAnimations {
+  [key: string]: IVariants
 }
 
-interface ITabsRefs {
-  [key: string]: React.RefObject<HTMLSpanElement>;
+export interface IAnimationVariants {
+  initialName?: string
+  animateName?: string
+  animationName: AnimationTypes
+}
+export interface ITechSkillItem {
+  key: string
+  text: string
+  bgColor: string
+}
+export interface ITechSkillsByRoles {
+  [key: string]: number[]
 }
 
-export interface IVariants {}
-export interface IAnimations {}
-export interface IParticlesParams {}
-export interface ITechSkillItem {}
-export interface IEmptyProps {}
-export interface ITechSkillsByRoles {}
-export interface ITabsRefs {}
+export interface ITabsRefs {
+  [key: string]: React.RefObject<HTMLSpanElement>
+}
+
+export interface IProjectDataItem {
+  id: string
+  name: string
+  bgColor?: string
+  textColor?: string
+  images: Array<string>
+  tech_skills: Array<ITechSkillItem>
+}

@@ -1,20 +1,20 @@
-import React from "react";
+import React from "react"
 import {
   ButtonWrapper,
   SButton,
   ButtonAnimatedBg,
   ButtonContentWrapper,
-} from "./Button.styles";
-import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types";
-import { getButtonBgVariants } from "./Button.variants";
-import { transitions } from "polished";
+} from "./Button.styles"
+import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types"
+import { getButtonBgVariants } from "./Button.variants"
+import { transitions } from "polished"
 
-interface Props {
-  children: React.ReactNode;
-  variantColor?: ButtonVariantTypes;
-  variantAnimation?: ButtonAnimationTypes;
-  solid?: boolean;
-  onClick?: React.MouseEventHandler;
+interface ButtonProps {
+  children: React.ReactNode
+  variantColor?: ButtonVariantTypes
+  variantAnimation?: ButtonAnimationTypes
+  solid?: boolean
+  onClick?: React.MouseEventHandler
 }
 
 const Button = ({
@@ -23,7 +23,7 @@ const Button = ({
   variantAnimation = "diagonal",
   solid = false,
   onClick,
-}: Props) => {
+}: ButtonProps) => {
   return (
     <ButtonWrapper>
       <SButton
@@ -39,7 +39,7 @@ const Button = ({
         <ButtonContentWrapper>{children}</ButtonContentWrapper>
       </SButton>
     </ButtonWrapper>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

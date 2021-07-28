@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import _ from "lodash"
 import Tippy from "@tippyjs/react"
+import { useDebounce } from "react-use"
 import {
   SkillsSectionWrapper,
   TechSkillsHeaderWrapper,
@@ -20,7 +21,7 @@ import {
   TECH_ROLES,
   TECH_SKILLS_DATA,
   TECH_SKILLS_BY_ROLE,
-} from "../../../../constants/tech_skills"
+} from "../../../../data/tech_skills_data"
 import {
   getSkillItemVariants,
   skillEmptyPointUpVariants,
@@ -31,8 +32,15 @@ import { AnimatePresence } from "framer-motion"
 import ActiveRoleTab from "./ActiveRoleTab/ActiveRoleTab.component"
 
 const SkillsSection = () => {
-  const [animating, setAnimating] = React.useState(false)
+  const [animatingTab, setAnimatingTab] = useState<boolean>(false)
   const [selectedRole, setSelectedRole] = useState<SkillRoleTypes>()
+  const [, cancelAnimatingTabDebounce] = useDebounce(
+    () => {
+      setAnimatingTab(false)
+    },
+    1000,
+    [animatingTab]
+  )
 
   const getRoleSkills = (): number[] =>
     selectedRole ? TECH_SKILLS_BY_ROLE[selectedRole] : []
@@ -45,37 +53,33 @@ const SkillsSection = () => {
     {}
   )
 
-  useEffect(() => {}, [selectedRole])
+  const changeTab = (role: SkillRoleTypes): void => {
+    setSelectedRole(role)
+    setAnimatingTab(true)
+  }
+
+  useEffect(() => {}, [animatingTab, selectedRole])
 
   return (
     <SkillsSectionWrapper>
       <TechSkillsHeaderWrapper>
         <TechSkillsHeaderTitle>Skills by role:</TechSkillsHeaderTitle>
         <TechSkillsRolesWrapper>
-          <ActiveRoleTab
-            refs={tabRefs}
-            activeRoute={selectedRole}
-            finishAnimating={() => setAnimating(false)}
-            animating={animating}
-          />
+          <ActiveRoleTab refs={tabRefs} activeRoute={selectedRole} />
           {TECH_ROLES.map((item: SkillRoleTypes) => (
             <TechSkillRoleItem
               key={item}
               ref={tabRefs[item]}
               isActive={item === selectedRole}
-              onClick={() => {
-                setSelectedRole(item)
-                setAnimating(true)
-              }}
+              onClick={() => changeTab(item)}
             >
               {item}
             </TechSkillRoleItem>
           ))}
         </TechSkillsRolesWrapper>
       </TechSkillsHeaderWrapper>
-
       {!_.isEmpty(selectedRole) ? (
-        <TechSkillsWrapper>
+        <TechSkillsWrapper animatingTab={animatingTab}>
           <AnimatePresence key="skills-wrapper-an">
             {getRoleSkills().map((item, index) => (
               <TechSkillItemWrapper
@@ -100,6 +104,7 @@ const SkillsSection = () => {
                           require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
                             .default
                         }
+                        alt={TECH_SKILLS_DATA[item].text}
                       />
                     </TechSkillItem>
                   </Tippy>

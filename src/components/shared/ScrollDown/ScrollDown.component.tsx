@@ -1,19 +1,17 @@
-import React from "react";
-import { FaChevronDown } from "react-icons/fa";
+import React from "react"
+import { FaChevronDown } from "react-icons/fa"
 import {
   ScrollDownWrapper,
   ScrollDownThumb,
   ChevronsWrapper,
   ChevronDown,
-} from "./ScrollDown.styles";
+} from "./ScrollDown.styles"
 import {
   scrollDownThumbVariants,
   chevronDownVariants,
-} from "./ScrollDown.variants";
+} from "./ScrollDown.variants"
 
-interface Props {}
-
-const ScrollDown = (props: Props) => {
+const ScrollDown = () => {
   return (
     <ScrollDownWrapper>
       <ScrollDownThumb animate="animate" variants={scrollDownThumbVariants} />
@@ -23,7 +21,7 @@ const ScrollDown = (props: Props) => {
         </ChevronDown>
       </ChevronsWrapper>
     </ScrollDownWrapper>
-  );
-};
+  )
+}
 
-export default ScrollDown;
+export default ScrollDown

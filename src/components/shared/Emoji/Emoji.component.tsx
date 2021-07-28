@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 
-interface Props {
-  symbol: string;
-  label?: string;
+interface EmojiProps {
+  symbol: string
+  label?: string
 }
 
-const Emoji = (props: Props) => {
+const Emoji = (props: EmojiProps) => {
   return (
     <span
       className="emoji"
@@ -15,7 +15,7 @@ const Emoji = (props: Props) => {
     >
       {props.symbol}
     </span>
-  );
-};
+  )
+}
 
-export default Emoji;
+export default Emoji

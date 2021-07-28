@@ -1,15 +1,11 @@
-import animations, { AnimationTypes } from "../animations";
+import { IAnimationVariants } from "../../types"
+import animations from "../animations"
 
-interface AnimationIVariants {
-  initialName?: string;
-  animateName?: string;
-  animationName: AnimationTypes;
-}
 export const getAnimationVariants = ({
   initialName = "initial",
   animateName = "animate",
   animationName,
-}: AnimationIVariants): any => {
+}: IAnimationVariants): any => {
   return {
     [initialName]: {
       ...animations[animationName].initial,
@@ -17,5 +13,5 @@ export const getAnimationVariants = ({
     [animateName]: {
       ...animations[animationName].animate,
     },
-  };
-};
+  }
+}
