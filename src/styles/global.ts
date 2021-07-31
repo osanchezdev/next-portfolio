@@ -1,6 +1,6 @@
-import { normalize } from "polished";
-import { createGlobalStyle } from "styled-components";
-import { device } from "./mediaQueries";
+import { normalize } from "polished"
+import { createGlobalStyle } from "styled-components"
+import { device } from "./mediaQueries"
 
 export const GlobalStyles = createGlobalStyle`
 	${normalize()}
@@ -46,4 +46,13 @@ export const GlobalStyles = createGlobalStyle`
 	link {
 		color: ${({ theme }) => theme.colors.link};
 	}
-`;
+
+	// Hack for autocomplete Chrome colors
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+			-webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+			-webkit-transition-delay: 9999s;
+	}
+`

@@ -55,3 +55,24 @@ export interface IProjectDataItem {
   images: Array<string>
   tech_skills: Array<ITechSkillItem>
 }
+
+export interface INameFormValue {
+  name: string
+}
+
+export interface IEmailFormValue {
+  email: string
+}
+export interface IMessageFormValue {
+  message: string
+}
+
+export interface IContactFormValues {
+  [name: string]: INameFormValue
+  [email: string]: IEmailFormValue
+  [message: string]: IMessageFormValue
+}
+
+export interface StepFormProps {
+  updateForm: Function
+}
