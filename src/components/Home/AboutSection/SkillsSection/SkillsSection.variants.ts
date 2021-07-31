@@ -1,5 +1,4 @@
 import _ from "lodash"
-import { TargetAndTransition } from "framer-motion"
 import { IVariants } from "../../../../../types"
 
 const getRandomPosition = () => {

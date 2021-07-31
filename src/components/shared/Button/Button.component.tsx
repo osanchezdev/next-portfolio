@@ -6,14 +6,15 @@ import {
   ButtonContentWrapper,
 } from "./Button.styles"
 import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types"
-import { getButtonBgVariants } from "./Button.variants"
-import { transitions } from "polished"
+import { buttonVariants, getButtonBgVariants } from "./Button.variants"
 
 interface ButtonProps {
   children: React.ReactNode
   variantColor?: ButtonVariantTypes
   variantAnimation?: ButtonAnimationTypes
   solid?: boolean
+  disabled?: boolean
+  type?: "reset" | "submit" | "button"
   onClick?: React.MouseEventHandler
 }
 
@@ -22,19 +23,29 @@ const Button = ({
   variantColor = "primary",
   variantAnimation = "diagonal",
   solid = false,
+  disabled = false,
+  type = "button",
   onClick,
 }: ButtonProps) => {
+  // TODO: Implement loading prop and loading animation
   return (
     <ButtonWrapper>
       <SButton
         onClick={onClick}
         variantColor={variantColor}
         initial="initial"
-        whileHover="hover"
+        whileHover={!disabled ? "hover" : "shake"}
+        whileTap={!disabled ? "hover" : "shake"}
+        type={type}
+        disabled={disabled}
+        variants={buttonVariants}
       >
         <ButtonAnimatedBg
+          disabled={disabled}
           variantColor={variantColor}
-          variants={{ ...getButtonBgVariants(variantAnimation, solid) }}
+          variants={{
+            ...getButtonBgVariants(variantAnimation, solid),
+          }}
         />
         <ButtonContentWrapper>{children}</ButtonContentWrapper>
       </SButton>

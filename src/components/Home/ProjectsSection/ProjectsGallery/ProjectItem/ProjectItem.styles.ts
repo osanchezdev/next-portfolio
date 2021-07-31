@@ -66,6 +66,7 @@ export const ProjectItemTechPillsWrapper = styled(motion.div)`
 export const ProjectItemTechPill = styled(motion.span)`
   font-size: 14px;
   padding: 3px 15px;
+  color: #fff;
   background-color: #333;
   letter-spacing: 1px;
 `

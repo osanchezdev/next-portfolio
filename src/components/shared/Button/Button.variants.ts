@@ -1,8 +1,4 @@
-import {
-  ButtonAnimationTypes,
-  IAnimations,
-  IVariants,
-} from "../../../../types";
+import { ButtonAnimationTypes, IAnimations, IVariants } from "../../../../types"
 
 const buttonBgVariants: IAnimations = {
   rightOutline: {
@@ -161,13 +157,6 @@ const buttonBgVariants: IAnimations = {
         duration: 1,
       },
     },
-    //   width: 0px;
-    //   height: 175px;
-    //   bottom: -2px;
-    //   right: -130px;
-    //   width: 560px;
-    //   transform: rotate(
-    // 45deg
   },
   diagonal: {
     initial: {
@@ -185,17 +174,21 @@ const buttonBgVariants: IAnimations = {
         duration: 1,
       },
     },
-    //   width: 0px;
-    //   height: 175px;
-    //   bottom: -2px;
-    //   right: -130px;
-    //   width: 560px;
-    //   transform: rotate(
-    // 45deg
   },
-};
+}
+
+export const buttonVariants = {
+  shake: {
+    translateX: [1, -1, -3, 3, 1, -1, 0],
+    translateY: [1, -1, 0, 1, -1, 1, 0],
+    rotateX: [0, -1, 1, 0, 1, -1, 0],
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
 
 export const getButtonBgVariants = (
   animType: ButtonAnimationTypes,
   solid: boolean
-): IVariants => buttonBgVariants[solid ? animType : `${animType}Outline`];
+): IVariants => buttonBgVariants[solid ? animType : `${animType}Outline`]
