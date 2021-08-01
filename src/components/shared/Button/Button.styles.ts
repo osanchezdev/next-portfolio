@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components"
 import { motion } from "framer-motion"
+import { getContrast, readableColor } from "polished"
 
 const getButtonColors = (variant: string, theme: DefaultTheme) => {
   switch (variant) {
@@ -8,17 +9,8 @@ const getButtonColors = (variant: string, theme: DefaultTheme) => {
         color: "lightgray",
       }
     case "text":
-      return {
-        color: theme.colors.text,
-      }
     case "tertiary":
-      return {
-        color: theme.colors.text,
-      }
     case "secondary":
-      return {
-        color: theme.colors.text,
-      }
     case "primary":
     default:
       return {
@@ -56,17 +48,19 @@ export const ButtonWrapper = styled.div``
 
 interface SButtonVariantsProps {
   variantColor: string
+  solid?: boolean
   disabled?: boolean
 }
 
 export const SButton = styled(motion.button)<SButtonVariantsProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
-  border: 0;
+  border: 1px solid ${({ theme }) => theme.colors.text};
   outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 140px;
+  padding: 2px 20px;
   height: 50px;
   position: relative;
   overflow: hidden;
@@ -75,6 +69,11 @@ export const SButton = styled(motion.button)<SButtonVariantsProps>`
   background: transparent;
   ${({ theme, variantColor, disabled }) =>
     getButtonColors(disabled ? "disabled" : variantColor, theme)};
+  // transition: border 300ms ease;
+  // &:hover {
+  //   border: 1px solid
+  //     ${({ theme }) => readableColor(theme.colors.text, "#000", "#fff")};
+  // }
 `
 
 export const ButtonAnimatedBg = styled(motion.div)<SButtonVariantsProps>`

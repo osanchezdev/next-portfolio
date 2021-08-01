@@ -1,11 +1,15 @@
-import { normalize } from "polished"
 import { createGlobalStyle } from "styled-components"
+import { normalize } from "polished"
 import { device } from "./mediaQueries"
 
 export const GlobalStyles = createGlobalStyle`
 	${normalize()}
 	* {
 		user-select: none;
+			-webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
+			-webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
+			-webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+			-webkit-user-select:none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 	}
 	
 	body {
@@ -17,34 +21,62 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${device.mobileS} {
 			font-size:16px;
 		}
-		@media ${device.laptop} {
+		@media ${device.tablet} {
 			font-size: 18px;
 		}
-		@media ${device.laptopL} {
-			font-size: 20px;
+		@media ${device.laptop} {
+			font-size: 24px;
 		}
 	}
+
 	h1, h2, h3, h4, h5, h6, p, span {
+		margin-top: 0;
 		transition: all 100ms ease;
     line-height: 1.6;
 	}
-	
-	h1 { font-size: 2.4rem;}
-	h2 { font-size: 2rem; }
-	h3 { font-size: 1.6rem; }
-	h4 { font-size: 1.2rem; }
-	h5 { font-size: 1rem; }
 
 	@media ${device.mobileS}{
+		h1 { font-size: 3rem;}
+		h2 { font-size: 2.3rem; }
+		h3 { font-size: 2rem; }
+		h4 { font-size: 1.5rem; }
+		h5 { font-size: 1rem; }
+		p { font-size: 1.3rem; }
+	}
+
+	@media ${device.tablet}{
 		h1 { font-size: 3rem;}
 		h2 { font-size: 2.5rem; }
 		h3 { font-size: 2rem; }
 		h4 { font-size: 1.5rem; }
 		h5 { font-size: 1rem; }
+		p { font-size: 1.4rem; }
 	}
 
-	link {
-		color: ${({ theme }) => theme.colors.link};
+	@media ${device.laptop}{
+		h1 { font-size: 4rem;}
+		h2 { font-size: 3.5rem; }
+		h3 { font-size: 3rem; }
+		h4 { font-size: 2.5rem; }
+		h5 { font-size: 2rem; }
+		p { font-size: 1.6rem; }
+	}
+
+	@media ${device.laptopL}{
+		h1 { font-size: 4rem;}
+		h2 { font-size: 3.5rem; }
+		h3 { font-size: 3rem; }
+		h4 { font-size: 2.5rem; }
+		h5 { font-size: 2rem; }
+		p { font-size: 2rem; }
+	}
+
+	a {
+		color: ${({ theme }) => theme.colors.text};3
+		transition: color 300ms ease;
+	}
+	a:hover {
+		color: ${({ theme }) => theme.colors.primary};
 	}
 
 	// Hack for autocomplete Chrome colors

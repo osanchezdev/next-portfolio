@@ -9,13 +9,13 @@ export const LazyImageWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #333;
   border: 0;
 `
 
 export const LazyImagePlaceholder = styled.div`
   position: absolute;
-  left: calc(50% - 2.5vw);
-  top: calc(50% - 2.5vw);
-  font-size: 5vw;
+  top: -7px;
+  left: 0;
+  height: calc(100% + 2px);
+  width: 100%;
 `

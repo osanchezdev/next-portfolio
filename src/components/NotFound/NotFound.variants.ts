@@ -1,34 +1,33 @@
-import { IVariants } from "../../../../../../types"
+import { IVariants } from "../../../types"
 
-export const formStepVariants: IVariants = {
+export const notFoundVariants: IVariants = {
   initial: {
-    translateX: 800,
     opacity: 0,
   },
   animate: {
     opacity: 1,
-    translateX: 0,
     transition: {
-      delay: 1,
+      duration: 1,
+      staggerChildren: 2.5,
     },
   },
   exit: {
     opacity: 0,
-    translateX: -800,
     transition: {
       duration: 1,
     },
   },
 }
 
-export const completeStepVariants: IVariants = {
+export const notFoundItemsVariants: IVariants = {
   initial: {
     opacity: 0,
   },
   animate: {
     opacity: 1,
     transition: {
-      delay: 2,
+      duration: 1,
+      staggerChildren: 2.5,
     },
   },
   exit: {

@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { device } from "../../../styles/mediaQueries";
+import styled from "styled-components"
+import { motion } from "framer-motion"
+import { device } from "../../../styles/mediaQueries"
 
 export const WelcomeSectionWrapper = styled.div`
   position: relative;
   height: 100vh;
-`;
+`
 
 export const WelcomeSectionContent = styled.div`
   position: relative;
-`;
+`
 
 export const WelcomeTitleWrapper = styled.div`
   display: flex;
@@ -27,16 +27,16 @@ export const WelcomeTitleWrapper = styled.div`
     top: 10%;
     left: 10%;
   }
-`;
+`
 
-export const WelcomeTitle = styled.h1``;
+export const WelcomeTitle = styled.h1``
 
 export const WelcomeTitleWord = styled.div`
   display: flex;
   & > div {
     min-width: 18px;
   }
-`;
+`
 export const WelcomeTitleChar = styled(motion.span)`
   cursor: default;
   font-weight: bold;
@@ -51,18 +51,14 @@ export const WelcomeTitleChar = styled(motion.span)`
     min-width: 8px;
   }
   @media ${device.mobileM} {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     min-width: 10px;
   }
   @media ${device.laptop} {
-    font-size: 4.5rem;
+    font-size: 5vw;
     min-width: 20px;
   }
-  @media ${device.laptopL} {
-    font-size: 5.5rem;
-    min-width: 20px;
-  }
-`;
+`
 
 export const WelcomeButton = styled(motion.div)`
   position: absolute;
@@ -75,7 +71,7 @@ export const WelcomeButton = styled(motion.div)`
   @media ${device.laptop} {
     left: 10%;
   }
-`;
+`
 
 export const WelcomeScrollDown = styled(motion.div)`
   position: absolute;
@@ -90,4 +86,4 @@ export const WelcomeScrollDown = styled(motion.div)`
     bottom: 7%;
     left: calc(50% - 15px);
   }
-`;
+`

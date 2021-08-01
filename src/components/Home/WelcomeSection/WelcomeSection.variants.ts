@@ -1,6 +1,6 @@
 import _merge from "lodash.merge";
 import { IVariants } from "../../../../types";
-import { getAnimationVariants } from "../../../utils";
+import { getAnimationVariants } from "../../../animations";
 
 export const welcomeTitleCharsVariants = (i: number): IVariants => {
   let rubberBandAnimation = getAnimationVariants({

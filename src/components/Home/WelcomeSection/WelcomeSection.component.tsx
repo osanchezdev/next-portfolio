@@ -1,6 +1,5 @@
-import React from "react";
-import Image from "next/image";
-import TSParticles from "react-tsparticles";
+import React from "react"
+import TSParticles from "react-tsparticles"
 import {
   WelcomeSectionWrapper,
   WelcomeTitleWrapper,
@@ -9,30 +8,26 @@ import {
   WelcomeTitleChar,
   WelcomeButton,
   WelcomeScrollDown,
-} from "./WelcomeSection.styles";
+} from "./WelcomeSection.styles"
 import {
   welcomeButtonVariants,
   welcomeScrollDownVariants,
   welcomeTitleCharsVariants,
-  // WelcomeTitleVariants,
-} from "./WelcomeSection.variants";
-import { ABOUT_TITLE } from "../../../constants";
-import Button from "../../shared/Button/Button.component";
-import ScrollDown from "../../shared/ScrollDown/ScrollDown.component";
-import { welcomeParticlesConfig } from "../../../animations/particles";
-import Emoji from "../../shared/Emoji/Emoji.component";
+} from "./WelcomeSection.variants"
+import Button from "../../shared/Button/Button.component"
+import ScrollDown from "../../shared/ScrollDown/ScrollDown.component"
+import { welcomeParticlesConfig } from "../../../animations/particles"
+import Emoji from "../../shared/Emoji/Emoji.component"
 
-interface Props {}
+const ABOUT_TITLE = "Hi, \nI’m Oscar,\nsoftware developer"
 
-const WelcomeSection = (props: Props) => {
-  let delayCount = 0;
-  const aboutSplittedTitle = ABOUT_TITLE.split("\n");
+const WelcomeSection = () => {
+  let delayCount = 0
+  const aboutSplittedTitle = ABOUT_TITLE.split("\n")
   const getCharDelay = () => {
-    delayCount++;
-    return welcomeTitleCharsVariants(delayCount);
-  };
-  // TODO: Use separators?
-  // ? https://speckyboy.com/horizontal-rules-dividers-css/
+    delayCount++
+    return welcomeTitleCharsVariants(delayCount)
+  }
   return (
     <>
       <WelcomeSectionWrapper>
@@ -64,7 +59,7 @@ const WelcomeSection = (props: Props) => {
           whileTap="tapped"
           variants={welcomeButtonVariants}
         >
-          <Button variantColor="primary" solid>
+          <Button variantColor="primary" minWidth={160}>
             <span>
               Say Hello <Emoji symbol="👋" label="hello" />
             </span>
@@ -79,7 +74,7 @@ const WelcomeSection = (props: Props) => {
         </WelcomeScrollDown>
       </WelcomeSectionWrapper>
     </>
-  );
-};
+  )
+}
 
-export default WelcomeSection;
+export default WelcomeSection

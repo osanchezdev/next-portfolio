@@ -3,7 +3,7 @@ import { rgba } from "polished"
 import { motion } from "framer-motion"
 
 export const InputWrapper = styled.div`
-  height: 100px;
+  min-height: 150px;
   position: relative;
 `
 

@@ -3,7 +3,7 @@ import { IVariants } from "../../../../../types"
 
 const getRandomPosition = () => {
   return {
-    left: `${_.random(5, 55, true)}%`,
+    left: `${_.random(5, 40, true)}%`,
     top: `${_.random(5, 95, true)}%`,
   }
 }

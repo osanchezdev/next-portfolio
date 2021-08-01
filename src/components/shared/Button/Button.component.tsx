@@ -12,6 +12,7 @@ interface ButtonProps {
   children: React.ReactNode
   variantColor?: ButtonVariantTypes
   variantAnimation?: ButtonAnimationTypes
+  minWidth?: number
   solid?: boolean
   disabled?: boolean
   type?: "reset" | "submit" | "button"
@@ -27,7 +28,6 @@ const Button = ({
   type = "button",
   onClick,
 }: ButtonProps) => {
-  // TODO: Implement loading prop and loading animation
   return (
     <ButtonWrapper>
       <SButton
@@ -37,6 +37,7 @@ const Button = ({
         whileHover={!disabled ? "hover" : "shake"}
         whileTap={!disabled ? "hover" : "shake"}
         type={type}
+        solid={solid}
         disabled={disabled}
         variants={buttonVariants}
       >

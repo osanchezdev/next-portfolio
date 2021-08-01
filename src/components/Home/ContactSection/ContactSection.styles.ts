@@ -1,14 +1,15 @@
 import styled from "styled-components"
+import { motion } from "framer-motion"
 import { device } from "../../../styles/mediaQueries"
 
-export const ContactSectionWrapper = styled.div`
+export const ContactSectionWrapper = styled(motion.div)`
   max-width: ${({ theme }) => theme.maxWidth}px;
   margin: 15px auto;
   padding: 1rem;
   overflow: hidden;
 `
 
-export const ContactSectionTitle = styled.h2`
+export const ContactSectionTitle = styled(motion.h2)`
   margin: 20px auto;
 
   @media ${device.mobileS} {
@@ -27,7 +28,7 @@ export const ContactSectionTitle = styled.h2`
   }
 `
 
-export const ContactSectionDescription = styled.p`
+export const ContactSectionDescription = styled(motion.p)`
   text-align: justify;
   width: 50%;
   margin: 20px auto;
@@ -44,10 +45,10 @@ export const ContactSectionDescription = styled.p`
   }
 `
 
-export const ContactSectionTextWrapper = styled.div`
+export const ContactSectionTextWrapper = styled(motion.div)`
   padding: 1rem;
 `
-export const ContactSectionFormWrapper = styled.div`
+export const ContactSectionFormWrapper = styled(motion.div)`
   max-width: 655px;
   margin: 0 auto;
 `

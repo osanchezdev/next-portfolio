@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
+import { IntersectionContext } from "../../../context/intersectionContext"
 import ContactForm from "./ContactForm/ContactForm.component"
+import { contactSectionVariants } from "./ContactSection.variants"
 import {
   ContactSectionWrapper,
   ContactSectionTextWrapper,
@@ -9,16 +11,23 @@ import {
 } from "./ContactSection.styles"
 
 const ContactSection = () => {
+  const { inView } = useContext(IntersectionContext)
   return (
-    <ContactSectionWrapper>
+    <ContactSectionWrapper
+      initial={"initial"}
+      animate={inView && "show"}
+      variants={contactSectionVariants}
+    >
       <ContactSectionTextWrapper>
-        <ContactSectionTitle>Contact</ContactSectionTitle>
-        <ContactSectionDescription>
+        <ContactSectionTitle variants={contactSectionVariants}>
+          Contact
+        </ContactSectionTitle>
+        <ContactSectionDescription variants={contactSectionVariants}>
           Talk to me is you have a question, want a project collaboration or
           just say hi, an animation awaits at the end of the form. <br />
         </ContactSectionDescription>
       </ContactSectionTextWrapper>
-      <ContactSectionFormWrapper>
+      <ContactSectionFormWrapper variants={contactSectionVariants}>
         <ContactForm />
       </ContactSectionFormWrapper>
     </ContactSectionWrapper>

@@ -4,26 +4,11 @@ import { device } from "../../../../styles/mediaQueries"
 import { darken, linearGradient } from "polished"
 
 export const SkillsSectionWrapper = styled.div`
-  box-sizing: border-box;
   position: relative;
-  // overflow: hidden;
-  // height: 70vh;
-
-  @media ${device.mobileS} {
-    flex: 0 0 100%;
-    padding: 1rem;
-  }
-  @media ${device.laptop} {
-    padding: 1rem 2rem;
-    flex: 0 0 60%;
-  }
 `
 
 export const TechSkillsHeaderWrapper = styled.div`
   position: relative;
-`
-export const TechSkillsHeaderTitle = styled.h4`
-  margin: 0;
 `
 
 export const TechSkillsRolesWrapper = styled.div`
@@ -62,17 +47,18 @@ export const TechSkillsWrapper = styled.div<TechSkillsWrapperProps>`
   width: 100%;
   min-height: 0;
   min-width: 0;
-  height: 540px;
   overflow: ${({ animatingTab }) => (animatingTab ? "hidden" : "inherit")};
 
   @media ${device.mobileS} {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 15px;
+    height: 665px;
   }
   @media ${device.laptop} {
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 24px;
     padding: 1.5rem 0;
+    height: 540px;
   }
 `
 

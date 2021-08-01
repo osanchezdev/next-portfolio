@@ -1,24 +1,36 @@
-import React from "react"
+import React, { useContext } from "react"
+import { IntersectionContext } from "../../../context/intersectionContext"
 import ProjectsGallery from "./ProjectsGallery/ProjectsGallery.component"
 import {
   ProjectsSectionWrapper,
   ProjectsSectionTitle,
   ProjectsSectionDescription,
+  ProjectsSectionGalleryWrapper,
 } from "./ProjectsSection.styles"
+import { projectsSectionVariants } from "./ProjectsSection.variants"
 
 const ProjectsSection = () => {
+  const { inView } = useContext(IntersectionContext)
   return (
-    <ProjectsSectionWrapper>
-      <ProjectsSectionTitle>Developer portfolio</ProjectsSectionTitle>
-      <ProjectsSectionDescription>
-        Animi id maxime dolores molestiae sint animi quo. Non maxime in illo ut
-        repellendus et quae. Est eum et libero dolorem. Dolorem corporis ex
-        placeat accusamus enim nihil dolor. Quas esse quia atque eum omnis et
-        exercitationem. Ullam qui deleniti non totam veniam nihil quo.
-        Consequatur deleniti voluptate enim non laboriosam distinctio voluptate
-        voluptate illo.
+    <ProjectsSectionWrapper
+      initial={"initial"}
+      animate={inView && "show"}
+      variants={projectsSectionVariants}
+    >
+      <ProjectsSectionTitle variants={projectsSectionVariants}>
+        Developer portfolio
+      </ProjectsSectionTitle>
+      <ProjectsSectionDescription variants={projectsSectionVariants}>
+        I have worked for both companies and individuals around the globe. I
+        currently work remotely as a freelancer with a select client base and
+        open to hearing about new opportunities.
+        <br />
+        <br />
+        Here can you see some of the projects where i have participated:
       </ProjectsSectionDescription>
-      <ProjectsGallery />
+      <ProjectsSectionGalleryWrapper variants={projectsSectionVariants}>
+        <ProjectsGallery />
+      </ProjectsSectionGalleryWrapper>
     </ProjectsSectionWrapper>
   )
 }

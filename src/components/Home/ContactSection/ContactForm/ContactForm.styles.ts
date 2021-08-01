@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import styled from "styled-components"
 
 export const ContactFormWrapper = styled.div``
@@ -7,6 +8,6 @@ export const ContactFormHeader = styled.div`
 `
 
 export const CurrentStepWrapper = styled.div`
-  min-height: 300px;
+  min-height: 400px;
   position: relative;
 `

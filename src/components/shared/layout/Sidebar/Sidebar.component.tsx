@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../../../context/appContext";
+import React, { useContext } from "react"
+import { AppContext } from "../../../../context/appContext"
 import {
   FaLinkedin,
   FaGithubSquare,
@@ -9,11 +9,11 @@ import {
   FaFileAlt,
   FaEnvelopeOpenText,
   FaChevronRight,
-} from "react-icons/fa";
-import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component";
+} from "react-icons/fa"
+import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component"
 import {
   SidebarWrapper,
-  Sidebar as StyledSidebar,
+  Sidebar as SSidebar,
   SidebarTitle,
   LogoWrapper,
   Logo,
@@ -26,19 +26,16 @@ import {
   ExpandSidebarArrowWrapper,
   ExpandSidebarArrowButton,
   ExpandSidebarArrow,
-} from "./Sidebar.styles";
+} from "./Sidebar.styles"
 import {
   sidebarVariants,
   sidebarContentVariants,
   arrowButtonVariants,
-} from "./Sidebar.variants";
+} from "./Sidebar.variants"
+import Divider from "../../Divider/Divider.component"
 
-type SidebarProps = {
-  switchTheme: Function;
-};
-
-const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
-  const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext);
+const Sidebar: React.FC = () => {
+  const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
 
   return (
     <SidebarWrapper
@@ -46,15 +43,12 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
       animate={isSidebarExpanded ? "expanded" : "collapsed"}
       variants={sidebarVariants}
     >
-      <StyledSidebar variants={sidebarContentVariants()}>
+      <SSidebar variants={sidebarContentVariants()}>
         <SidebarTitle>Oscar Sánchez</SidebarTitle>
         <LogoWrapper>
           <Logo src="https://cdn.fakercloud.com/avatars/axel_128.jpg" />
         </LogoWrapper>
-        <SidebarDescription>
-          Illum omnis quasi dicta exercitationem accusamus dicta et qui.
-          Praesentium et reiciendis. Harum voluptatum.
-        </SidebarDescription>
+        <SidebarDescription>Welcome to my personal website.</SidebarDescription>
         <SidebarProfileLinks>
           <ProfileItem>
             <a href="_blank">
@@ -67,6 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
             </a>
           </ProfileItem>
         </SidebarProfileLinks>
+        <Divider />
         <Navbar>
           <NavbarList>
             <NavbarItem>
@@ -91,14 +86,15 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
             </NavbarItem>
           </NavbarList>
         </Navbar>
-        <ThemeSwitch switchTheme={switchTheme} />
-      </StyledSidebar>
+        <Divider />
+        <ThemeSwitch />
+      </SSidebar>
       <ExpandSidebarArrowWrapper>
         <ExpandSidebarArrowButton
           initial="collapsed"
           animate={isSidebarExpanded ? "expanded" : "collapsed"}
           variants={arrowButtonVariants()}
-          onClick={() => toggleExpandSidebar()}
+          onClick={() => toggleExpandSidebar && toggleExpandSidebar()}
         >
           <ExpandSidebarArrow>
             <FaChevronRight />
@@ -106,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
         </ExpandSidebarArrowButton>
       </ExpandSidebarArrowWrapper>
     </SidebarWrapper>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

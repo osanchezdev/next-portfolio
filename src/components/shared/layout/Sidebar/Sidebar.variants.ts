@@ -1,5 +1,5 @@
-import { IVariants } from "../../../../../types";
-import { getAnimationVariants } from "../../../../utils";
+import { IVariants } from "../../../../../types"
+import { getAnimationVariants } from "../../../../animations"
 
 export const sidebarVariants: IVariants = {
   collapsed: {
@@ -10,12 +10,12 @@ export const sidebarVariants: IVariants = {
     width: "213px",
     transition: { when: "beforeChildren" },
   },
-};
+}
 
 export const sidebarContentVariants = (): IVariants => {
   let opacity = getAnimationVariants({
     animationName: "fade",
-  });
+  })
   return {
     collapsed: {
       ...opacity.initial,
@@ -23,13 +23,13 @@ export const sidebarContentVariants = (): IVariants => {
     expanded: {
       ...opacity.animate,
     },
-  };
-};
+  }
+}
 
 export const arrowButtonVariants = (): IVariants => {
   let horizontalFlip = getAnimationVariants({
     animationName: "horizontalFlip",
-  });
+  })
   return {
     expanded: {
       ...horizontalFlip.animate,
@@ -37,5 +37,5 @@ export const arrowButtonVariants = (): IVariants => {
     collapsed: {
       ...horizontalFlip.initial,
     },
-  };
-};
+  }
+}

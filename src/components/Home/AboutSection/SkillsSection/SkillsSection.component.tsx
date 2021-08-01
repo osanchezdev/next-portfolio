@@ -5,7 +5,6 @@ import { useDebounce } from "react-use"
 import {
   SkillsSectionWrapper,
   TechSkillsHeaderWrapper,
-  TechSkillsHeaderTitle,
   TechSkillsRolesWrapper,
   TechSkillRoleItem,
   TechSkillsWrapper,
@@ -63,7 +62,6 @@ const SkillsSection = () => {
   return (
     <SkillsSectionWrapper>
       <TechSkillsHeaderWrapper>
-        <TechSkillsHeaderTitle>Skills by role:</TechSkillsHeaderTitle>
         <TechSkillsRolesWrapper>
           <ActiveRoleTab refs={tabRefs} activeRoute={selectedRole} />
           {TECH_ROLES.map((item: SkillRoleTypes) => (

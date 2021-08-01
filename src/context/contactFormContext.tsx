@@ -16,12 +16,11 @@ interface ContactFormProviderProps {
 const ContactFormProvider = ({
   children,
 }: ContactFormProviderProps): React.ReactElement => {
-  // TODO: Create AWS SES service an comsume it
-  const [currentStep, setCurrentStep] = useState<number>(3)
+  const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentForm, setCurrentForm] = useState<IContactFormValues>({})
 
   const sendContactMessage = async () => {
-    // TODO: Implement email endpoint
+    // TODO: Create AWS SES service an comsume it
   }
 
   const updateCurrentForm = async (

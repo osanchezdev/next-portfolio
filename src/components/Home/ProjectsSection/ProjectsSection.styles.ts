@@ -1,14 +1,14 @@
+import { motion } from "framer-motion"
 import styled from "styled-components"
 
-export const ProjectsSectionWrapper = styled.div`
-  max-width: 1366px;
+export const ProjectsSectionWrapper = styled(motion.div)`
+  max-width: ${({ theme }) => theme.maxWidth}px;
   padding: 1rem;
   margin: 0 auto;
-  // margin: 5rem auto;
 `
 
-export const ProjectsSectionTitle = styled.h2`
-  text-align: center;
-`
+export const ProjectsSectionTitle = styled(motion.h2)``
 
-export const ProjectsSectionDescription = styled.p``
+export const ProjectsSectionDescription = styled(motion.p)``
+
+export const ProjectsSectionGalleryWrapper = styled(motion.div)``
