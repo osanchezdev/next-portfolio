@@ -38,9 +38,10 @@ export interface ITechSkillItem {
   key: string
   text: string
   bgColor: string
+  icon: string
 }
 export interface ITechSkillsByRoles {
-  [key: string]: number[]
+  [key: string]: string[]
 }
 
 export interface ITabsRefs {

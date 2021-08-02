@@ -74,6 +74,9 @@ interface TechSkillItemProps {
 export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   opacity: 0;
   scale: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   position: absolute;
   border-radius: 50%;
@@ -87,6 +90,7 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
 
   @media ${device.mobileS} {
     flex: 0 0 100%;
+    font-size: 25px;
   }
   @media ${device.laptop} {
     flex: 0 0 60%;

@@ -1,6 +1,17 @@
 import { IVariants } from "../../../../../types"
 import { getAnimationVariants } from "../../../../animations"
 
+export const sidebarOverlayVariants: IVariants = {
+  hide: {
+    opacity: 0,
+    zIndex: -1,
+  },
+  show: {
+    opacity: 1,
+    zIndex: 999,
+  },
+}
+
 export const sidebarVariants: IVariants = {
   collapsed: {
     width: "0",

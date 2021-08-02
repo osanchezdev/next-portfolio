@@ -13,7 +13,6 @@ const getRandomSize = () => {
   return {
     height: randomSize,
     width: randomSize,
-    padding: randomSize * 0.25,
   }
 }
 
@@ -34,6 +33,9 @@ export const getSkillItemVariants = (): IVariants => {
     },
     whileHoverOrTapScale: {
       scale: 2,
+      transition: {
+        delay: 0.1,
+      },
     },
     onExit: {
       opacity: 0,

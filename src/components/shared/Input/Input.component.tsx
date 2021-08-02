@@ -43,7 +43,7 @@ const Input = ({
           </p>
         )}
       </div>
-      {icon ? <IconWrapper withError={!!errors}>{icon}</IconWrapper> : null}
+      {icon && <IconWrapper withError={!!errors}>{icon}</IconWrapper>}
       <SInput
         withError={!!errors}
         withIcon={!!icon}

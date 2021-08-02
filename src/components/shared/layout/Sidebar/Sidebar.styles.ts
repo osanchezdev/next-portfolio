@@ -3,6 +3,17 @@ import { motion } from "framer-motion"
 import { darken } from "polished"
 import { device } from "../../../../styles/mediaQueries"
 
+export const SidebarOverlay = styled(motion.div)`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+`
+
 export const SidebarWrapper = styled(motion.aside)`
   display: flex;
   align-items: center;

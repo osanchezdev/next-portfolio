@@ -32,9 +32,8 @@ const AppProvider = ({ children }: AppProviderProps): React.ReactElement => {
     setIsOnline(window.navigator.onLine)
   }
 
-  const toggleExpandSidebar = (): void => {
-    setIsSidebarExpanded(!isSidebarExpanded)
-  }
+  const toggleExpandSidebar = (expandSidebar = false): void =>
+    setIsSidebarExpanded(expandSidebar ? expandSidebar : !isSidebarExpanded)
 
   return (
     <AppContext.Provider

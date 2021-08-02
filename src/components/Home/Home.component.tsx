@@ -12,10 +12,10 @@ const PAGE_SECTIONS = [
     key: "int-about-section",
     component: <AboutSection />,
   },
-  {
-    key: "int-projects-section",
-    component: <ProjectsSection />,
-  },
+  // {
+  //   key: "int-projects-section",
+  //   component: <ProjectsSection />,
+  // },
   {
     key: "int-contact-section",
     component: <ContactSection />,
