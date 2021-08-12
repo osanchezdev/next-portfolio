@@ -1,5 +1,12 @@
 import { createGlobalStyle } from "styled-components"
-import { normalize } from "polished"
+import {
+  darken,
+  desaturate,
+  lighten,
+  linearGradient,
+  normalize,
+  saturate,
+} from "polished"
 import { device } from "./mediaQueries"
 
 export const GlobalStyles = createGlobalStyle`
@@ -16,7 +23,12 @@ export const GlobalStyles = createGlobalStyle`
 		font-family: ${({ theme }) => theme.font}, sans-serif;
 		color: ${({ theme }) => theme.colors.text};
     font-size: 15px;
-		background: ${({ theme }) => theme.colors.neutral_primary};
+		${({ theme }) =>
+      linearGradient({
+        colorStops: [theme.colors.bg1, theme.colors.bg2],
+        toDirection: "to right",
+        fallback: theme.colors.bg1,
+      })};
 
 		@media ${device.mobileS} {
 			font-size:16px;

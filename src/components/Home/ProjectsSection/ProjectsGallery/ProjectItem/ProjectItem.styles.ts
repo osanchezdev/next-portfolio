@@ -1,11 +1,18 @@
-import { motion } from "framer-motion"
-import { getContrast, invert, readableColor } from "polished"
 import styled from "styled-components"
+import { motion } from "framer-motion"
+import { readableColor } from "polished"
+import { device } from "../../../../../styles/mediaQueries"
 
 export const ProjectItemWrapper = styled(motion.div)`
-  min-width: 343px;
   position: relative;
-  box-shadow: 5px 6px 8px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08), 0 6px 30px rgba(0, 0, 0, 0.08);
+
+  @media ${device.mobileS} {
+    min-width: 288px;
+  }
+  @media ${device.mobileM} {
+    min-width: 343px;
+  }
 `
 interface ProjectItemHeaderWrapperProps {
   bgColor?: string
@@ -35,8 +42,13 @@ export const ProjectItemHeader = styled.span`
 `
 
 export const ProjectItemImageWrapper = styled.div`
-  height: 200px;
   width: 100%;
+  @media ${device.mobileS} {
+    height: 168px;
+  }
+  @media ${device.mobileM} {
+    height: 200px;
+  }
 `
 
 export const ProjectItemOverlayWrapper = styled(motion.div)`
@@ -72,13 +84,11 @@ export const ProjectItemTechPill = styled(motion.span)`
 `
 
 export const ProjectItemSeeMore = styled(motion.span)`
+  color: #fff;
   cursor: pointer;
   position: absolute;
   padding: 2px 15px;
   left: calc(50% - 57.5px);
   bottom: 5px;
   transition: color 300ms ease;
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-  }
 `

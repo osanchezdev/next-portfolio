@@ -9,7 +9,7 @@ interface IntersectionProviderProps {
 }
 export const IntersectionProvider = ({
   children,
-  reset = false, // if value set to true - observed element will reappear every time it shows up on the screen
+  reset = false,
 }: IntersectionProviderProps) => {
   const [inView, setInView] = useState(false)
   const intersectionRef = React.useRef(null)
@@ -18,7 +18,7 @@ export const IntersectionProvider = ({
   })
 
   useEffect(() => {
-    const inViewNow = intersection && intersection.intersectionRatio > 0
+    const inViewNow = intersection && 0 < intersection.intersectionRatio
     if (inViewNow) {
       return setInView(inViewNow)
     } else if (reset) {

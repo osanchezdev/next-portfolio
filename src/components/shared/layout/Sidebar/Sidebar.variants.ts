@@ -18,7 +18,7 @@ export const sidebarVariants: IVariants = {
     transition: { when: "afterChildren" },
   },
   expanded: {
-    width: "213px",
+    width: "270px",
     transition: { when: "beforeChildren" },
   },
 }

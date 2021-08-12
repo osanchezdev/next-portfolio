@@ -1,24 +1,37 @@
 import React from "react"
+import dynamic from "next/dynamic"
 import { Scrollbars } from "react-custom-scrollbars-2"
-import AboutSection from "./AboutSection/AboutSection.component"
 import WelcomeSection from "./WelcomeSection/WelcomeSection.component"
-import ProjectsSection from "./ProjectsSection/ProjectsSection.component"
-import ContactSection from "./ContactSection/ContactSection.component"
+// import AboutSection from "./AboutSection/AboutSection.component"
+// import ProjectsSection from "./ProjectsSection/ProjectsSection.component"
+// import ContactSection from "./ContactSection/ContactSection.component"
 import { IntersectionProvider } from "../../context/intersectionContext"
 import Divider from "../shared/Divider/Divider.component"
 
+const DynamicProjectsSection = dynamic(
+  () => import("./ProjectsSection/ProjectsSection.component")
+)
+
+const DynamicAboutSection = dynamic(
+  () => import("./AboutSection/AboutSection.component")
+)
+
+const DynamicContactSection = dynamic(
+  () => import("./ContactSection/ContactSection.component")
+)
+
 const PAGE_SECTIONS = [
   {
-    key: "int-about-section",
-    component: <AboutSection />,
+    key: "int-projects-section",
+    component: <DynamicProjectsSection />,
   },
-  // {
-  //   key: "int-projects-section",
-  //   component: <ProjectsSection />,
-  // },
+  {
+    key: "int-about-section",
+    component: <DynamicAboutSection />,
+  },
   {
     key: "int-contact-section",
-    component: <ContactSection />,
+    component: <DynamicContactSection />,
   },
 ]
 
@@ -28,7 +41,7 @@ const Home: React.FC = () => {
       <WelcomeSection />
       {PAGE_SECTIONS.map(({ key, component }) => (
         <IntersectionProvider key={key}>
-          <Divider marginRem={6} />
+          <Divider margin="3rem auto 5rem auto" />
           {component}
         </IntersectionProvider>
       ))}

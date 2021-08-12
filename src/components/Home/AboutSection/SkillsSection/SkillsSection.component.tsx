@@ -13,6 +13,7 @@ import {
   TechSkillsEmptyWrapper,
   TechSkillsEmptyText,
   TechSkillsEmptyIcon,
+  TechSkillItemLogo,
 } from "./SkillsSection.styles"
 import LazyImage from "../../../shared/LazyImage/LazyImage.component"
 
@@ -30,7 +31,7 @@ import { ITabsRefs, SkillRoleTypes } from "../../../../../types"
 import { AnimatePresence } from "framer-motion"
 import ActiveRoleTab from "./ActiveRoleTab/ActiveRoleTab.component"
 import { getIcon } from "../../../../utils/icons"
-import Icon from "../../../../utils/Icon.component"
+import Icon from "../../../shared/Icon/Icon.component"
 
 const SkillsSection = () => {
   const [animatingTab, setAnimatingTab] = useState<boolean>(false)
@@ -93,6 +94,7 @@ const SkillsSection = () => {
                   <Tippy content={TECH_SKILLS_DATA[item].text}>
                     <TechSkillItem
                       suppressHydrationWarning
+                      iconColor={TECH_SKILLS_DATA[item].iconColor}
                       bgColor={TECH_SKILLS_DATA[item].bgColor}
                       initial="initial"
                       animate="animate"
@@ -101,14 +103,19 @@ const SkillsSection = () => {
                       exit="onExit"
                       variants={getSkillItemVariants()}
                     >
-                      <Icon icon={TECH_SKILLS_DATA[item].icon} />
-                      {/* <LazyImage
-                        src={
-                          require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
-                            .default
-                        }
-                        alt={TECH_SKILLS_DATA[item].text}
-                      /> */}
+                      {TECH_SKILLS_DATA[item].icon ? (
+                        <Icon icon={TECH_SKILLS_DATA[item].icon} />
+                      ) : (
+                        <TechSkillItemLogo>
+                          <LazyImage
+                            src={
+                              require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
+                                .default
+                            }
+                            alt={TECH_SKILLS_DATA[item].text}
+                          />
+                        </TechSkillItemLogo>
+                      )}
                     </TechSkillItem>
                   </Tippy>
                 ) : null}

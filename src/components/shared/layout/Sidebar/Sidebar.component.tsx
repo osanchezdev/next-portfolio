@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import Link from "next/link"
 import { AppContext } from "../../../../context/appContext"
 import {
   FaLinkedin,
@@ -16,7 +17,6 @@ import {
   Sidebar as SSidebar,
   SidebarTitle,
   LogoWrapper,
-  Logo,
   SidebarDescription,
   SidebarProfileLinks,
   ProfileItem,
@@ -34,11 +34,17 @@ import {
   arrowButtonVariants,
   sidebarOverlayVariants,
 } from "./Sidebar.variants"
+import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
 import Divider from "../../Divider/Divider.component"
+import LazyImage from "../../LazyImage/LazyImage.component"
 
 const Sidebar: React.FC = () => {
   const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
 
+  const scrollTo = (id: string) => {
+    toggleExpandSidebar && toggleExpandSidebar(false)
+    document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
   return (
     <>
       <SidebarOverlay
@@ -55,53 +61,57 @@ const Sidebar: React.FC = () => {
         <SSidebar variants={sidebarContentVariants()}>
           <SidebarTitle>Oscar Sánchez</SidebarTitle>
           <LogoWrapper>
-            <Logo src="https://cdn.fakercloud.com/avatars/axel_128.jpg" />
+            <LazyImage src={PROFILE_IMAGE} alt="oscar-sanchez-profile-image" />
           </LogoWrapper>
           <SidebarDescription>
             Welcome to my personal website.
           </SidebarDescription>
           <SidebarProfileLinks>
             <ProfileItem>
-              <a href="_blank">
-                <FaLinkedin />
-              </a>
+              <Link
+                href="https://www.linkedin.com/in/ojsm45/?locale=en_US"
+                passHref={true}
+              >
+                <a target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin />
+                </a>
+              </Link>
             </ProfileItem>
             <ProfileItem>
-              <a href="_blank">
-                <FaGithubSquare />
-              </a>
+              <Link href="https://github.com/osanchezdev" passHref={true}>
+                <a target="_blank" rel="noopener noreferrer">
+                  <FaGithubSquare />
+                </a>
+              </Link>
             </ProfileItem>
           </SidebarProfileLinks>
-          <Divider />
+          <Divider margin="2rem auto 2rem auto" />
           <Navbar>
             <NavbarList>
-              <NavbarItem>
-                <FaUserAlt />
-                <span>About me</span>
-              </NavbarItem>
-              <NavbarItem>
-                <FaBriefcase />
-                <span>Experience</span>
-              </NavbarItem>
-              <NavbarItem>
+              <NavbarItem onClick={() => scrollTo("projects-section")}>
                 <FaLaptopCode />
                 <span>Portfolio</span>
               </NavbarItem>
-              <NavbarItem>
+              <NavbarItem onClick={() => scrollTo("about-section")}>
+                <FaUserAlt />
+                <span>About me</span>
+              </NavbarItem>
+              <NavbarItem onClick={() => scrollTo("contact-section")}>
                 <FaEnvelopeOpenText />
                 <span>Contact</span>
               </NavbarItem>
-              <NavbarItem>
+              {/* <NavbarItem>
                 <FaFileAlt />
                 <span>Resume</span>
-              </NavbarItem>
+              </NavbarItem> */}
             </NavbarList>
           </Navbar>
-          <Divider />
+          <Divider margin="2rem auto 2rem auto" />
           <ThemeSwitch />
         </SSidebar>
         <ExpandSidebarArrowWrapper>
           <ExpandSidebarArrowButton
+            aria-label="expand-collapse-sidebar"
             initial="collapsed"
             animate={isSidebarExpanded ? "expanded" : "collapsed"}
             variants={arrowButtonVariants()}

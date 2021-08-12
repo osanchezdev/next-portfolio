@@ -1,5 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
+import { useDebounce } from "react-use"
 import TSParticles from "react-tsparticles"
+import { welcomeParticlesConfig } from "../../../animations/particles"
+import Emoji from "../../shared/Emoji/Emoji.component"
+import Button from "../../shared/Button/Button.component"
+import ScrollDown from "../../shared/ScrollDown/ScrollDown.component"
+import WickedBg from "../../shared/WickedBg/WickedBg.component"
+
 import {
   WelcomeSectionWrapper,
   WelcomeTitleWrapper,
@@ -9,19 +16,24 @@ import {
   WelcomeButton,
   WelcomeScrollDown,
 } from "./WelcomeSection.styles"
+
 import {
   welcomeButtonVariants,
   welcomeScrollDownVariants,
   welcomeTitleCharsVariants,
 } from "./WelcomeSection.variants"
-import Button from "../../shared/Button/Button.component"
-import ScrollDown from "../../shared/ScrollDown/ScrollDown.component"
-import { welcomeParticlesConfig } from "../../../animations/particles"
-import Emoji from "../../shared/Emoji/Emoji.component"
 
 const ABOUT_TITLE = "Hi, \nI’m Oscar,\nsoftware developer"
 
 const WelcomeSection = () => {
+  const [finishTitleAnimation, setFinishTitleAnimation] = useState<boolean>()
+  const [, cancel] = useDebounce(
+    () => {
+      setFinishTitleAnimation(true)
+    },
+    3000,
+    []
+  )
   let delayCount = 0
   const aboutSplittedTitle = ABOUT_TITLE.split("\n")
   const getCharDelay = () => {
@@ -30,7 +42,8 @@ const WelcomeSection = () => {
   }
   return (
     <>
-      <WelcomeSectionWrapper>
+      <WelcomeSectionWrapper id="welcome-section">
+        <WickedBg />
         <TSParticles {...welcomeParticlesConfig} />
         <WelcomeTitleWrapper>
           <WelcomeTitle>
@@ -41,8 +54,8 @@ const WelcomeSection = () => {
                     key={`${charItem}-${i}`}
                     initial="hidden"
                     animate="show"
-                    whileHover="hover"
-                    whileTap="hover"
+                    whileHover={finishTitleAnimation ? "hover" : ""}
+                    whileTap={finishTitleAnimation ? "hover" : ""}
                     variants={getCharDelay()}
                   >
                     {charItem}
@@ -59,10 +72,16 @@ const WelcomeSection = () => {
           whileTap="tapped"
           variants={welcomeButtonVariants}
         >
-          <Button variantColor="primary" minWidth={160}>
-            <span>
-              Say Hello <Emoji symbol="👋" label="hello" />
-            </span>
+          <Button
+            variantColor="primary"
+            solid
+            onClick={() =>
+              document
+                ?.getElementById("contact-section")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Say Hello <Emoji symbol="👋" label="hello" />
           </Button>
         </WelcomeButton>
         <WelcomeScrollDown

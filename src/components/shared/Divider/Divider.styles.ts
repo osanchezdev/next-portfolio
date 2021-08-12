@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
 interface DividerWrapperprops {
-  marginRem?: number
+  margin?: string
 }
 
 export const DividerWrapper = styled.div<DividerWrapperprops>`
   max-width: ${({ theme }) => theme.maxWidth}px;
-  margin: ${({ marginRem }) => (marginRem ? `${marginRem}rem` : "1.3rem")} auto;
+  margin: ${({ margin }) => (margin ? margin : "0 auto 5rem auto")};
 `
 
 export const Divider = styled.hr`

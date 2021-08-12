@@ -1,18 +1,24 @@
 import React from "react"
+import { CgSpinner } from "react-icons/cg"
 import {
   ButtonWrapper,
   SButton,
   ButtonAnimatedBg,
   ButtonContentWrapper,
+  ButtonLoaderWrapper,
 } from "./Button.styles"
 import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types"
-import { buttonVariants, getButtonBgVariants } from "./Button.variants"
+import {
+  buttonContentVariants,
+  buttonVariants,
+  getButtonBgVariants,
+} from "./Button.variants"
 
 interface ButtonProps {
   children: React.ReactNode
   variantColor?: ButtonVariantTypes
   variantAnimation?: ButtonAnimationTypes
-  minWidth?: number
+  loading?: boolean
   solid?: boolean
   disabled?: boolean
   type?: "reset" | "submit" | "button"
@@ -22,8 +28,9 @@ interface ButtonProps {
 const Button = ({
   children,
   variantColor = "primary",
-  variantAnimation = "diagonal",
-  solid = false,
+  variantAnimation = "none",
+  loading = false,
+  solid = true,
   disabled = false,
   type = "button",
   onClick,
@@ -31,11 +38,11 @@ const Button = ({
   return (
     <ButtonWrapper>
       <SButton
-        onClick={onClick}
+        onClick={!loading ? onClick : () => {}}
         variantColor={variantColor}
         initial="initial"
-        whileHover={!disabled ? "hover" : "shake"}
-        whileTap={!disabled ? "hover" : "shake"}
+        whileHover={!loading ? (!disabled ? "hover" : "shake") : ""}
+        whileTap={!loading ? (!disabled ? "tapped" : "shake") : ""}
         type={type}
         solid={solid}
         disabled={disabled}
@@ -48,7 +55,24 @@ const Button = ({
             ...getButtonBgVariants(variantAnimation, solid),
           }}
         />
-        <ButtonContentWrapper>{children}</ButtonContentWrapper>
+        <ButtonLoaderWrapper
+          initial="hidden"
+          animate={loading ? "show" : "hidden"}
+          variants={buttonContentVariants}
+          variantColor={variantColor}
+          disabled={disabled}
+        >
+          <CgSpinner />
+        </ButtonLoaderWrapper>
+        <ButtonContentWrapper
+          initial="show"
+          animate={loading ? "hidden" : "show"}
+          variants={buttonContentVariants}
+          variantColor={variantColor}
+          disabled={disabled}
+        >
+          {children}
+        </ButtonContentWrapper>
       </SButton>
     </ButtonWrapper>
   )

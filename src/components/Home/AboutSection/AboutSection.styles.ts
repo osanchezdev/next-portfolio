@@ -3,45 +3,41 @@ import { motion } from "framer-motion"
 import { device } from "../../../styles/mediaQueries"
 
 export const AboutSectionWrapper = styled(motion.div)`
-  display: flex;
-  max-width: ${({ theme }) => theme.maxWidth}px;
-  margin: 15px auto;
+  margin: 15px 0;
 
   @media ${device.mobileS} {
     flex-wrap: wrap;
     padding: 0 10px;
   }
-  @media ${device.desktop} {
-    height: 70vh;
-  }
 `
 
 export const AboutSectionTextWrapper = styled(motion.div)`
+  max-width: ${({ theme }) => theme.maxWidth}px;
   box-sizing: border-box;
   padding: 1rem;
-
-  @media ${device.mobileS} {
-    flex: 0 0 100%;
-  }
-  @media ${device.laptop} {
-    flex: 0 0 40%;
-  }
+  margin-bottom: 32px;
 `
 
-export const AboutSectionTitle = styled(motion.h2)``
+export const AboutSectionTitle = styled(motion.h2)`
+  margin-bottom: 20px;
+`
 
 export const AboutSectionParagraph = styled(motion.p)`
   text-align: justify;
 `
 
 export const AboutSectionSkillsWrapper = styled(motion.div)`
+  max-width: ${({ theme }) => theme.maxWidth}px;
   box-sizing: border-box;
   position: relative;
-
   @media ${device.mobileS} {
-    flex: 0 0 100%;
+    padding: 0 10px;
+    margin: 0;
+    width: 100%;
   }
-  @media ${device.laptop} {
-    flex: 0 0 60%;
+  @media ${device.tablet} {
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 80%;
   }
 `

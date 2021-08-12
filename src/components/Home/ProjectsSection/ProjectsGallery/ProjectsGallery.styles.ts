@@ -11,6 +11,7 @@ export const ProjectsGalleryWrapper = styled(motion.div)`
   width: 100%;
   min-height: 0;
   min-width: 0;
+  margin-bottom: 5rem;
 
   @media ${device.mobileS} {
     grid-template-columns: repeat(1, 1fr);

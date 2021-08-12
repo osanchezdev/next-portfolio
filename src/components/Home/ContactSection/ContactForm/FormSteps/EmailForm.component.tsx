@@ -80,7 +80,7 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         <FormStepActionsWrapper>
           <Button
             type="button"
-            variantColor="secondary"
+            variantColor="text"
             onClick={() => updateForm({ name: "" }, 0)}
           >
             Back

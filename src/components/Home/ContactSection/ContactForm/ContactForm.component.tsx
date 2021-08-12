@@ -15,7 +15,8 @@ import {
 } from "../../../../../types"
 
 const ContactForm = () => {
-  const { currentStep, updateCurrentForm } = useContext(ContactFormContext)
+  const { loading, currentStep, updateCurrentForm } =
+    useContext(ContactFormContext)
   const updateFormByStep = (
     data: INameFormValue | IEmailFormValue | IMessageFormValue,
     step?: number
@@ -29,7 +30,13 @@ const ContactForm = () => {
       case 1:
         return <EmailForm key="email-form" updateForm={updateFormByStep} />
       case 2:
-        return <MessageForm key="message-form" updateForm={updateFormByStep} />
+        return (
+          <MessageForm
+            key="message-form"
+            updateForm={updateFormByStep}
+            loading={loading}
+          />
+        )
       case 3:
         return <CompletedForm key="complete-form" />
     }

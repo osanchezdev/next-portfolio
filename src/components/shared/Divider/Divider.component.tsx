@@ -2,12 +2,12 @@ import React from "react"
 import { DividerWrapper, Divider as SDivider } from "./Divider.styles"
 
 interface DividerProps {
-  marginRem?: number
+  margin?: string
 }
 
-const Divider = ({ marginRem }: DividerProps) => {
+const Divider = ({ margin }: DividerProps) => {
   return (
-    <DividerWrapper marginRem={marginRem}>
+    <DividerWrapper margin={margin}>
       <SDivider />
     </DividerWrapper>
   )

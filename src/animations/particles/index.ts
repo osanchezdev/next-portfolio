@@ -32,8 +32,8 @@ export const welcomeParticlesConfig: IParticlesParams = {
       },
       number: {
         density: {
-          enable: false,
-          value_area: 1000,
+          enable: true,
+          value_area: 1500,
         },
       },
       links: {

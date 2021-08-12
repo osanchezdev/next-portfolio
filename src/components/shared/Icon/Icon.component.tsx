@@ -1,11 +1,11 @@
 import React from "react"
-import { getIcon } from "./icons"
+import { getIcon } from "../../../utils/icons"
 
 interface IconProps {
-  icon: string
+  icon?: string
 }
 
-const Icon = ({ icon }: IconProps) => {
+const Icon = ({ icon = "RiQuestionLine" }: IconProps) => {
   return <>{React.createElement(getIcon(icon))}</>
 }
 

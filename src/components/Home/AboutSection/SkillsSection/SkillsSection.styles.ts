@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { device } from "../../../../styles/mediaQueries"
-import { darken, linearGradient } from "polished"
+import { darken, linearGradient, readableColor } from "polished"
 
 export const SkillsSectionWrapper = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ export const TechSkillsRolesWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `
 
 interface TechSkillRoleItemProps {
@@ -28,8 +28,9 @@ export const TechSkillRoleItem = styled.span<TechSkillRoleItemProps>`
   text-transform: capitalize;
   border-radius: 25px;
   min-width: 75px;
-  padding: 0 5px;
-  color: ${({ theme, isActive }) => (isActive ? "#ffffff" : theme.colors.text)};
+  padding: 2px 0;
+  color: ${({ theme, isActive }) =>
+    isActive ? readableColor(theme.colors.primary) : theme.colors.text};
   border: 2px solid transparent;
 
   transition: color
@@ -69,11 +70,14 @@ export const TechSkillItemWrapper = styled.div`
 
 interface TechSkillItemProps {
   bgColor: string
+  iconColor?: string
 }
 
 export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   opacity: 0;
   scale: 0;
+  padding: 7px;
+  color: ${({ iconColor }) => (iconColor ? iconColor : "#eee")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +89,7 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
     linearGradient({
       colorStops: [`${bgColor} 45%`, `${darken(0.2, bgColor)} 100%`],
       toDirection: "to bottom left",
-      fallback: theme.colors.neutral_primary,
+      fallback: bgColor,
     })}
 
   @media ${device.mobileS} {
@@ -95,6 +99,11 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   @media ${device.laptop} {
     flex: 0 0 60%;
   }
+`
+
+export const TechSkillItemLogo = styled.div`
+  height: 24px;
+  width: 24px;
 `
 
 export const TechSkillsEmptyWrapper = styled(motion.div)`
@@ -115,5 +124,5 @@ export const TechSkillsEmptyIcon = styled(motion.span)`
   font-size: 42px;
   position: absolute;
   top: 10%;
-  left: 5%;
+  left: 10%;
 `
