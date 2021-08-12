@@ -1,6 +1,5 @@
 import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { FiUser } from "react-icons/fi"
 import Input from "../../../../shared/Input/Input.component"
 
 import {
@@ -11,6 +10,7 @@ import {
 import { INameFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
 import { formStepVariants } from "./FormSteps.variants"
+import Icon from "../../../../shared/Icon/Icon.component"
 
 const NameForm = ({ updateForm }: StepFormProps) => {
   const {
@@ -33,7 +33,7 @@ const NameForm = ({ updateForm }: StepFormProps) => {
         variants={formStepVariants}
       >
         <Input
-          icon={<FiUser />}
+          icon={<Icon icon="FiUser" />}
           label="name"
           errors={errors.name}
           errorMessage={

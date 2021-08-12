@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "analyzer": "ANALYZE=true next build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,6 +12,7 @@
     "@alfonmga/react-lottie-light-ts": "^0.0.1",
     "@fontsource/istok-web": "^4.4.5",
     "@next/bundle-analyzer": "^11.1.0",
+    "@react-icons/all-files": "^4.1.0",
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
@@ -23,7 +23,6 @@
     "react-custom-scrollbars-2": "^4.4.0",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.12.1",
-    "react-icons": "^4.2.0",
     "react-intersection-observer": "^8.32.0",
     "react-loading-skeleton": "^2.2.0",
     "react-slick": "^0.28.1",
@@ -39,6 +38,7 @@
     "@types/debounce": "^1.2.0",
     "@types/lodash.merge": "^4.6.6",
     "@types/react": "^17.0.11",
+    "@types/react-icons": "^3.0.0",
     "@types/react-slick": "^0.23.5",
     "@types/styled-components": "^5.1.10",
     "babel-loader": "8.0.6",

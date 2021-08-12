@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { useDebounce } from "react-use"
-import { Lottie } from "@alfonmga/react-lottie-light-ts"
+import { Lottie, ReactLottieConfig } from "@alfonmga/react-lottie-light-ts"
 import loadingAnimation from "../../animations/lottie/loading.json"
 import { LoadingPageAnimation, LoadingPageWrapper } from "./Loading.styles"
 import {
@@ -9,16 +9,19 @@ import {
 } from "./Loading.variants"
 
 const LoadingPage = () => {
-  const [animationDataLoaded, setAnimationDataLoaded] = useState<boolean>(false)
-  const ref = useRef<any>(null)
+  const [playingAnimation, setPlayingAnimation] = useState<boolean>(false)
   const [, cancelDebounce] = useDebounce(
     () => {
-      ref.current && ref.current.play()
+      setPlayingAnimation(true)
     },
     1500,
-    [animationDataLoaded]
+    []
   )
-  // TODO: https://github.com/alfonmga/react-lottie-light-ts/blob/master/example/src/LottieRemote.tsx
+  const config: ReactLottieConfig = {
+    animationData: loadingAnimation,
+    loop: true,
+    autoplay: false,
+  }
   return (
     <LoadingPageWrapper
       initial={"initial"}
@@ -28,16 +31,10 @@ const LoadingPage = () => {
     >
       <LoadingPageAnimation variants={loadingPageAnimationVariants}>
         <Lottie
-          lottieEventListeners
-          onEvent={event => {
-            if (event === "load") setAnimationDataLoaded(true)
-          }}
-          ref={ref}
-          autoplay={false}
+          key="loading-screen"
+          playingState={playingAnimation ? "playing" : "stopped"}
           speed={0.8}
-          loop={true}
-          controls={false}
-          src={loadingAnimation}
+          config={config}
         />
       </LoadingPageAnimation>
     </LoadingPageWrapper>

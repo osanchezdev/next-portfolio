@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from "react"
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs"
+import Icon from "../../Icon/Icon.component"
 
 import { SlideArrowWrapper } from "./SlideArrow.styles"
 
@@ -11,7 +11,11 @@ interface SlideArrowProps {
 const SlideArrow = ({ type, onClick }: SlideArrowProps) => {
   return (
     <SlideArrowWrapper type={type} onClick={onClick}>
-      {type === "prev" ? <BsChevronCompactLeft /> : <BsChevronCompactRight />}
+      {type === "prev" ? (
+        <Icon icon="BsChevronCompactLeft" />
+      ) : (
+        <Icon icon="BsChevronCompactRight" />
+      )}
     </SlideArrowWrapper>
   )
 }

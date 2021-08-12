@@ -1,5 +1,5 @@
 import React from "react"
-import { FaChevronDown } from "react-icons/fa"
+import Icon from "../Icon/Icon.component"
 import {
   ScrollDownWrapper,
   ScrollDownThumb,
@@ -17,7 +17,7 @@ const ScrollDown = () => {
       <ScrollDownThumb animate="animate" variants={scrollDownThumbVariants} />
       <ChevronsWrapper>
         <ChevronDown animate="animate" variants={chevronDownVariants}>
-          <FaChevronDown />
+          <Icon icon="FaChevronDown" />
         </ChevronDown>
       </ChevronsWrapper>
     </ScrollDownWrapper>
