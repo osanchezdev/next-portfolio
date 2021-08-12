@@ -5,7 +5,6 @@ import { welcomeParticlesConfig } from "../../../animations/particles"
 import Emoji from "../../shared/Emoji/Emoji.component"
 import Button from "../../shared/Button/Button.component"
 import ScrollDown from "../../shared/ScrollDown/ScrollDown.component"
-import WickedBg from "../../shared/WickedBg/WickedBg.component"
 
 import {
   WelcomeSectionWrapper,
@@ -43,7 +42,6 @@ const WelcomeSection = () => {
   return (
     <>
       <WelcomeSectionWrapper id="welcome-section">
-        <WickedBg />
         <TSParticles {...welcomeParticlesConfig} />
         <WelcomeTitleWrapper>
           <WelcomeTitle>

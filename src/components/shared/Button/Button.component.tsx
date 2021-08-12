@@ -1,5 +1,4 @@
 import React from "react"
-import { CgSpinner } from "react-icons/cg"
 import {
   ButtonWrapper,
   SButton,
@@ -13,6 +12,7 @@ import {
   buttonVariants,
   getButtonBgVariants,
 } from "./Button.variants"
+import Icon from "../Icon/Icon.component"
 
 interface ButtonProps {
   children: React.ReactNode
@@ -62,7 +62,7 @@ const Button = ({
           variantColor={variantColor}
           disabled={disabled}
         >
-          <CgSpinner />
+          <Icon icon="CgSpinner" />
         </ButtonLoaderWrapper>
         <ButtonContentWrapper
           initial="show"

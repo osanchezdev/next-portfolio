@@ -1,6 +1,5 @@
 import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { FiMessageSquare } from "react-icons/fi"
 import Input from "../../../../shared/Input/Input.component"
 
 import {
@@ -11,6 +10,7 @@ import {
 import { IMessageFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
 import { formStepVariants } from "./FormSteps.variants"
+import Icon from "../../../../shared/Icon/Icon.component"
 
 const MessageForm = ({ updateForm, loading }: StepFormProps) => {
   const {
@@ -33,7 +33,7 @@ const MessageForm = ({ updateForm, loading }: StepFormProps) => {
         variants={formStepVariants}
       >
         <Input
-          icon={<FiMessageSquare />}
+          icon={<Icon icon="FiMessageSquare" />}
           label="message"
           errors={errors.message}
           errorMessage={
