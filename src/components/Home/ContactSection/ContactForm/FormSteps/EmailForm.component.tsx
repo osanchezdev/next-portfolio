@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import _ from "lodash"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { FiMail } from "react-icons/fi"
@@ -11,7 +11,7 @@ import {
 } from "./FormSteps.styles"
 import { IEmailFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
-import { FormStepVariants } from "./FormSteps.variants"
+import { formStepVariants } from "./FormSteps.variants"
 
 const emailRegex = /\S+@\S+\.\S+/
 
@@ -35,7 +35,7 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
     }
   })
 
-  const autoCompleteEmail = (domain: string) => {
+  const autoCompleteEmail = useCallback((domain: string) => {
     setValue(
       "email",
       `${getValues("email")
@@ -43,16 +43,16 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         .slice(0, getValues("email").indexOf("@"))}${domain}`
     )
     setShowSuggest(false)
-  }
+  }, [])
 
   const onSubmit: SubmitHandler<IEmailFormValue> = data => updateForm(data, 2)
 
-  const getErrorMessage = (): string => {
+  const getErrorMessage = useCallback((): string => {
     let errorType = errors?.email?.type ?? ""
     if (errorType === "required") return "Email is required"
     if (errorType === "pattern") return "Invalid email"
     return errorType
-  }
+  }, [])
 
   return (
     <FormStepWrapper>
@@ -63,7 +63,7 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         initial={"initial"}
         animate={"animate"}
         exit={"exit"}
-        variants={FormStepVariants}
+        variants={formStepVariants}
       >
         <Input
           icon={<FiMail />}
@@ -80,7 +80,7 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         <FormStepActionsWrapper>
           <Button
             type="button"
-            variantColor="secondary"
+            variantColor="text"
             onClick={() => updateForm({ name: "" }, 0)}
           >
             Back

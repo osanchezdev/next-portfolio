@@ -3,7 +3,7 @@ import { useDebounce } from "react-use"
 import { Player } from "@lottiefiles/react-lottie-player"
 import successAnimation from "../../../../../animations/lottie/success.json"
 import { CompleteStepWrapper, CompleteStepText } from "./FormSteps.styles"
-import { CompleteStepVariants } from "./FormSteps.variants"
+import { completeStepVariants } from "./FormSteps.variants"
 
 interface Props {}
 
@@ -22,7 +22,7 @@ const CompletedForm = (props: Props) => {
       initial={"initial"}
       animate={"animate"}
       exit={"exit"}
-      variants={CompleteStepVariants}
+      variants={completeStepVariants}
     >
       <Player
         onEvent={event => {
@@ -36,7 +36,7 @@ const CompletedForm = (props: Props) => {
         controls={false}
         src={successAnimation}
         style={{ height: "200px", width: "200px" }}
-      ></Player>
+      />
       <CompleteStepText>Your message has been sent</CompleteStepText>
     </CompleteStepWrapper>
   )

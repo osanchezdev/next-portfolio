@@ -10,7 +10,7 @@ import {
 } from "./FormSteps.styles"
 import { INameFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
-import { FormStepVariants } from "./FormSteps.variants"
+import { formStepVariants } from "./FormSteps.variants"
 
 const NameForm = ({ updateForm }: StepFormProps) => {
   const {
@@ -30,7 +30,7 @@ const NameForm = ({ updateForm }: StepFormProps) => {
         initial={"initial"}
         animate={"animate"}
         exit={"exit"}
-        variants={FormStepVariants}
+        variants={formStepVariants}
       >
         <Input
           icon={<FiUser />}

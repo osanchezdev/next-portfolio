@@ -1,17 +1,16 @@
-import "styled-components";
+import "styled-components"
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    font: string;
-    maxWidth: number;
+    font: string
+    maxWidth: number
     colors: {
-      primary: string;
-      secondary: string;
-      tertiary: string;
-      neutral_primary: string;
-      neutral_secondary: string;
-      text: string;
-      link: string;
-    };
+      text: string
+      error: string
+      primary: string
+      secondary: string
+      bg1: string
+      bg2: string
+    }
   }
 }

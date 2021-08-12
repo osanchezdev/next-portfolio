@@ -2,7 +2,7 @@ import { Variant } from "framer-motion"
 import React, { RefObject } from "react"
 import { IParticlesParams } from "react-tsparticles"
 
-export type SkillRoleTypes = "frontend" | "backend" | "mobile" | "desktop"
+export type SkillRoleTypes = "frontend" | "backend" | "mobile" | "others"
 
 export type ButtonVariantTypes =
   | "primary"
@@ -18,6 +18,7 @@ export type ButtonAnimationTypes =
   | "bottom"
   | "scale"
   | "diagonal"
+  | "none"
 
 export type AnimationTypes = "fade" | "rubberBand" | "horizontalFlip"
 
@@ -38,9 +39,11 @@ export interface ITechSkillItem {
   key: string
   text: string
   bgColor: string
+  iconColor?: string
+  icon?: string
 }
 export interface ITechSkillsByRoles {
-  [key: string]: number[]
+  [key: string]: string[]
 }
 
 export interface ITabsRefs {
@@ -75,4 +78,5 @@ export interface IContactFormValues {
 
 export interface StepFormProps {
   updateForm: Function
+  loading?: boolean
 }

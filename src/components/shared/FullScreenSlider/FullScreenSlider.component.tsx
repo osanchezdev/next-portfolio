@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick-theme.css"
 
 import React, { useContext } from "react"
 import Slider from "react-slick"
-import { AnimatePresence } from "framer-motion"
 import SlideArrow from "./SlideArrow/SlideArrow.component"
 import SlideItem from "./SlideItem/SlideItem.component"
 import { FullScreenSliderContext } from "../../../context/fullScreenSliderContext"

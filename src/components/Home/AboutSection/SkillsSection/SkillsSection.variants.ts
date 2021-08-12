@@ -3,7 +3,7 @@ import { IVariants } from "../../../../../types"
 
 const getRandomPosition = () => {
   return {
-    left: `${_.random(5, 55, true)}%`,
+    left: `${_.random(5, 40, true)}%`,
     top: `${_.random(5, 95, true)}%`,
   }
 }
@@ -13,7 +13,6 @@ const getRandomSize = () => {
   return {
     height: randomSize,
     width: randomSize,
-    padding: randomSize * 0.25,
   }
 }
 
@@ -34,6 +33,9 @@ export const getSkillItemVariants = (): IVariants => {
     },
     whileHoverOrTapScale: {
       scale: 2,
+      transition: {
+        delay: 0.1,
+      },
     },
     onExit: {
       opacity: 0,

@@ -1,36 +1,21 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { device } from "../../../../styles/mediaQueries"
-import { darken, linearGradient } from "polished"
+import { darken, linearGradient, readableColor } from "polished"
 
 export const SkillsSectionWrapper = styled.div`
-  box-sizing: border-box;
   position: relative;
-  // overflow: hidden;
-  // height: 70vh;
-
-  @media ${device.mobileS} {
-    flex: 0 0 100%;
-    padding: 1rem;
-  }
-  @media ${device.laptop} {
-    padding: 1rem 2rem;
-    flex: 0 0 60%;
-  }
 `
 
 export const TechSkillsHeaderWrapper = styled.div`
   position: relative;
-`
-export const TechSkillsHeaderTitle = styled.h4`
-  margin: 0;
 `
 
 export const TechSkillsRolesWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `
 
 interface TechSkillRoleItemProps {
@@ -43,8 +28,9 @@ export const TechSkillRoleItem = styled.span<TechSkillRoleItemProps>`
   text-transform: capitalize;
   border-radius: 25px;
   min-width: 75px;
-  padding: 0 5px;
-  color: ${({ theme, isActive }) => (isActive ? "#ffffff" : theme.colors.text)};
+  padding: 2px 0;
+  color: ${({ theme, isActive }) =>
+    isActive ? readableColor(theme.colors.primary) : theme.colors.text};
   border: 2px solid transparent;
 
   transition: color
@@ -62,17 +48,18 @@ export const TechSkillsWrapper = styled.div<TechSkillsWrapperProps>`
   width: 100%;
   min-height: 0;
   min-width: 0;
-  height: 540px;
   overflow: ${({ animatingTab }) => (animatingTab ? "hidden" : "inherit")};
 
   @media ${device.mobileS} {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 15px;
+    height: 665px;
   }
   @media ${device.laptop} {
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 24px;
     padding: 1.5rem 0;
+    height: 540px;
   }
 `
 
@@ -83,11 +70,17 @@ export const TechSkillItemWrapper = styled.div`
 
 interface TechSkillItemProps {
   bgColor: string
+  iconColor?: string
 }
 
 export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   opacity: 0;
   scale: 0;
+  padding: 7px;
+  color: ${({ iconColor }) => (iconColor ? iconColor : "#eee")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   position: absolute;
   border-radius: 50%;
@@ -96,15 +89,21 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
     linearGradient({
       colorStops: [`${bgColor} 45%`, `${darken(0.2, bgColor)} 100%`],
       toDirection: "to bottom left",
-      fallback: theme.colors.neutral_primary,
+      fallback: bgColor,
     })}
 
   @media ${device.mobileS} {
     flex: 0 0 100%;
+    font-size: 25px;
   }
   @media ${device.laptop} {
     flex: 0 0 60%;
   }
+`
+
+export const TechSkillItemLogo = styled.div`
+  height: 24px;
+  width: 24px;
 `
 
 export const TechSkillsEmptyWrapper = styled(motion.div)`
@@ -125,5 +124,5 @@ export const TechSkillsEmptyIcon = styled(motion.span)`
   font-size: 42px;
   position: absolute;
   top: 10%;
-  left: 5%;
+  left: 10%;
 `

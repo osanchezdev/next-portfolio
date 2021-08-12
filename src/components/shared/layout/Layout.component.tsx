@@ -1,19 +1,18 @@
-import React from "react";
+import React from "react"
 
-import { LayoutWrapper, MainWrapper } from "./Layout.styles";
-import Sidebar from "./Sidebar/Sidebar.component";
+import { LayoutWrapper, MainWrapper } from "./Layout.styles"
+import Sidebar from "./Sidebar/Sidebar.component"
 
 type LayoutProps = {
-  children: React.ReactNode;
-  switchTheme: Function;
-};
+  children: React.ReactNode
+}
 
-const Layout: React.FC<LayoutProps> = ({ children, switchTheme }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <LayoutWrapper>
-      <Sidebar switchTheme={switchTheme} />
+      <Sidebar />
       <MainWrapper>{children}</MainWrapper>
     </LayoutWrapper>
-  );
-};
-export default Layout;
+  )
+}
+export default Layout

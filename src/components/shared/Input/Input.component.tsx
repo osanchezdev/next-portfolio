@@ -3,6 +3,8 @@ import { Path, UseFormRegister } from "react-hook-form"
 import { IContactFormValues } from "../../../../types"
 import {
   IconWrapper,
+  InputLabel,
+  InputLabelWrapper,
   InputWrapper,
   StyledInput as SInput,
   SuggestList,
@@ -36,15 +38,12 @@ const Input = ({
 }: InputProps) => {
   return (
     <InputWrapper>
-      <div>
-        {label && (
-          <p style={{ textTransform: "capitalize", fontWeight: "bold" }}>
-            {label}
-          </p>
-        )}
-      </div>
-      {icon ? <IconWrapper withError={!!errors}>{icon}</IconWrapper> : null}
+      <InputLabelWrapper>
+        {label && <InputLabel htmlFor={label}>{label}</InputLabel>}
+      </InputLabelWrapper>
+      {icon && <IconWrapper withError={!!errors}>{icon}</IconWrapper>}
       <SInput
+        id={label}
         withError={!!errors}
         withIcon={!!icon}
         {...register(label, {

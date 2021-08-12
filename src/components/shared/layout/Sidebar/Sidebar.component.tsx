@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../../../context/appContext";
+import React, { useContext } from "react"
+import Link from "next/link"
+import { AppContext } from "../../../../context/appContext"
 import {
   FaLinkedin,
   FaGithubSquare,
@@ -9,14 +10,13 @@ import {
   FaFileAlt,
   FaEnvelopeOpenText,
   FaChevronRight,
-} from "react-icons/fa";
-import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component";
+} from "react-icons/fa"
+import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component"
 import {
   SidebarWrapper,
-  Sidebar as StyledSidebar,
+  Sidebar as SSidebar,
   SidebarTitle,
   LogoWrapper,
-  Logo,
   SidebarDescription,
   SidebarProfileLinks,
   ProfileItem,
@@ -26,87 +26,105 @@ import {
   ExpandSidebarArrowWrapper,
   ExpandSidebarArrowButton,
   ExpandSidebarArrow,
-} from "./Sidebar.styles";
+  SidebarOverlay,
+} from "./Sidebar.styles"
 import {
   sidebarVariants,
   sidebarContentVariants,
   arrowButtonVariants,
-} from "./Sidebar.variants";
+  sidebarOverlayVariants,
+} from "./Sidebar.variants"
+import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
+import Divider from "../../Divider/Divider.component"
+import LazyImage from "../../LazyImage/LazyImage.component"
 
-type SidebarProps = {
-  switchTheme: Function;
-};
+const Sidebar: React.FC = () => {
+  const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
 
-const Sidebar: React.FC<SidebarProps> = ({ switchTheme }) => {
-  const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext);
-
+  const scrollTo = (id: string) => {
+    toggleExpandSidebar && toggleExpandSidebar(false)
+    document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
   return (
-    <SidebarWrapper
-      initial={isSidebarExpanded ? "expanded" : "collapsed"}
-      animate={isSidebarExpanded ? "expanded" : "collapsed"}
-      variants={sidebarVariants}
-    >
-      <StyledSidebar variants={sidebarContentVariants()}>
-        <SidebarTitle>Oscar Sánchez</SidebarTitle>
-        <LogoWrapper>
-          <Logo src="https://cdn.fakercloud.com/avatars/axel_128.jpg" />
-        </LogoWrapper>
-        <SidebarDescription>
-          Illum omnis quasi dicta exercitationem accusamus dicta et qui.
-          Praesentium et reiciendis. Harum voluptatum.
-        </SidebarDescription>
-        <SidebarProfileLinks>
-          <ProfileItem>
-            <a href="_blank">
-              <FaLinkedin />
-            </a>
-          </ProfileItem>
-          <ProfileItem>
-            <a href="_blank">
-              <FaGithubSquare />
-            </a>
-          </ProfileItem>
-        </SidebarProfileLinks>
-        <Navbar>
-          <NavbarList>
-            <NavbarItem>
-              <FaUserAlt />
-              <span>About me</span>
-            </NavbarItem>
-            <NavbarItem>
-              <FaBriefcase />
-              <span>Experience</span>
-            </NavbarItem>
-            <NavbarItem>
-              <FaLaptopCode />
-              <span>Portfolio</span>
-            </NavbarItem>
-            <NavbarItem>
-              <FaEnvelopeOpenText />
-              <span>Contact</span>
-            </NavbarItem>
-            <NavbarItem>
-              <FaFileAlt />
-              <span>Resume</span>
-            </NavbarItem>
-          </NavbarList>
-        </Navbar>
-        <ThemeSwitch switchTheme={switchTheme} />
-      </StyledSidebar>
-      <ExpandSidebarArrowWrapper>
-        <ExpandSidebarArrowButton
-          initial="collapsed"
-          animate={isSidebarExpanded ? "expanded" : "collapsed"}
-          variants={arrowButtonVariants()}
-          onClick={() => toggleExpandSidebar()}
-        >
-          <ExpandSidebarArrow>
-            <FaChevronRight />
-          </ExpandSidebarArrow>
-        </ExpandSidebarArrowButton>
-      </ExpandSidebarArrowWrapper>
-    </SidebarWrapper>
-  );
-};
+    <>
+      <SidebarOverlay
+        initial={"hide"}
+        animate={isSidebarExpanded ? "show" : "hide"}
+        variants={sidebarOverlayVariants}
+        onClick={() => toggleExpandSidebar && toggleExpandSidebar(false)}
+      />
+      <SidebarWrapper
+        initial={"collapsed"}
+        animate={isSidebarExpanded ? "expanded" : "collapsed"}
+        variants={sidebarVariants}
+      >
+        <SSidebar variants={sidebarContentVariants()}>
+          <SidebarTitle>Oscar Sánchez</SidebarTitle>
+          <LogoWrapper>
+            <LazyImage src={PROFILE_IMAGE} alt="oscar-sanchez-profile-image" />
+          </LogoWrapper>
+          <SidebarDescription>
+            Welcome to my personal website.
+          </SidebarDescription>
+          <SidebarProfileLinks>
+            <ProfileItem>
+              <Link
+                href="https://www.linkedin.com/in/ojsm45/?locale=en_US"
+                passHref={true}
+              >
+                <a target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin />
+                </a>
+              </Link>
+            </ProfileItem>
+            <ProfileItem>
+              <Link href="https://github.com/osanchezdev" passHref={true}>
+                <a target="_blank" rel="noopener noreferrer">
+                  <FaGithubSquare />
+                </a>
+              </Link>
+            </ProfileItem>
+          </SidebarProfileLinks>
+          <Divider margin="2rem auto 2rem auto" />
+          <Navbar>
+            <NavbarList>
+              <NavbarItem onClick={() => scrollTo("projects-section")}>
+                <FaLaptopCode />
+                <span>Portfolio</span>
+              </NavbarItem>
+              <NavbarItem onClick={() => scrollTo("about-section")}>
+                <FaUserAlt />
+                <span>About me</span>
+              </NavbarItem>
+              <NavbarItem onClick={() => scrollTo("contact-section")}>
+                <FaEnvelopeOpenText />
+                <span>Contact</span>
+              </NavbarItem>
+              {/* <NavbarItem>
+                <FaFileAlt />
+                <span>Resume</span>
+              </NavbarItem> */}
+            </NavbarList>
+          </Navbar>
+          <Divider margin="2rem auto 2rem auto" />
+          <ThemeSwitch />
+        </SSidebar>
+        <ExpandSidebarArrowWrapper>
+          <ExpandSidebarArrowButton
+            aria-label="expand-collapse-sidebar"
+            initial="collapsed"
+            animate={isSidebarExpanded ? "expanded" : "collapsed"}
+            variants={arrowButtonVariants()}
+            onClick={() => toggleExpandSidebar && toggleExpandSidebar()}
+          >
+            <ExpandSidebarArrow>
+              <FaChevronRight />
+            </ExpandSidebarArrow>
+          </ExpandSidebarArrowButton>
+        </ExpandSidebarArrowWrapper>
+      </SidebarWrapper>
+    </>
+  )
+}
 
-export default Sidebar;
+export default Sidebar

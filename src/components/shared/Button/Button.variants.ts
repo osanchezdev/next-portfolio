@@ -175,9 +175,31 @@ const buttonBgVariants: IAnimations = {
       },
     },
   },
+  none: {
+    initial: {
+      height: 200,
+      width: 200,
+    },
+    hover: {
+      height: 200,
+      width: 200,
+    },
+  },
 }
 
-export const buttonVariants = {
+export const buttonVariants: IVariants = {
+  hover: {
+    scale: 1.1,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  tapped: {
+    scale: 0.9,
+    transition: {
+      duration: 0.3,
+    },
+  },
   shake: {
     translateX: [1, -1, -3, 3, 1, -1, 0],
     translateY: [1, -1, 0, 1, -1, 1, 0],
@@ -185,6 +207,15 @@ export const buttonVariants = {
     transition: {
       duration: 0.5,
     },
+  },
+}
+
+export const buttonContentVariants: IVariants = {
+  show: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0,
   },
 }
 

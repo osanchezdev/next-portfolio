@@ -1,6 +1,6 @@
 import { IVariants } from "../../../../../../types"
 
-export const FormStepVariants: IVariants = {
+export const formStepVariants: IVariants = {
   initial: {
     translateX: 800,
     opacity: 0,
@@ -21,7 +21,7 @@ export const FormStepVariants: IVariants = {
   },
 }
 
-export const CompleteStepVariants: IVariants = {
+export const completeStepVariants: IVariants = {
   initial: {
     opacity: 0,
   },

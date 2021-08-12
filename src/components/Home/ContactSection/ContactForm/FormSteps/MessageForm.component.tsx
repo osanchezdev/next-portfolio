@@ -10,9 +10,9 @@ import {
 } from "./FormSteps.styles"
 import { IMessageFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
-import { FormStepVariants } from "./FormSteps.variants"
+import { formStepVariants } from "./FormSteps.variants"
 
-const MessageForm = ({ updateForm }: StepFormProps) => {
+const MessageForm = ({ updateForm, loading }: StepFormProps) => {
   const {
     formState: { errors },
     register,
@@ -30,7 +30,7 @@ const MessageForm = ({ updateForm }: StepFormProps) => {
         initial={"initial"}
         animate={"animate"}
         exit={"exit"}
-        variants={FormStepVariants}
+        variants={formStepVariants}
       >
         <Input
           icon={<FiMessageSquare />}
@@ -47,12 +47,17 @@ const MessageForm = ({ updateForm }: StepFormProps) => {
         <FormStepActionsWrapper>
           <Button
             type="button"
-            variantColor="secondary"
+            variantColor="text"
             onClick={() => updateForm({ email: "" }, 1)}
           >
             Back
           </Button>
-          <Button type="submit" disabled={errors.message ? true : false} solid>
+          <Button
+            type="submit"
+            disabled={errors.message ? true : false}
+            loading={loading}
+            solid
+          >
             Submit
           </Button>
         </FormStepActionsWrapper>

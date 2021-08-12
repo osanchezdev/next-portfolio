@@ -1,22 +1,19 @@
-import React, { useState, useContext } from "react";
-import { ThemeContext } from "styled-components";
-import Switch from "react-switch";
-import { FaSun, FaMoon } from "react-icons/fa";
-import { ThemeSwitchWrapper } from "./ThemeSwitch.styles";
-import { lighten } from "polished";
+import React, { useState, useContext } from "react"
+import { ThemeContext } from "styled-components"
+import Switch from "react-switch"
+import { FaSun, FaMoon } from "react-icons/fa"
+import { ThemeSwitchWrapper } from "./ThemeSwitch.styles"
+import { lighten } from "polished"
+import { AppContext } from "../../../../../context/appContext"
 
-type ThemeSwitchProps = {
-  switchTheme: any;
-};
-
-const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ switchTheme }) => {
-  const themeContext = useContext(ThemeContext);
-  const [checked, setChecked] = useState(false);
+const ThemeSwitch: React.FC = () => {
+  const { switchTheme } = useContext(AppContext)
+  const themeContext = useContext(ThemeContext)
+  const [checked, setChecked] = useState(false)
   const updateTheme = (newValue: any) => {
-    setChecked(newValue);
-    // Call upper switchTheme from indexPage
-    switchTheme(newValue);
-  };
+    setChecked(newValue)
+    switchTheme && switchTheme(newValue)
+  }
   return (
     <ThemeSwitchWrapper>
       <FaMoon />
@@ -37,7 +34,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ switchTheme }) => {
       />
       <FaSun />
     </ThemeSwitchWrapper>
-  );
-};
+  )
+}
 
-export default ThemeSwitch;
+export default ThemeSwitch

@@ -1,18 +1,19 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useCallback, useState } from "react"
 
 type AppState = {
   isSidebarExpanded: boolean
   isOnline: boolean
-  toggleExpandSidebar: Function
+  isLightTheme?: boolean
+  switchTheme?: Function
+  toggleExpandSidebar?: Function
 }
 
 const initialState: AppState = {
   isSidebarExpanded: false,
   isOnline: true,
-  toggleExpandSidebar: () => {},
 }
 
-export const AppContext = createContext<AppState>(initialState)
+export const AppContext = createContext<Partial<AppState>>(initialState)
 
 interface AppProviderProps {
   children: React.ReactNode
@@ -20,22 +21,27 @@ interface AppProviderProps {
 
 const AppProvider = ({ children }: AppProviderProps): React.ReactElement => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
-  const [isOnline, setIsOnline] = useState(true)
+  const [isOnline, setIsOnline] = useState<boolean>(true)
+  const [isLightTheme, setIsLightTheme] = useState<boolean>(false)
+  const switchTheme = useCallback(
+    (newValue: boolean) => setIsLightTheme(newValue),
+    []
+  )
 
   const checkConnection = async () => {
     setIsOnline(window.navigator.onLine)
   }
 
-  const toggleExpandSidebar = (): void => {
-    setIsSidebarExpanded(!isSidebarExpanded)
-    window.dispatchEvent(new Event("resize"))
-  }
+  const toggleExpandSidebar = (expandSidebar = false): void =>
+    setIsSidebarExpanded(expandSidebar ? expandSidebar : !isSidebarExpanded)
 
   return (
     <AppContext.Provider
       value={{
         isOnline,
+        isLightTheme,
         isSidebarExpanded,
+        switchTheme,
         toggleExpandSidebar,
       }}
     >

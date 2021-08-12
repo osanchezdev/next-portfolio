@@ -14,21 +14,13 @@ const ActiveRoleTab = ({ refs, activeRoute }: ActiveRoleTabProps) => {
   const x = useMotionValue(0)
   const width = useMotionValue(0)
 
-  const [, recalculateAttrs] = useDebounce(
-    () => {
-      updateAttributes()
-    },
-    200,
-    []
-  )
-
   const updateAttributes = React.useCallback(() => {
     let activeRouteRef = activeRoute ? refs[activeRoute] : null
     if (!_.isNull(activeRouteRef)) {
-      x.set(activeRouteRef.current ? activeRouteRef.current.offsetLeft : 0)
+      x.set(activeRouteRef.current ? activeRouteRef.current.offsetLeft - 5 : 0)
       width.set(
         activeRouteRef.current
-          ? activeRouteRef.current.getBoundingClientRect().width
+          ? activeRouteRef.current.getBoundingClientRect().width + 10
           : 0
       )
     }
@@ -36,14 +28,11 @@ const ActiveRoleTab = ({ refs, activeRoute }: ActiveRoleTabProps) => {
 
   React.useEffect(() => {
     updateAttributes()
-  }, [activeRoute, refs, updateAttributes])
-
-  React.useEffect(() => {
-    window.addEventListener("resize", recalculateAttrs)
+    window.addEventListener("resize", updateAttributes)
     return () => {
-      window.removeEventListener("resize", recalculateAttrs)
+      window.removeEventListener("resize", updateAttributes)
     }
-  }, [recalculateAttrs, updateAttributes])
+  }, [activeRoute, refs, updateAttributes])
 
   return (
     <ActiveTabWrapper

@@ -5,7 +5,6 @@ import { useDebounce } from "react-use"
 import {
   SkillsSectionWrapper,
   TechSkillsHeaderWrapper,
-  TechSkillsHeaderTitle,
   TechSkillsRolesWrapper,
   TechSkillRoleItem,
   TechSkillsWrapper,
@@ -14,6 +13,7 @@ import {
   TechSkillsEmptyWrapper,
   TechSkillsEmptyText,
   TechSkillsEmptyIcon,
+  TechSkillItemLogo,
 } from "./SkillsSection.styles"
 import LazyImage from "../../../shared/LazyImage/LazyImage.component"
 
@@ -30,6 +30,8 @@ import {
 import { ITabsRefs, SkillRoleTypes } from "../../../../../types"
 import { AnimatePresence } from "framer-motion"
 import ActiveRoleTab from "./ActiveRoleTab/ActiveRoleTab.component"
+import { getIcon } from "../../../../utils/icons"
+import Icon from "../../../shared/Icon/Icon.component"
 
 const SkillsSection = () => {
   const [animatingTab, setAnimatingTab] = useState<boolean>(false)
@@ -42,7 +44,7 @@ const SkillsSection = () => {
     [animatingTab]
   )
 
-  const getRoleSkills = (): number[] =>
+  const getRoleSkills = (): string[] =>
     selectedRole ? TECH_SKILLS_BY_ROLE[selectedRole] : []
 
   const tabRefs: ITabsRefs = TECH_ROLES.reduce(
@@ -63,7 +65,6 @@ const SkillsSection = () => {
   return (
     <SkillsSectionWrapper>
       <TechSkillsHeaderWrapper>
-        <TechSkillsHeaderTitle>Skills by role:</TechSkillsHeaderTitle>
         <TechSkillsRolesWrapper>
           <ActiveRoleTab refs={tabRefs} activeRoute={selectedRole} />
           {TECH_ROLES.map((item: SkillRoleTypes) => (
@@ -84,13 +85,16 @@ const SkillsSection = () => {
             {getRoleSkills().map((item, index) => (
               <TechSkillItemWrapper
                 key={
-                  item ? `${selectedRole}-${TECH_SKILLS_DATA[item].key}` : index
+                  !_.isNull(item)
+                    ? `${selectedRole}-${TECH_SKILLS_DATA[item].key}`
+                    : `blank-${index}`
                 }
               >
-                {item ? (
+                {!_.isNull(item) ? (
                   <Tippy content={TECH_SKILLS_DATA[item].text}>
                     <TechSkillItem
                       suppressHydrationWarning
+                      iconColor={TECH_SKILLS_DATA[item].iconColor}
                       bgColor={TECH_SKILLS_DATA[item].bgColor}
                       initial="initial"
                       animate="animate"
@@ -99,13 +103,19 @@ const SkillsSection = () => {
                       exit="onExit"
                       variants={getSkillItemVariants()}
                     >
-                      <LazyImage
-                        src={
-                          require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
-                            .default
-                        }
-                        alt={TECH_SKILLS_DATA[item].text}
-                      />
+                      {TECH_SKILLS_DATA[item].icon ? (
+                        <Icon icon={TECH_SKILLS_DATA[item].icon} />
+                      ) : (
+                        <TechSkillItemLogo>
+                          <LazyImage
+                            src={
+                              require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
+                                .default
+                            }
+                            alt={TECH_SKILLS_DATA[item].text}
+                          />
+                        </TechSkillItemLogo>
+                      )}
                     </TechSkillItem>
                   </Tippy>
                 ) : null}

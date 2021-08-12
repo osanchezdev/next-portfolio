@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import Image, { ImageLoaderProps } from "next/image"
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+
 import { BsImage } from "react-icons/bs"
 
 import { LazyImagePlaceholder, LazyImageWrapper } from "./LazyImage.styles"
@@ -37,9 +39,14 @@ const LazyImage = ({
       }}
     >
       {imageLoading && (
-        <LazyImagePlaceholder>
-          <BsImage />
-        </LazyImagePlaceholder>
+        <SkeletonTheme color="#333" highlightColor="#444">
+          <Skeleton
+            wrapper={LazyImagePlaceholder}
+            width="100%"
+            height="100%"
+            style={{ borderRadius: "0 0 5px 5px" }}
+          />
+        </SkeletonTheme>
       )}
       <Image
         {...(typeof src === "string"

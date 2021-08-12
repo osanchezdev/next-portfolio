@@ -29,7 +29,6 @@ export const projectItemTechPillsWrapperVariants: IVariants = {
     opacity: 0,
     transition: {
       duration: 0.3,
-      when: "afterChildren",
     },
   },
   hover: {
