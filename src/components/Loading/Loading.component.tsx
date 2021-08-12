@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import { useDebounce } from "react-use"
-import { Player } from "@lottiefiles/react-lottie-player"
+import { Lottie } from "@alfonmga/react-lottie-light-ts"
 import loadingAnimation from "../../animations/lottie/loading.json"
 import { LoadingPageAnimation, LoadingPageWrapper } from "./Loading.styles"
 import {
@@ -18,6 +18,7 @@ const LoadingPage = () => {
     1500,
     [animationDataLoaded]
   )
+  // TODO: https://github.com/alfonmga/react-lottie-light-ts/blob/master/example/src/LottieRemote.tsx
   return (
     <LoadingPageWrapper
       initial={"initial"}
@@ -26,7 +27,8 @@ const LoadingPage = () => {
       variants={loadingPageWrapperVariants}
     >
       <LoadingPageAnimation variants={loadingPageAnimationVariants}>
-        <Player
+        <Lottie
+          lottieEventListeners
           onEvent={event => {
             if (event === "load") setAnimationDataLoaded(true)
           }}
@@ -37,7 +39,6 @@ const LoadingPage = () => {
           controls={false}
           src={loadingAnimation}
         />
-        {/* <h1>Loading...</h1> */}
       </LoadingPageAnimation>
     </LoadingPageWrapper>
   )

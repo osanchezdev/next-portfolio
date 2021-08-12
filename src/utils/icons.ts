@@ -3,7 +3,7 @@ import { FaLess } from "react-icons/fa"
 import { RiVuejsFill, RiQuestionLine } from "react-icons/ri"
 import { AiOutlineAntDesign } from "react-icons/ai"
 import { GrMysql } from "react-icons/gr"
-
+// TODO: improve imports
 import {
   SiAngular,
   SiCss3,

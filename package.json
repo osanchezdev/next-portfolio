@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "analyzer": "ANALYZE=true next build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@alfonmga/react-lottie-light-ts": "^0.0.1",
     "@fontsource/istok-web": "^4.4.5",
-    "@lottiefiles/react-lottie-player": "^3.3.1",
+    "@next/bundle-analyzer": "^11.1.0",
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
