@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react"
 import _ from "lodash"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { FiMail } from "react-icons/fi"
 import Input from "../../../../shared/Input/Input.component"
 
 import {
@@ -12,6 +11,7 @@ import {
 import { IEmailFormValue, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
 import { formStepVariants } from "./FormSteps.variants"
+import Icon from "../../../../shared/Icon/Icon.component"
 
 const emailRegex = /\S+@\S+\.\S+/
 
@@ -66,7 +66,7 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         variants={formStepVariants}
       >
         <Input
-          icon={<FiMail />}
+          icon={<Icon icon="FiMail" />}
           label="email"
           errors={errors.email}
           errorMessage={getErrorMessage()}

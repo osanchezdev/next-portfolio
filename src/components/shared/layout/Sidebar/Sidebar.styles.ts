@@ -18,6 +18,7 @@ export const SidebarWrapper = styled(motion.aside)`
   display: flex;
   align-items: center;
   position: fixed;
+  right: 0;
   z-index: 999;
   padding: 0;
   height: 100vh;
@@ -31,23 +32,18 @@ export const Sidebar = styled(motion.div)`
   display: none;
 `
 
-export const ExpandSidebarArrowWrapper = styled.div`
+export const ExpandSidebarArrowWrapper = styled(motion.div)`
   background: ${({ theme }) => darken(0.08, theme.colors.bg1)};
   position: absolute;
-  right: -35px;
+  top: 70%;
+  left: -62px;
   z-index: 1;
-  border-radius: 0 10px 10px 0;
-  box-shadow: 5px 4px 10px -6px rgba(0, 0, 0, 0.5);
+  border-radius: 10px 0 0 10px;
+  box-shadow: -3px 7px 10px -6px rgba(0, 0, 0, 0.5);
+  transition: right 300ms ease;
   &:active,
   &:focus {
     outline: none;
-  }
-
-  @media ${device.mobileS} {
-    top: 80%;
-  }
-  @media ${device.tablet} {
-    top: 25%;
   }
 `
 
@@ -56,7 +52,7 @@ export const ExpandSidebarArrowButton = styled(motion.button)`
   background: transparent;
   border: none;
   outline: none;
-  padding: 15px 10px;
+  padding: 35px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +69,8 @@ export const ExpandSidebarArrow = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => darken(0.08, theme.colors.text)};
-  height: 26px;
+  height: 40px;
+  font-size: 38px;
 `
 
 export const SidebarTitle = styled.h5`

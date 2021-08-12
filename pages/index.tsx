@@ -2,6 +2,7 @@ import "tippy.js/dist/tippy.css"
 
 import { useContext } from "react"
 import Head from "next/head"
+import dynamic from "next/dynamic"
 
 import HomePage from "../src/components/Home/Home.component"
 import Layout from "../src/components/shared/layout/Layout.component"
@@ -13,6 +14,12 @@ import { lightTheme, darkTheme } from "../src/styles/themes"
 import { GlobalStyles } from "../src/styles/global"
 import { AnimatePresence } from "framer-motion"
 import { AppContext } from "../src/context/appContext"
+import LoadingPage from "../src/components/Loading/Loading.component"
+
+const DynamicComponentWithCustomLoading = dynamic(
+  () => import("../src/components/Home/Home.component"),
+  { loading: () => <LoadingPage /> }
+)
 
 export default function Home() {
   const { isLightTheme } = useContext(AppContext)
@@ -47,7 +54,7 @@ export default function Home() {
         <meta name="googlebot" content="index,follow" />
       </Head>
       <Layout>
-        <HomePage />
+        <DynamicComponentWithCustomLoading />
       </Layout>
       <AnimatePresence key="fullscreen-wrapper">
         <FullScreenSlider />

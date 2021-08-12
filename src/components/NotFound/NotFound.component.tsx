@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/router"
 
 import { useDebounce } from "react-use"
-import { Player } from "@lottiefiles/react-lottie-player"
+import { Lottie, ReactLottieConfig } from "@alfonmga/react-lottie-light-ts"
 import notFoundAnimation from "../../animations/lottie/notfound.json"
 
 import {
@@ -18,16 +18,20 @@ import Emoji from "../shared/Emoji/Emoji.component"
 
 const NotFoundPage = () => {
   const router = useRouter()
-  const [animationDataLoaded, setAnimationDataLoaded] = useState<boolean>(false)
-  const ref = useRef<any>(null)
+  const [playingAnimation, setPlayingAnimation] = useState<boolean>(false)
   const [, cancelDebounce] = useDebounce(
     () => {
-      ref.current && ref.current.play()
+      setPlayingAnimation(true)
     },
     1500,
-    [animationDataLoaded]
+    []
   )
-
+  const config: ReactLottieConfig = {
+    animationData: notFoundAnimation,
+    loop: true,
+    autoplay: false,
+  }
+  // TODO: split in chunks with dynamic import and analyze, or disable animation
   return (
     <NotFoundPageWrapper
       initial={"initial"}
@@ -37,15 +41,11 @@ const NotFoundPage = () => {
     >
       <NotFoundTitle variants={notFoundVariants}>404 - Not Found</NotFoundTitle>
       <NotFoundAnimationWrapper variants={notFoundVariants}>
-        <Player
-          onEvent={event => {
-            if (event === "load") setAnimationDataLoaded(true)
-          }}
-          autoplay={false}
+        <Lottie
+          key="not-found"
+          playingState={playingAnimation ? "playing" : "stopped"}
           speed={0.8}
-          loop={true}
-          controls={false}
-          src={notFoundAnimation}
+          config={config}
         />
       </NotFoundAnimationWrapper>
       <NotFoundGoHomeText variants={notFoundVariants}>

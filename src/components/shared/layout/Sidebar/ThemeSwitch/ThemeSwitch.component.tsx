@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react"
 import { ThemeContext } from "styled-components"
 import Switch from "react-switch"
-import { FaSun, FaMoon } from "react-icons/fa"
 import { ThemeSwitchWrapper } from "./ThemeSwitch.styles"
 import { lighten } from "polished"
 import { AppContext } from "../../../../../context/appContext"
+import Icon from "../../../Icon/Icon.component"
 
 const ThemeSwitch: React.FC = () => {
   const { switchTheme } = useContext(AppContext)
@@ -16,7 +16,7 @@ const ThemeSwitch: React.FC = () => {
   }
   return (
     <ThemeSwitchWrapper>
-      <FaMoon />
+      <Icon icon="FaMoon" />
       <Switch
         onChange={updateTheme}
         checked={checked}
@@ -32,7 +32,7 @@ const ThemeSwitch: React.FC = () => {
         className="react-switch"
         id="material-switch"
       />
-      <FaSun />
+      <Icon icon="FaSun" />
     </ThemeSwitchWrapper>
   )
 }

@@ -1,22 +1,24 @@
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
+import { Lottie, ReactLottieConfig } from "@alfonmga/react-lottie-light-ts"
 import { useDebounce } from "react-use"
-import { Player } from "@lottiefiles/react-lottie-player"
 import successAnimation from "../../../../../animations/lottie/success.json"
 import { CompleteStepWrapper, CompleteStepText } from "./FormSteps.styles"
 import { completeStepVariants } from "./FormSteps.variants"
 
-interface Props {}
-
-const CompletedForm = (props: Props) => {
-  const [animationDataLoaded, setAnimationDataLoaded] = useState<boolean>(false)
-  const ref = useRef<any>(null)
+const CompletedForm = () => {
+  const [playingAnimation, setPlayingAnimation] = useState<boolean>(false)
   const [, cancelDebounce] = useDebounce(
     () => {
-      ref.current && ref.current.play()
+      setPlayingAnimation(true)
     },
-    1500,
-    [animationDataLoaded]
+    2000,
+    []
   )
+  const config: ReactLottieConfig = {
+    animationData: successAnimation,
+    loop: false,
+    autoplay: false,
+  }
   return (
     <CompleteStepWrapper
       initial={"initial"}
@@ -24,18 +26,14 @@ const CompletedForm = (props: Props) => {
       exit={"exit"}
       variants={completeStepVariants}
     >
-      <Player
-        onEvent={event => {
-          if (event === "load") setAnimationDataLoaded(true)
-        }}
-        keepLastFrame
-        autoplay={false}
-        ref={ref}
+      <Lottie
+        key="loading-screen"
+        playingState={playingAnimation ? "playing" : "stopped"}
         speed={0.6}
-        loop={false}
-        controls={false}
-        src={successAnimation}
-        style={{ height: "200px", width: "200px" }}
+        height="200px"
+        width="200px"
+        config={config}
+        style={{ margin: "0 auto" }}
       />
       <CompleteStepText>Your message has been sent</CompleteStepText>
     </CompleteStepWrapper>

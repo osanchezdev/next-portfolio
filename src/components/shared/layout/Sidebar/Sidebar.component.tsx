@@ -1,16 +1,6 @@
 import React, { useContext } from "react"
 import Link from "next/link"
 import { AppContext } from "../../../../context/appContext"
-import {
-  FaLinkedin,
-  FaGithubSquare,
-  FaUserAlt,
-  FaLaptopCode,
-  FaBriefcase,
-  FaFileAlt,
-  FaEnvelopeOpenText,
-  FaChevronRight,
-} from "react-icons/fa"
 import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component"
 import {
   SidebarWrapper,
@@ -37,6 +27,7 @@ import {
 import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
 import Divider from "../../Divider/Divider.component"
 import LazyImage from "../../LazyImage/LazyImage.component"
+import Icon from "../../Icon/Icon.component"
 
 const Sidebar: React.FC = () => {
   const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
@@ -73,14 +64,14 @@ const Sidebar: React.FC = () => {
                 passHref={true}
               >
                 <a target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin />
+                  <Icon icon="FaLinkedin" />
                 </a>
               </Link>
             </ProfileItem>
             <ProfileItem>
               <Link href="https://github.com/osanchezdev" passHref={true}>
                 <a target="_blank" rel="noopener noreferrer">
-                  <FaGithubSquare />
+                  <Icon icon="FaGithubSquare" />
                 </a>
               </Link>
             </ProfileItem>
@@ -89,15 +80,15 @@ const Sidebar: React.FC = () => {
           <Navbar>
             <NavbarList>
               <NavbarItem onClick={() => scrollTo("projects-section")}>
-                <FaLaptopCode />
+                <Icon icon="FaLaptopCode" />
                 <span>Portfolio</span>
               </NavbarItem>
               <NavbarItem onClick={() => scrollTo("about-section")}>
-                <FaUserAlt />
+                <Icon icon="FaUserAlt" />
                 <span>About me</span>
               </NavbarItem>
               <NavbarItem onClick={() => scrollTo("contact-section")}>
-                <FaEnvelopeOpenText />
+                <Icon icon="FaEnvelopeOpenText" />
                 <span>Contact</span>
               </NavbarItem>
               {/* <NavbarItem>
@@ -112,13 +103,11 @@ const Sidebar: React.FC = () => {
         <ExpandSidebarArrowWrapper>
           <ExpandSidebarArrowButton
             aria-label="expand-collapse-sidebar"
-            initial="collapsed"
-            animate={isSidebarExpanded ? "expanded" : "collapsed"}
             variants={arrowButtonVariants()}
             onClick={() => toggleExpandSidebar && toggleExpandSidebar()}
           >
             <ExpandSidebarArrow>
-              <FaChevronRight />
+              <Icon icon="FaChevronLeft" />
             </ExpandSidebarArrow>
           </ExpandSidebarArrowButton>
         </ExpandSidebarArrowWrapper>

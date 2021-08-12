@@ -1,8 +1,6 @@
 import React, { useState } from "react"
-import Image, { ImageLoaderProps } from "next/image"
+import Image from "next/image"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
-
-import { BsImage } from "react-icons/bs"
 
 import { LazyImagePlaceholder, LazyImageWrapper } from "./LazyImage.styles"
 
