@@ -37,6 +37,21 @@ export const sidebarContentVariants = (): IVariants => {
   }
 }
 
+export const arrowButtonWrapperVariants: IVariants = {
+  initial: {
+    display: "none",
+    translateX: 100,
+  },
+  show: {
+    display: "block",
+    translateX: 0,
+    transition: {
+      when: "afterChildren",
+      delay: 4,
+    },
+  },
+}
+
 export const arrowButtonVariants = (): IVariants => {
   let horizontalFlip = getAnimationVariants({
     animationName: "horizontalFlip",

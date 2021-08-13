@@ -11,7 +11,7 @@ export const FullScreenSliderOverlay = styled(motion.div)`
   height: 100vh;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
