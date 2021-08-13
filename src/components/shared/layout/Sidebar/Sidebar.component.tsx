@@ -23,6 +23,7 @@ import {
   sidebarContentVariants,
   arrowButtonVariants,
   sidebarOverlayVariants,
+  arrowButtonWrapperVariants,
 } from "./Sidebar.variants"
 import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
 import Divider from "../../Divider/Divider.component"
@@ -100,9 +101,15 @@ const Sidebar: React.FC = () => {
           <Divider margin="2rem auto 2rem auto" />
           <ThemeSwitch />
         </SSidebar>
-        <ExpandSidebarArrowWrapper>
+        <ExpandSidebarArrowWrapper
+          initial={"initial"}
+          animate={"show"}
+          variants={arrowButtonWrapperVariants}
+        >
           <ExpandSidebarArrowButton
             aria-label="expand-collapse-sidebar"
+            initial={"collapsed"}
+            animate={isSidebarExpanded ? "expanded" : "collapsed"}
             variants={arrowButtonVariants()}
             onClick={() => toggleExpandSidebar && toggleExpandSidebar()}
           >

@@ -36,7 +36,6 @@ export const ExpandSidebarArrowWrapper = styled(motion.div)`
   background: ${({ theme }) => darken(0.08, theme.colors.bg1)};
   position: absolute;
   top: 70%;
-  left: -62px;
   z-index: 1;
   border-radius: 10px 0 0 10px;
   box-shadow: -3px 7px 10px -6px rgba(0, 0, 0, 0.5);
@@ -45,6 +44,16 @@ export const ExpandSidebarArrowWrapper = styled(motion.div)`
   &:focus {
     outline: none;
   }
+
+  @media ${device.mobileS} {
+    left: -41px;
+  }
+  @media ${device.laptop} {
+    left: -44px;
+  }
+  @media ${device.desktop} {
+    left: -62px;
+  }
 `
 
 export const ExpandSidebarArrowButton = styled(motion.button)`
@@ -52,7 +61,6 @@ export const ExpandSidebarArrowButton = styled(motion.button)`
   background: transparent;
   border: none;
   outline: none;
-  padding: 35px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,8 +77,22 @@ export const ExpandSidebarArrow = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => darken(0.08, theme.colors.text)};
-  height: 40px;
-  font-size: 38px;
+
+  @media ${device.mobileS} {
+    padding: 25px 6px;
+    height: 20px;
+    font-size: 19px;
+  }
+  @media ${device.laptop} {
+    padding: 25px 2px;
+    height: 10px;
+    font-size: 28px;
+  }
+  @media ${device.desktop} {
+    padding: 35px 12px;
+    height: 40px;
+    font-size: 38px;
+  }
 `
 
 export const SidebarTitle = styled.h5`
@@ -103,11 +125,7 @@ export const LogoWrapper = styled.div`
     margin: 25px 80px;
   }
   @media ${device.mobileM} {
-    height: 150px;
-    margin: 25px 45px;
-  }
-  @media ${device.laptop} {
-    height: 150px;
+    height: 120px;
     margin: 25px 45px;
   }
   @media ${device.desktop} {

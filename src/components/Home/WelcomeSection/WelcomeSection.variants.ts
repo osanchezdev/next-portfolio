@@ -1,12 +1,12 @@
-import _merge from "lodash.merge";
-import { IVariants } from "../../../../types";
-import { getAnimationVariants } from "../../../animations";
+import _merge from "lodash.merge"
+import { IVariants } from "../../../../types"
+import { getAnimationVariants } from "../../../animations"
 
 export const welcomeTitleCharsVariants = (i: number): IVariants => {
   let rubberBandAnimation = getAnimationVariants({
     animationName: "rubberBand",
-  });
-  let calcDelay = i * 0.07;
+  })
+  let calcDelay = i * 0.07
   return {
     hidden: {
       opacity: 0,
@@ -29,8 +29,20 @@ export const welcomeTitleCharsVariants = (i: number): IVariants => {
         },
       }),
     },
-  };
-};
+  }
+}
+
+export const welcomeParticlesWrapperVariants: IVariants = {
+  initial: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 0.8,
+    },
+  },
+}
 
 export const welcomeButtonVariants: IVariants = {
   initial: {
@@ -58,7 +70,7 @@ export const welcomeButtonVariants: IVariants = {
       duration: 0.3,
     },
   },
-};
+}
 
 export const welcomeScrollDownVariants: IVariants = {
   initial: {
@@ -74,4 +86,4 @@ export const welcomeScrollDownVariants: IVariants = {
       duration: 1,
     },
   },
-};
+}
