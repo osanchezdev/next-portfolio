@@ -7,6 +7,17 @@ export const WelcomeSectionWrapper = styled.div`
   height: 100vh;
 `
 
+export const WelcomeParticlesWrapper = styled(motion.div)`
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  & > div {
+    height: 100%;
+    width: 100%;
+  }
+`
+
 export const WelcomeSectionContent = styled.div`
   position: relative;
 `

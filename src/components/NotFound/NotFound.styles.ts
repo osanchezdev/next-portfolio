@@ -16,25 +16,6 @@ export const NotFoundTitle = styled(motion.h2)`
   margin: 0;
 `
 
-export const NotFoundAnimationWrapper = styled(motion.div)`
-  margin: 0 auto;
-  @media ${device.mobileS} {
-    max-width: 80vh;
-  }
-  @media ${device.tablet} {
-    max-width: 60vh;
-  }
-  @media ${device.laptop} {
-    max-width: 70vh;
-  }
-  @media ${device.laptopL} {
-    max-width: 60vh;
-  }
-  @media ${device.desktop} {
-    max-width: 80vh;
-  }
-`
-
 export const NotFoundGoHomeWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;

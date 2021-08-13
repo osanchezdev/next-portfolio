@@ -14,10 +14,12 @@ import {
   WelcomeTitleChar,
   WelcomeButton,
   WelcomeScrollDown,
+  WelcomeParticlesWrapper,
 } from "./WelcomeSection.styles"
 
 import {
   welcomeButtonVariants,
+  welcomeParticlesWrapperVariants,
   welcomeScrollDownVariants,
   welcomeTitleCharsVariants,
 } from "./WelcomeSection.variants"
@@ -42,7 +44,13 @@ const WelcomeSection = () => {
   return (
     <>
       <WelcomeSectionWrapper id="welcome-section">
-        <TSParticles {...welcomeParticlesConfig} />
+        <WelcomeParticlesWrapper
+          initial={"initial"}
+          animate={"show"}
+          variants={welcomeParticlesWrapperVariants}
+        >
+          <TSParticles {...welcomeParticlesConfig} />
+        </WelcomeParticlesWrapper>
         <WelcomeTitleWrapper>
           <WelcomeTitle>
             {aboutSplittedTitle.map((titleItem, parentI) => (

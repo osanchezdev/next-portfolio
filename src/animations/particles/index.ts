@@ -3,7 +3,7 @@ import { IParticlesParams } from "react-tsparticles"
 export const welcomeParticlesConfig: IParticlesParams = {
   id: "welcome-particles",
   width: "100%",
-  height: "100vh",
+  height: "100%",
   params: {
     retina_detect: false,
     background: {
