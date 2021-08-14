@@ -1,3 +1,4 @@
+import "tippy.js/dist/tippy.css"
 import React, { useState, useEffect } from "react"
 import _ from "lodash"
 import Tippy from "@tippyjs/react"
