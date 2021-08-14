@@ -10,6 +10,9 @@ export const welcomeTitleCharsVariants = (i: number): IVariants => {
   return {
     hidden: {
       opacity: 0,
+      transition: {
+        duration: 5,
+      },
     },
     show: {
       opacity: 1,

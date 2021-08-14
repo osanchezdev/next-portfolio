@@ -8,13 +8,13 @@ export const NotFoundAnimationWrapper = styled(motion.div)`
     max-width: 80vh;
   }
   @media ${device.tablet} {
-    max-width: 60vh;
+    max-width: 55vh;
   }
   @media ${device.laptop} {
-    max-width: 70vh;
+    max-width: 65vh;
   }
   @media ${device.laptopL} {
-    max-width: 60vh;
+    max-width: 55vh;
   }
   @media ${device.desktop} {
     max-width: 80vh;

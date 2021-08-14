@@ -27,7 +27,7 @@ const AboutSection = () => {
             About Me
           </AboutSectionTitle>
           <AboutSectionParagraph variants={aboutSectionVariants}>
-            I started as a web developer when i was still in college and doing
+            I started as a web developer when I was still in college and doing
             my first freelance jobs.
             <br />
             <br />

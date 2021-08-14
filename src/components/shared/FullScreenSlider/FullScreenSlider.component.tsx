@@ -16,7 +16,7 @@ import {
   fullScreenSliderOverlayVariants,
   fullScreenSliderOverlayWrapperVariants,
 } from "./FullScreenSlider.variants"
-
+// TODO: Create custom slider and remove react-slick
 const FullScreenSlider = () => {
   const { isVisible, sliderImages, toggleShowSlider } = useContext(
     FullScreenSliderContext

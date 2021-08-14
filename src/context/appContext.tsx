@@ -1,8 +1,8 @@
-import React, { createContext, useCallback, useState } from "react"
+import React, { createContext, useState } from "react"
 
 type AppState = {
   isSidebarExpanded: boolean
-  isOnline: boolean
+  isOnline?: boolean
   isLightTheme?: boolean
   switchTheme?: Function
   toggleExpandSidebar?: Function
@@ -21,16 +21,8 @@ interface AppProviderProps {
 
 const AppProvider = ({ children }: AppProviderProps): React.ReactElement => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
-  const [isOnline, setIsOnline] = useState<boolean>(true)
   const [isLightTheme, setIsLightTheme] = useState<boolean>(false)
-  const switchTheme = useCallback(
-    (newValue: boolean) => setIsLightTheme(newValue),
-    []
-  )
-
-  const checkConnection = async () => {
-    setIsOnline(window.navigator.onLine)
-  }
+  const switchTheme = (newValue: boolean) => setIsLightTheme(newValue)
 
   const toggleExpandSidebar = (expandSidebar = false): void =>
     setIsSidebarExpanded(expandSidebar ? expandSidebar : !isSidebarExpanded)
@@ -38,7 +30,6 @@ const AppProvider = ({ children }: AppProviderProps): React.ReactElement => {
   return (
     <AppContext.Provider
       value={{
-        isOnline,
         isLightTheme,
         isSidebarExpanded,
         switchTheme,
