@@ -1,12 +1,15 @@
 import { useContext } from "react"
 import Head from "next/head"
-
-import NotFoundPage from "../src/components/NotFound/NotFound.component"
+import dynamic from "next/dynamic"
 
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../src/styles/themes"
 import { GlobalStyles } from "../src/styles/global"
 import { AppContext } from "../src/context/appContext"
+
+const DynamicNotFoundPage = dynamic(
+  () => import("../src/components/NotFound/NotFound.component")
+)
 
 export default function NotFound() {
   const { isLightTheme } = useContext(AppContext)
@@ -39,7 +42,7 @@ export default function NotFound() {
         <meta name="robots" content="noindex" />
         <meta name="googlebot" content="noindex" />
       </Head>
-      <NotFoundPage />
+      <DynamicNotFoundPage />
     </ThemeProvider>
   )
 }

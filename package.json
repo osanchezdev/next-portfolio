@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "@react-icons/all-files": "^4.1.0",
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "framer-motion": "^4.1.17",
     "lodash": "^4.17.21",
     "next": "11.0.0",
