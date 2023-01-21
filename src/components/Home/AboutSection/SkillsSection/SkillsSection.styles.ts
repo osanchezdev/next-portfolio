@@ -75,7 +75,7 @@ interface TechSkillItemProps {
 
 export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   opacity: 0;
-  scale: 0;
+  scale: 1;
   padding: 7px;
   color: ${({ iconColor }) => (iconColor ? iconColor : "#eee")};
   display: flex;
