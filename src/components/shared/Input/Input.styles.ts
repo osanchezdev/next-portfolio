@@ -1,3 +1,4 @@
+'use client'
 import styled from "styled-components"
 import { readableColor, rgba } from "polished"
 import { motion } from "framer-motion"
@@ -8,32 +9,31 @@ export const InputWrapper = styled.div`
 `
 
 interface IconWrapperProps {
-  withError?: boolean
+  $withError?: boolean
 }
 
 export const IconWrapper = styled.div<IconWrapperProps>`
   font-size: 32px;
   position: absolute;
   padding: 7px 3px;
-  color: ${({ withError, theme }) =>
-    withError ? theme.colors.error : rgba(theme.colors.text, 0.8)};
+  color: ${({ $withError, theme }) =>
+    $withError ? theme.colors.error : rgba(theme.colors.text, 0.8)};
 `
-interface StyledInputProps {
-  withError?: boolean
-  withIcon?: boolean
+interface StyledInputProps extends IconWrapperProps {
+  $withIcon?: boolean
 }
 
 export const StyledInput = styled.input<StyledInputProps>`
-  width: calc(100% - ${({ withIcon = false }) => (withIcon ? "57px" : "27px")});
+  width: calc(100% - ${({ $withIcon = false }) => ($withIcon ? "57px" : "27px")});
   font-size: 24px;
   padding: 6px 12px 6px
-    ${({ withIcon = false }) => (withIcon ? "50px" : "15px")};
+    ${({ $withIcon = false }) => ($withIcon ? "50px" : "15px")};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: ${({ withError, theme }) =>
-    withError ? theme.colors.error : theme.colors.text};
+  border-color: ${({ $withError, theme }) =>
+    $withError ? theme.colors.error : theme.colors.text};
   outline: 0;
   background: transparent;
   height: 40px;

@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+'use client'
+import { useContext } from "react"
 import {
   AboutSectionParagraph,
   AboutSectionSkillsWrapper,
@@ -27,13 +28,9 @@ const AboutSection = () => {
             About Me
           </AboutSectionTitle>
           <AboutSectionParagraph variants={aboutSectionVariants}>
-            I started as a web developer when I was still in college and doing
-            my first freelance jobs.
+            My journey as a web developer began during my college years, when I took on my first freelance projects. 
             <br />
-            <br />
-            Since then I have had the opportunity to work with many amazing
-            technologies and people, in differents roles gaining a lot of
-            experience throughout these years.
+            Since then, I’ve had the privilege of working with incredible technologies and collaborating with talented professionals on international projects. These diverse experiences have allowed me to grow both technically and personally, shaping the developer I am today.
           </AboutSectionParagraph>
         </AboutSectionTextWrapper>
         <AboutSectionSkillsWrapper variants={aboutSectionVariants}>

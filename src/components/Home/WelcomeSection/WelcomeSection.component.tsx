@@ -1,6 +1,10 @@
-import React, { useState } from "react"
+'use client'
+import { useState } from "react"
+import { motion } from "motion/react"
 import { useDebounce } from "react-use"
-import TSParticles from "react-tsparticles"
+import Particles from "@tsparticles/react";
+
+import { useParticles } from "@/components/hooks/useParticles";
 import { welcomeParticlesConfig } from "../../../animations/particles"
 import Emoji from "../../shared/Emoji/Emoji.component"
 import Button from "../../shared/Button/Button.component"
@@ -27,8 +31,9 @@ import {
 const ABOUT_TITLE = "Hi, \nI’m Oscar,\nsoftware developer"
 
 const WelcomeSection = () => {
+  const { init } = useParticles();
   const [finishTitleAnimation, setFinishTitleAnimation] = useState<boolean>()
-  const [, cancel] = useDebounce(
+  const [,] = useDebounce(
     () => {
       setFinishTitleAnimation(true)
     },
@@ -49,7 +54,7 @@ const WelcomeSection = () => {
           animate={"show"}
           variants={welcomeParticlesWrapperVariants}
         >
-          <TSParticles {...welcomeParticlesConfig} />
+        { init && <Particles id="tsparticles" options={welcomeParticlesConfig} /> }
         </WelcomeParticlesWrapper>
         <WelcomeTitleWrapper>
           <WelcomeTitle>
@@ -60,8 +65,7 @@ const WelcomeSection = () => {
                     key={`${charItem}-${i}`}
                     initial="hidden"
                     animate="show"
-                    whileHover={finishTitleAnimation ? "hover" : ""}
-                    whileTap={finishTitleAnimation ? "hover" : ""}
+                    whileHover={finishTitleAnimation ? "hover" : "noHover"}
                     variants={getCharDelay()}
                   >
                     {charItem}

@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from "react"
+'use client'
 import _ from "lodash"
+import { useState, useCallback } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import Input from "../../../../shared/Input/Input.component"
 
@@ -8,7 +9,7 @@ import {
   FormStepActionsWrapper,
   FormStepWrapper,
 } from "./FormSteps.styles"
-import { IEmailFormValue, StepFormProps } from "../../../../../../types"
+import { IContactFormValues, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
 import { formStepVariants } from "./FormSteps.variants"
 import Icon from "../../../../shared/Icon/Icon.component"
@@ -25,11 +26,11 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
     clearErrors,
     register,
     handleSubmit,
-  } = useForm<IEmailFormValue>()
+  } = useForm<Partial<IContactFormValues>>()
 
   watch(data => {
-    setShowSuggest(data.email.includes("@"))
-    if (!_.isNull(data.email.match(emailRegex))) {
+    setShowSuggest(data?.email?.includes("@") ?? false)
+    if (!_.isNull(data?.email?.match(emailRegex))) {
       setShowSuggest(false)
       clearErrors("email")
     }
@@ -39,20 +40,23 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
     setValue(
       "email",
       `${getValues("email")
-        .toLowerCase()
-        .slice(0, getValues("email").indexOf("@"))}${domain}`
+        ?.toLowerCase()
+        ?.slice(0, getValues("email")?.indexOf("@"))}${domain}`
     )
     setShowSuggest(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onSubmit: SubmitHandler<IEmailFormValue> = data => updateForm(data, 2)
+  const onSubmit: SubmitHandler<Partial<IContactFormValues>> = (data) => updateForm({
+    email: data.email,
+  }, 2)
 
   const getErrorMessage = useCallback((): string => {
-    let errorType = errors?.email?.type ?? ""
+    const errorType = errors?.email?.type ?? ""
     if (errorType === "required") return "Email is required"
     if (errorType === "pattern") return "Invalid email"
     return errorType
-  }, [])
+  }, [errors?.email?.type])
 
   return (
     <FormStepWrapper>
@@ -68,7 +72,6 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         <Input
           icon={<Icon icon="FiMail" />}
           label="email"
-          errors={errors.email}
           errorMessage={getErrorMessage()}
           pattern={emailRegex}
           register={register}
@@ -85,7 +88,6 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
           >
             Back
           </Button>
-          {console.log(errors.email)}
           <Button type="submit" disabled={!_.isUndefined(errors.email)} solid>
             Next
           </Button>

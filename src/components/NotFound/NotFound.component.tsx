@@ -1,16 +1,15 @@
-import React from "react"
+'use client'
 import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
-
+import Emoji from "../shared/Emoji/Emoji.component"
+import Button from "../shared/Button/Button.component"
+import { notFoundVariants } from "./NotFound.variants"
 import {
   NotFoundPageWrapper,
   NotFoundTitle,
   NotFoundGoHomeWrapper,
   NotFoundGoHomeText,
 } from "./NotFound.styles"
-import { notFoundVariants } from "./NotFound.variants"
-import Button from "../shared/Button/Button.component"
-import Emoji from "../shared/Emoji/Emoji.component"
 
 const DynamicNotFoundAnimation = dynamic(
   () => import("./NotFoundAnimation/NotFoundAnimation.component")

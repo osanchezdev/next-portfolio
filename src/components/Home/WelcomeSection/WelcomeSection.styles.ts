@@ -9,6 +9,7 @@ export const WelcomeSectionWrapper = styled.div`
 
 export const WelcomeParticlesWrapper = styled(motion.div)`
   height: 100vh;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;

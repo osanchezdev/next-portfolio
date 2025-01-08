@@ -1,4 +1,5 @@
-import React, { MouseEventHandler } from "react"
+'use client'
+import { MouseEventHandler } from "react"
 import Icon from "../../Icon/Icon.component"
 
 import { SlideArrowWrapper } from "./SlideArrow.styles"

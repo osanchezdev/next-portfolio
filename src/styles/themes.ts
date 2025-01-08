@@ -6,7 +6,7 @@ const darkTheme: DefaultTheme = {
   colors: {
     text: "#EEE",
     error: "#DC3545",
-    primary: "#FF7C1F",
+    primary: "#c32f27",
     secondary: "#3A4750",
     bg1: "#162C4C",
     bg2: "#16234C",

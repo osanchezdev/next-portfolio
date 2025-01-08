@@ -7,10 +7,15 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  rules: {
+    "react/display-name": "off",
+    "react-hooks/exhaustive-deps": "off"
+  }
 });
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  
 ];
 
 export default eslintConfig;

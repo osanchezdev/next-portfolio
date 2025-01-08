@@ -1,6 +1,6 @@
 import styled, { DefaultTheme } from "styled-components"
 import { motion } from "framer-motion"
-import { darken, getContrast, lighten, readableColor } from "polished"
+import { readableColor } from "polished"
 
 const getButtonColors = (variant: string, theme: DefaultTheme) => {
   switch (variant) {

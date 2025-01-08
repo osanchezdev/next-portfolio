@@ -19,7 +19,7 @@ export const TechSkillsRolesWrapper = styled.div`
 `
 
 interface TechSkillRoleItemProps {
-  isActive: boolean
+  $isActive: boolean
 }
 
 export const TechSkillRoleItem = styled.span<TechSkillRoleItemProps>`
@@ -29,13 +29,13 @@ export const TechSkillRoleItem = styled.span<TechSkillRoleItemProps>`
   border-radius: 25px;
   min-width: 75px;
   padding: 2px 0;
-  color: ${({ theme, isActive }) =>
-    isActive ? readableColor(theme.colors.primary) : theme.colors.text};
+  color: ${({ theme, $isActive }) =>
+    $isActive ? readableColor(theme.colors.primary) : theme.colors.text};
   border: 2px solid transparent;
 
   transition: color
-    ${({ isActive }) =>
-      isActive ? "500ms cubic-bezier(1, -0.22, 0.83, 0.67)" : "300ms ease"};
+    ${({ $isActive }) =>
+      $isActive ? "500ms cubic-bezier(1, -0.22, 0.83, 0.67)" : "300ms ease"};
 `
 
 interface TechSkillsWrapperProps {
@@ -85,7 +85,7 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   position: absolute;
   border-radius: 50%;
   box-shadow: 4px 6px 5px rgb(0 0 0 / 35%);
-  ${({ theme, bgColor }) =>
+  ${({ bgColor }) =>
     linearGradient({
       colorStops: [`${bgColor} 45%`, `${darken(0.2, bgColor)} 100%`],
       toDirection: "to bottom left",

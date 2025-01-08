@@ -1,9 +1,9 @@
-import React from "react"
+'use client'
 import _ from "lodash"
+import { useCallback, useEffect } from "react"
 import { useMotionValue } from "framer-motion"
-import { useDebounce } from "react-use"
-import { ActiveTabWrapper } from "./ActiveRoleTab.styles"
 import { ITabsRefs } from "../../../../../../types"
+import { ActiveTabWrapper } from "./ActiveRoleTab.styles"
 
 interface ActiveRoleTabProps {
   refs: ITabsRefs
@@ -14,8 +14,8 @@ const ActiveRoleTab = ({ refs, activeRoute }: ActiveRoleTabProps) => {
   const x = useMotionValue(0)
   const width = useMotionValue(0)
 
-  const updateAttributes = React.useCallback(() => {
-    let activeRouteRef = activeRoute ? refs[activeRoute] : null
+  const updateAttributes = useCallback(() => {
+    const activeRouteRef = activeRoute ? refs[activeRoute] : null
     if (!_.isNull(activeRouteRef)) {
       x.set(activeRouteRef.current ? activeRouteRef.current.offsetLeft - 5 : 0)
       width.set(
@@ -26,7 +26,7 @@ const ActiveRoleTab = ({ refs, activeRoute }: ActiveRoleTabProps) => {
     }
   }, [activeRoute, refs, x, width])
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateAttributes()
     window.addEventListener("resize", updateAttributes)
     return () => {

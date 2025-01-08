@@ -1,4 +1,13 @@
-import React from "react"
+'use client'
+import { MouseEventHandler, ReactNode } from "react"
+import Icon from "../Icon/Icon.component"
+import {
+  buttonContentVariants,
+  buttonVariants,
+  getButtonBgVariants,
+} from "./Button.variants"
+import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types"
+
 import {
   ButtonWrapper,
   SButton,
@@ -6,23 +15,16 @@ import {
   ButtonContentWrapper,
   ButtonLoaderWrapper,
 } from "./Button.styles"
-import { ButtonVariantTypes, ButtonAnimationTypes } from "../../../../types"
-import {
-  buttonContentVariants,
-  buttonVariants,
-  getButtonBgVariants,
-} from "./Button.variants"
-import Icon from "../Icon/Icon.component"
 
 interface ButtonProps {
-  children: React.ReactNode
+  children: ReactNode
   variantColor?: ButtonVariantTypes
   variantAnimation?: ButtonAnimationTypes
   loading?: boolean
   solid?: boolean
   disabled?: boolean
   type?: "reset" | "submit" | "button"
-  onClick?: React.MouseEventHandler
+  onClick?: MouseEventHandler
 }
 
 const Button = ({

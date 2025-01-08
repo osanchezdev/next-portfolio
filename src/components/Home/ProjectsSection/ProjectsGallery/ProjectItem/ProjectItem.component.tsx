@@ -1,7 +1,6 @@
-import React, { useContext } from "react"
+'use client'
+import { ReactElement, useContext } from "react"
 import LazyImage from "../../../../shared/LazyImage/LazyImage.component"
-import { IProjectDataItem } from "../../../../../../types"
-
 import { FullScreenSliderContext } from "../../../../../context/fullScreenSliderContext"
 
 import {
@@ -10,6 +9,7 @@ import {
   projectItemTechPillsWrapperVariants,
   projectItemTechPillVariants,
 } from "./ProjectItem.variants"
+import { IProjectDataItem } from "../../../../../../types"
 
 import {
   ProjectItemWrapper,
@@ -27,7 +27,7 @@ interface ProjectItemProps {
   projectItem: IProjectDataItem
 }
 
-const ProjectItem = ({ projectItem }: ProjectItemProps): React.ReactElement => {
+const ProjectItem = ({ projectItem }: ProjectItemProps): ReactElement => {
   const { name, tech_skills, images, bgColor, textColor } = projectItem
   const { toggleShowSlider, setSliderImages } = useContext(
     FullScreenSliderContext
@@ -48,6 +48,7 @@ const ProjectItem = ({ projectItem }: ProjectItemProps): React.ReactElement => {
       <ProjectItemImageWrapper>
         <LazyImage
           src={
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             require(`../../../../../assets/images/projects/${images[0]}.jpg`)
               .default
           }

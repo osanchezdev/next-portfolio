@@ -1,14 +1,15 @@
-import React from "react"
+'use client'
+import { FC, ReactNode } from "react"
 import dynamic from "next/dynamic"
 
 import { LayoutWrapper, MainWrapper } from "./Layout.styles"
 
 type LayoutProps = {
-  children: React.ReactNode
+  children: ReactNode
 }
 const DynamicSidebar = dynamic(() => import("./Sidebar/Sidebar.component"))
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <LayoutWrapper>
       <DynamicSidebar />

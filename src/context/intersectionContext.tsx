@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
+'use client'
 import { useIntersection } from "react-use"
+import { createContext, ReactNode, RefObject, useEffect, useRef, useState } from "react"
 
-export const IntersectionContext = React.createContext({ inView: true })
+export const IntersectionContext = createContext({ inView: true })
 
 interface IntersectionProviderProps {
-  children: React.ReactNode
+  children: ReactNode
   reset?: boolean
 }
 export const IntersectionProvider = ({
@@ -12,8 +13,8 @@ export const IntersectionProvider = ({
   reset = false,
 }: IntersectionProviderProps) => {
   const [inView, setInView] = useState(false)
-  const intersectionRef = React.useRef(null)
-  const intersection = useIntersection(intersectionRef, {
+  const intersectionRef = useRef<HTMLDivElement>(null)
+  const intersection = useIntersection(intersectionRef as RefObject<HTMLDivElement>, {
     threshold: 0,
   })
 
