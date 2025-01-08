@@ -74,7 +74,7 @@ export const WelcomeTitleChar = styled(motion.span)`
 
 export const WelcomeButton = styled(motion.div)`
   position: absolute;
-  bottom: 25%;
+  bottom: 15%;
   z-index: 0;
 
   @media ${device.mobileS} {

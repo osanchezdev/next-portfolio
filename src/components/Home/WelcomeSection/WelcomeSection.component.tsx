@@ -28,7 +28,8 @@ import {
   welcomeTitleCharsVariants,
 } from "./WelcomeSection.variants"
 
-const ABOUT_TITLE = "Hi, \nI’m Oscar,\nsoftware developer"
+//Hi, I'm a software developer who brings ideas to life with code.
+const ABOUT_TITLE = "Hi, \nI’m Oscar, \na software developer \nwho brings ideas to life \nwith code."
 
 const WelcomeSection = () => {
   const { init } = useParticles();
