@@ -1,9 +1,8 @@
-import React from "react"
+'use client'
 import { WickedBgWrapper } from "./WickedBg.styles"
 
-interface Props {}
 
-const WickedBg = (props: Props) => {
+const WickedBg = () => {
   return (
     <WickedBgWrapper>
       {true ? (

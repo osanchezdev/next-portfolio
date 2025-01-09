@@ -24,7 +24,7 @@ export const sidebarVariants: IVariants = {
 }
 
 export const sidebarContentVariants = (): IVariants => {
-  let opacity = getAnimationVariants({
+  const opacity = getAnimationVariants({
     animationName: "fade",
   })
   return {
@@ -53,7 +53,7 @@ export const arrowButtonWrapperVariants: IVariants = {
 }
 
 export const arrowButtonVariants = (): IVariants => {
-  let horizontalFlip = getAnimationVariants({
+  const horizontalFlip = getAnimationVariants({
     animationName: "horizontalFlip",
   })
   return {

@@ -9,7 +9,7 @@ const getRandomPosition = () => {
 }
 
 const getRandomSize = () => {
-  let randomSize = _.random(30, 50, true)
+  const randomSize = _.random(30, 50, true)
   return {
     height: randomSize,
     width: randomSize,
@@ -17,8 +17,8 @@ const getRandomSize = () => {
 }
 
 export const getSkillItemVariants = (): IVariants => {
-  let randomSizeProps = getRandomSize()
-  let randomPositionProps = getRandomPosition()
+  const randomSizeProps = getRandomSize()
+  const randomPositionProps = getRandomPosition()
   return {
     initial: {
       opacity: 0,

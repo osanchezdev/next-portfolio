@@ -1,12 +1,12 @@
-import _merge from "lodash.merge"
 import { IVariants } from "../../../../types"
 import { getAnimationVariants } from "../../../animations"
 
+const rubberBandAnimation = getAnimationVariants({
+  animationName: "rubberBand",
+})
+
 export const welcomeTitleCharsVariants = (i: number): IVariants => {
-  let rubberBandAnimation = getAnimationVariants({
-    animationName: "rubberBand",
-  })
-  let calcDelay = i * 0.07
+  const calcDelay = i * 0.07
   return {
     hidden: {
       opacity: 0,
@@ -22,15 +22,24 @@ export const welcomeTitleCharsVariants = (i: number): IVariants => {
         delay: calcDelay,
       },
     },
+    noHover: {
+      opacity: 1,
+      scaleX: 1,
+      scaleY: 1,
+      transition: {
+        duration: 0.3,
+        type: "spring",
+      }
+    },
     hover: {
-      ..._merge(rubberBandAnimation.animate, {
-        opacity: 1,
-        transition: {
-          delay: 0,
-          duration: 0.8,
-          type: "spring",
-        },
-      }),
+      ...rubberBandAnimation.animate,
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+        repeat: 1,
+        repeatType: "reverse",
+      },
     },
   }
 }

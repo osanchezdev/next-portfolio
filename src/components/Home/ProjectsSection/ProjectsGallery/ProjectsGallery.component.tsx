@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import { AnimatePresence } from "framer-motion"
 import ProjectItem from "./ProjectItem/ProjectItem.component"
 

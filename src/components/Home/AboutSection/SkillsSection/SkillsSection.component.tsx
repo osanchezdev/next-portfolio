@@ -1,8 +1,10 @@
+'use client'
 import "tippy.js/dist/tippy.css"
-import React, { useState, useEffect } from "react"
 import _ from "lodash"
 import Tippy from "@tippyjs/react"
 import { useDebounce } from "react-use"
+import { AnimatePresence } from "framer-motion"
+import { useState, useEffect, createRef, RefObject } from "react"
 import {
   SkillsSectionWrapper,
   TechSkillsHeaderWrapper,
@@ -16,6 +18,8 @@ import {
   TechSkillsEmptyIcon,
   TechSkillItemLogo,
 } from "./SkillsSection.styles"
+import Icon from "../../../shared/Icon/Icon.component"
+import ActiveRoleTab from "./ActiveRoleTab/ActiveRoleTab.component"
 import LazyImage from "../../../shared/LazyImage/LazyImage.component"
 
 import {
@@ -29,15 +33,11 @@ import {
   skillEmptyWrapperVariants,
 } from "./SkillsSection.variants"
 import { ITabsRefs, SkillRoleTypes } from "../../../../../types"
-import { AnimatePresence } from "framer-motion"
-import ActiveRoleTab from "./ActiveRoleTab/ActiveRoleTab.component"
-import { getIcon } from "../../../../utils/icons"
-import Icon from "../../../shared/Icon/Icon.component"
 
 const SkillsSection = () => {
   const [animatingTab, setAnimatingTab] = useState<boolean>(false)
   const [selectedRole, setSelectedRole] = useState<SkillRoleTypes>()
-  const [, cancelAnimatingTabDebounce] = useDebounce(
+  useDebounce(
     () => {
       setAnimatingTab(false)
     },
@@ -49,8 +49,8 @@ const SkillsSection = () => {
     selectedRole ? TECH_SKILLS_BY_ROLE[selectedRole] : []
 
   const tabRefs: ITabsRefs = TECH_ROLES.reduce(
-    (acc: any, item: SkillRoleTypes) => {
-      acc[item] = React.createRef()
+    (acc: ITabsRefs, item: SkillRoleTypes) => {
+      acc[item] = createRef() as RefObject<HTMLDivElement>
       return acc
     },
     {}
@@ -72,7 +72,7 @@ const SkillsSection = () => {
             <TechSkillRoleItem
               key={item}
               ref={tabRefs[item]}
-              isActive={item === selectedRole}
+              $isActive={item === selectedRole}
               onClick={() => changeTab(item)}
             >
               {item}
@@ -110,6 +110,7 @@ const SkillsSection = () => {
                         <TechSkillItemLogo>
                           <LazyImage
                             src={
+                              // eslint-disable-next-line @typescript-eslint/no-require-imports
                               require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
                                 .default
                             }

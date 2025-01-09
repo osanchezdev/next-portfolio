@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import { DividerWrapper, Divider as SDivider } from "./Divider.styles"
 
 interface DividerProps {

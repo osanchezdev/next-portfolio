@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+'use client'
+import { useContext } from "react"
 
 import { ContactFormContext } from "../../../../context/contactFormContext"
 
@@ -9,18 +10,16 @@ import MessageForm from "./FormSteps/MessageForm.component"
 import CompletedForm from "./FormSteps/CompletedForm.component"
 import { AnimatePresence } from "framer-motion"
 import {
-  IEmailFormValue,
-  IMessageFormValue,
-  INameFormValue,
+  IContactFormValues,
 } from "../../../../../types"
 
 const ContactForm = () => {
   const { loading, currentStep, updateCurrentForm } =
     useContext(ContactFormContext)
   const updateFormByStep = (
-    data: INameFormValue | IEmailFormValue | IMessageFormValue,
+    data: Partial<IContactFormValues>,
     step?: number
-  ) => updateCurrentForm(data, step || currentStep - 1)
+  ) => updateCurrentForm(data as IContactFormValues, step || currentStep - 1)
 
   const renderCurrentFormStep = () => {
     switch (currentStep) {

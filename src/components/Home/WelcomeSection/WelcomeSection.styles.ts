@@ -9,6 +9,7 @@ export const WelcomeSectionWrapper = styled.div`
 
 export const WelcomeParticlesWrapper = styled(motion.div)`
   height: 100vh;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -73,7 +74,7 @@ export const WelcomeTitleChar = styled(motion.span)`
 
 export const WelcomeButton = styled(motion.div)`
   position: absolute;
-  bottom: 25%;
+  bottom: 15%;
   z-index: 0;
 
   @media ${device.mobileS} {

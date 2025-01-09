@@ -1,5 +1,6 @@
-import React, { useState } from "react"
-import Image from "next/image"
+'use client'
+import { useState } from "react"
+import Image, { StaticImageData } from "next/image"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 
 import { LazyImagePlaceholder, LazyImageWrapper } from "./LazyImage.styles"
@@ -37,7 +38,7 @@ const LazyImage = ({
       }}
     >
       {imageLoading && (
-        <SkeletonTheme color="#333" highlightColor="#444">
+        <SkeletonTheme baseColor="#333" highlightColor="#444">
           <Skeleton
             wrapper={LazyImagePlaceholder}
             width="100%"
@@ -50,13 +51,16 @@ const LazyImage = ({
         {...(typeof src === "string"
           ? {
               src,
-              layout: "fill",
+              fill: fit === "fill",
+              height: undefined,
+              width: undefined,
             }
           : {
               src,
-              objectFit: fit,
               layout,
-              ...(layout === "fill" ? {} : { height, width }),
+              height: height as number | `${number}` | undefined,
+              width: width as number | `${number}` | undefined,
+              style: { objectFit: fit },
             })}
         alt={alt}
         quality={quality}

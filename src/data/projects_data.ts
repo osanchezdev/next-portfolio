@@ -1,26 +1,44 @@
-import _ from "lodash"
 import { IProjectDataItem } from "../../types"
 import { TECH_SKILLS_DATA } from "./tech_skills_data"
 
 export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
-    id: "aswebba",
-    name: "AuroraSalud (website)",
-    bgColor: "#2BB3D4",
-    textColor: "#eee",
-    images: ["asweb1", "asweb2", "asweb3"],
+    id: 'fpayuk',
+    name: 'Funding Circle UK (FlexiPay)',
+    bgColor: '#a619c9',
+    textColor: '#fff',
+    images: ['fpay1', 'fpay2', 'fpay3'],
     tech_skills: [
-      TECH_SKILLS_DATA["javascript"],
-      TECH_SKILLS_DATA["react"],
-      TECH_SKILLS_DATA["nextjs"],
-      TECH_SKILLS_DATA["less"],
-      TECH_SKILLS_DATA["webpack"],
-      TECH_SKILLS_DATA["git"],
+      TECH_SKILLS_DATA['typescript'],
+      TECH_SKILLS_DATA['react'],
+      TECH_SKILLS_DATA['reactnative'],
+      TECH_SKILLS_DATA['redux'],
+      TECH_SKILLS_DATA['styledcomponents'],
+      TECH_SKILLS_DATA['webpack'],
+      TECH_SKILLS_DATA['vite'],
+      TECH_SKILLS_DATA['aws'],
+      TECH_SKILLS_DATA['microfrontends'],
+      TECH_SKILLS_DATA['git'],
     ],
   },
+  // {
+  //   id: "aswebba",
+  //   name: "AuroraSalud (website)",
+  //   bgColor: "#2BB3D4",
+  //   textColor: "#eee",
+  //   images: ["asweb1", "asweb2", "asweb3"],
+  //   tech_skills: [
+  //     TECH_SKILLS_DATA["javascript"],
+  //     TECH_SKILLS_DATA["react"],
+  //     TECH_SKILLS_DATA["nextjs"],
+  //     TECH_SKILLS_DATA["less"],
+  //     TECH_SKILLS_DATA["webpack"],
+  //     TECH_SKILLS_DATA["git"],
+  //   ],
+  // },
   {
     id: "asappba",
-    name: "AuroraSalud (app)",
+    name: "AuroraSalud AR (app)",
     bgColor: "#037982",
     images: ["asapp1", "asapp2", "asapp3"],
     tech_skills: [
@@ -33,7 +51,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   },
   {
     id: "fluxgaliciaba",
-    name: "Banco Galicia",
+    name: "Banco Galicia AR (Flux)",
     bgColor: "#F26100",
     textColor: "#eee",
     images: ["fgal1", "fgal2", "fgal3"],
@@ -51,22 +69,40 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
     ],
   },
   {
-    id: "cotiderba",
-    name: "Cotiderweb",
-    bgColor: "#1ABC9C",
-    textColor: "#eee",
-    images: ["cw1", "cw2", "cw3"],
+    id: 'ibfus',
+    name: 'iBusinessFunding US (lenderAI)',
+    bgColor: '#166cb1',
+    textColor: '#fff',
+    images: ['ibf1', 'ibf2', 'ibf3'],
     tech_skills: [
-      TECH_SKILLS_DATA["typescript"],
-      TECH_SKILLS_DATA["cssmodules"],
-      TECH_SKILLS_DATA["nextjs"],
-      TECH_SKILLS_DATA["aws"],
-      TECH_SKILLS_DATA["git"],
+      TECH_SKILLS_DATA['javascript'],
+      TECH_SKILLS_DATA['typescript'],
+      TECH_SKILLS_DATA['react'],
+      TECH_SKILLS_DATA['redux'],
+      TECH_SKILLS_DATA['cssmodules'],
+      TECH_SKILLS_DATA['webpack'],
+      TECH_SKILLS_DATA['vite'],
+      TECH_SKILLS_DATA['aws'],
+      TECH_SKILLS_DATA['git'],
     ],
   },
+  // {
+  //   id: "cotiderba",
+  //   name: "Cotiderweb",
+  //   bgColor: "#1ABC9C",
+  //   textColor: "#eee",
+  //   images: ["cw1", "cw2", "cw3"],
+  //   tech_skills: [
+  //     TECH_SKILLS_DATA["typescript"],
+  //     TECH_SKILLS_DATA["cssmodules"],
+  //     TECH_SKILLS_DATA["nextjs"],
+  //     TECH_SKILLS_DATA["aws"],
+  //     TECH_SKILLS_DATA["git"],
+  //   ],
+  // },
   {
     id: "dmwebba",
-    name: "DistritoModa (website)",
+    name: "DistritoModa AR (website)",
     bgColor: "#F92273",
     textColor: "#eee",
     images: ["dmweb1", "dmweb2", "dmweb3"],
@@ -82,7 +118,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   },
   {
     id: "dmstoresba",
-    name: "DM (stores dashboard)",
+    name: "DM AR (stores dashboard)",
     bgColor: "#1F203C",
     images: ["dmstoresdashboard1", "dmstoresdashboard2", "dmstoresdashboard3"],
     tech_skills: [
@@ -97,7 +133,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   },
   {
     id: "dmadminba",
-    name: "DM (admin dashboard)",
+    name: "DM AR (admin dashboard)",
     bgColor: "#eee",
     images: ["dmadmin1", "dmadmin2", "dmadmin3"],
     tech_skills: [
@@ -114,7 +150,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   },
   {
     id: "portefyes",
-    name: "Portefy",
+    name: "Portefy ES (dashboard)",
     bgColor: "#F73231",
     textColor: "#eee",
     images: ["portefyweb1", "portefyweb2", "portefyweb3"],
@@ -129,7 +165,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   },
   {
     id: "productauthpa",
-    name: "Product authenticator",
+    name: "Product authenticator PA (app)",
     bgColor: "#000",
     images: ["prodauth1", "prodauth2", "prodauth3"],
     tech_skills: [

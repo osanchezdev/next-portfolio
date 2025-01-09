@@ -1,20 +1,24 @@
-import React, { useState } from "react"
+'use client'
+import { useState } from "react"
+import dynamic from "next/dynamic"
 import { useDebounce } from "react-use"
-import { Lottie, ReactLottieConfig } from "@alfonmga/react-lottie-light-ts"
+
 import notFoundAnimation from "../../../animations/lottie/notfound.json"
 import { NotFoundAnimationWrapper } from "./NotFoundAnimation.styles"
 import { notFoundVariants } from "../NotFound.variants"
 
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false })
+
 const NotFoundAnimation = () => {
   const [playingAnimation, setPlayingAnimation] = useState<boolean>(false)
-  const [, cancelDebounce] = useDebounce(
+  useDebounce(
     () => {
       setPlayingAnimation(true)
     },
     1500,
     []
   )
-  const config: ReactLottieConfig = {
+  const configOptions = {
     animationData: notFoundAnimation,
     loop: true,
     autoplay: false,
@@ -23,9 +27,9 @@ const NotFoundAnimation = () => {
     <NotFoundAnimationWrapper variants={notFoundVariants}>
       <Lottie
         key="not-found"
-        playingState={playingAnimation ? "playing" : "stopped"}
+        isStopped={!playingAnimation}
         speed={0.8}
-        config={config}
+        options={configOptions}
       />
     </NotFoundAnimationWrapper>
   )

@@ -7,6 +7,6 @@ export const LayoutWrapper = styled.div`
 export const MainWrapper = styled.main`
   flex: 1 1 auto;
   & > div > div {
-    overflow-x: hidden !important;
+    overflow: hidden !important;
   }
 `

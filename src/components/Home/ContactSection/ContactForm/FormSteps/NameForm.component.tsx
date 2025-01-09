@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import { useForm, SubmitHandler } from "react-hook-form"
 import Input from "../../../../shared/Input/Input.component"
 
@@ -7,7 +7,7 @@ import {
   FormStepActionsWrapper,
   FormStepWrapper,
 } from "./FormSteps.styles"
-import { INameFormValue, StepFormProps } from "../../../../../../types"
+import { IContactFormValues, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
 import { formStepVariants } from "./FormSteps.variants"
 import Icon from "../../../../shared/Icon/Icon.component"
@@ -17,9 +17,11 @@ const NameForm = ({ updateForm }: StepFormProps) => {
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<INameFormValue>()
+  } = useForm<Partial<IContactFormValues>>()
 
-  const onSubmit: SubmitHandler<INameFormValue> = data => updateForm(data, 1)
+  const onSubmit: SubmitHandler<Partial<IContactFormValues>> = (data) => updateForm({
+    name: data.name,
+  }, 1)
 
   return (
     <FormStepWrapper>
@@ -35,7 +37,6 @@ const NameForm = ({ updateForm }: StepFormProps) => {
         <Input
           icon={<Icon icon="FiUser" />}
           label="name"
-          errors={errors.name}
           errorMessage={
             (errors?.name?.type ?? "") === "required"
               ? "Name is required"

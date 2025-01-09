@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+'use client'
+import { useState } from "react"
+import dynamic from "next/dynamic"
 import { useDebounce } from "react-use"
-import { Lottie, ReactLottieConfig } from "@alfonmga/react-lottie-light-ts"
 import loadingAnimation from "../../animations/lottie/loading.json"
 import { LoadingPageAnimation, LoadingPageWrapper } from "./Loading.styles"
 import {
@@ -8,16 +9,18 @@ import {
   loadingPageWrapperVariants,
 } from "./Loading.variants"
 
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
+
 const LoadingPage = () => {
   const [playingAnimation, setPlayingAnimation] = useState<boolean>(false)
-  const [, cancelDebounce] = useDebounce(
+  useDebounce(
     () => {
       setPlayingAnimation(true)
     },
     1500,
     []
   )
-  const config: ReactLottieConfig = {
+  const configOptions = {
     animationData: loadingAnimation,
     loop: true,
     autoplay: false,
@@ -32,9 +35,9 @@ const LoadingPage = () => {
       <LoadingPageAnimation variants={loadingPageAnimationVariants}>
         <Lottie
           key="loading-screen"
-          playingState={playingAnimation ? "playing" : "stopped"}
+          isStopped={!playingAnimation}
           speed={0.8}
-          config={config}
+          options={configOptions}
         />
       </LoadingPageAnimation>
     </LoadingPageWrapper>

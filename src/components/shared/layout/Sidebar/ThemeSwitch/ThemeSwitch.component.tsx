@@ -1,27 +1,26 @@
-import React, { useState, useContext } from "react"
-import { ThemeContext } from "styled-components"
+'use client'
+import { useContext, FC } from "react"
 import Switch from "react-switch"
-import { ThemeSwitchWrapper } from "./ThemeSwitch.styles"
 import { lighten } from "polished"
-import { AppContext } from "../../../../../context/appContext"
+import { ThemeContext } from "styled-components"
 import Icon from "../../../Icon/Icon.component"
+import { AppContext } from "../../../../../context/appContext"
+import { ThemeSwitchWrapper } from "./ThemeSwitch.styles"
 
-const ThemeSwitch: React.FC = () => {
-  const { switchTheme } = useContext(AppContext)
+const ThemeSwitch: FC = () => {
+  const { isLightTheme, switchTheme } = useContext(AppContext)
   const themeContext = useContext(ThemeContext)
-  const [checked, setChecked] = useState(false)
-  const updateTheme = (newValue: any) => {
-    setChecked(newValue)
-    switchTheme && switchTheme(newValue)
+  const updateTheme = (newValue: boolean) => {
+    switchTheme?.(newValue)
   }
   return (
     <ThemeSwitchWrapper>
       <Icon icon="FaMoon" />
       <Switch
-        onChange={updateTheme}
-        checked={checked}
-        onColor={lighten(0.3, themeContext.colors.primary)}
-        onHandleColor={themeContext.colors.primary}
+        onChange={() => updateTheme(!isLightTheme)}
+        checked={isLightTheme ?? false}
+        onColor={lighten(0.3, themeContext?.colors.primary ?? '')}
+        onHandleColor={themeContext?.colors.primary}
         handleDiameter={30}
         uncheckedIcon={false}
         checkedIcon={false}

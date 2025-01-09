@@ -1,26 +1,27 @@
-import React, { createContext, useState } from "react"
-import { IContactFormValues } from "../../types"
+'use client'
+import { createContext, ReactElement, ReactNode, useState } from "react"
 import { axios } from "../config/axios"
+import { IContactFormValues } from "../../types"
 
 interface IContactFormContext {
   loading: boolean
   currentStep: number
-  updateCurrentForm: Function
+  updateCurrentForm: (data: IContactFormValues, newStep: number) => void
   currentForm?: IContactFormValues
 }
 
 export const ContactFormContext = createContext({} as IContactFormContext)
 
 interface ContactFormProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const ContactFormProvider = ({
   children,
-}: ContactFormProviderProps): React.ReactElement => {
+}: ContactFormProviderProps): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false)
   const [currentStep, setCurrentStep] = useState<number>(0)
-  const [currentForm, setCurrentForm] = useState<IContactFormValues>({})
+  const [currentForm, setCurrentForm] = useState<IContactFormValues>()
 
   const sendContactMessage = async (completeForm: IContactFormValues) => {
     setLoading(true)
