@@ -1,8 +1,9 @@
-import React from "react"
+'use client'
+import { ReactNode } from "react"
 import { MaxWidthWrapper } from "./MaxWidth.styles"
 
 interface MaxWidthProps {
-  children: React.ReactChild | React.ReactChild[]
+  children: ReactNode | ReactNode[]
 }
 
 const MaxWidth = ({ children }: MaxWidthProps) => {

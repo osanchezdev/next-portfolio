@@ -1,7 +1,19 @@
-import React, { useContext } from "react"
+'use client'
+import { FC, useContext } from "react"
 import Link from "next/link"
+import Icon from "../../Icon/Icon.component"
+import Divider from "../../Divider/Divider.component"
+import LazyImage from "../../LazyImage/LazyImage.component"
 import { AppContext } from "../../../../context/appContext"
 import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.component"
+import {
+  sidebarVariants,
+  sidebarContentVariants,
+  arrowButtonVariants,
+  sidebarOverlayVariants,
+  arrowButtonWrapperVariants,
+} from "./Sidebar.variants"
+
 import {
   SidebarWrapper,
   Sidebar as SSidebar,
@@ -18,23 +30,14 @@ import {
   ExpandSidebarArrow,
   SidebarOverlay,
 } from "./Sidebar.styles"
-import {
-  sidebarVariants,
-  sidebarContentVariants,
-  arrowButtonVariants,
-  sidebarOverlayVariants,
-  arrowButtonWrapperVariants,
-} from "./Sidebar.variants"
-import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
-import Divider from "../../Divider/Divider.component"
-import LazyImage from "../../LazyImage/LazyImage.component"
-import Icon from "../../Icon/Icon.component"
 
-const Sidebar: React.FC = () => {
+import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
+
+const Sidebar: FC = () => {
   const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
 
   const scrollTo = (id: string) => {
-    toggleExpandSidebar && toggleExpandSidebar(false)
+    if (toggleExpandSidebar) toggleExpandSidebar(false)
     document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
   return (
@@ -63,17 +66,15 @@ const Sidebar: React.FC = () => {
               <Link
                 href="https://www.linkedin.com/in/ojsm45/?locale=en_US"
                 passHref={true}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a target="_blank" rel="noopener noreferrer">
-                  <Icon icon="FaLinkedin" />
-                </a>
+                <Icon icon="FaLinkedin" />
               </Link>
             </ProfileItem>
             <ProfileItem>
-              <Link href="https://github.com/osanchezdev" passHref={true}>
-                <a target="_blank" rel="noopener noreferrer">
-                  <Icon icon="FaGithubSquare" />
-                </a>
+              <Link href="https://github.com/osanchezdev" target="_blank" rel="noopener noreferrer">
+                <Icon icon="FaGithubSquare" />
               </Link>
             </ProfileItem>
           </SidebarProfileLinks>

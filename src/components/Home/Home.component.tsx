@@ -1,6 +1,7 @@
-import React from "react"
+'use client'
+import { FC } from "react"
 import dynamic from "next/dynamic"
-import { Scrollbars } from "react-custom-scrollbars-2"
+import { Scrollbar } from 'react-scrollbars-custom';
 import WelcomeSection from "./WelcomeSection/WelcomeSection.component"
 import { IntersectionProvider } from "../../context/intersectionContext"
 import Divider from "../shared/Divider/Divider.component"
@@ -32,9 +33,9 @@ const PAGE_SECTIONS = [
   },
 ]
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   return (
-    <Scrollbars style={{ height: "100vh" }} universal={true}>
+    <Scrollbar style={{ height: '100vh' }}>
       <WelcomeSection />
       {PAGE_SECTIONS.map(({ key, component }) => (
         <IntersectionProvider key={key}>
@@ -42,7 +43,7 @@ const Home: React.FC = () => {
           {component}
         </IntersectionProvider>
       ))}
-    </Scrollbars>
+    </Scrollbar>
   )
 }
 

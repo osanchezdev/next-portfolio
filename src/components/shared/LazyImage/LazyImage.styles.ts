@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
-import { device } from "../../../styles/mediaQueries"
 
 export const LazyImageWrapper = styled(motion.div)`
   position: relative;
@@ -10,6 +9,7 @@ export const LazyImageWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   border: 0;
+  overflow: hidden;
 `
 
 export const LazyImagePlaceholder = styled.div`

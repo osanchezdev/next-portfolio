@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import LazyImage from "../../LazyImage/LazyImage.component"
 import { SlideItemWrapper } from "./SlideItem.styles"
 
@@ -11,6 +11,7 @@ const SlideItem = ({ image, index }: SlideItemProps) => {
   return (
     <SlideItemWrapper>
       <LazyImage
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         src={require(`../../../../assets/images/projects/${image}.jpg`).default}
         alt={`${image}-${index}`}
         quality={100}

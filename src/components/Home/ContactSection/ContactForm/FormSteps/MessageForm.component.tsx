@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import { useForm, SubmitHandler } from "react-hook-form"
 import Input from "../../../../shared/Input/Input.component"
 
@@ -7,19 +7,21 @@ import {
   FormStepActionsWrapper,
   FormStepWrapper,
 } from "./FormSteps.styles"
-import { IMessageFormValue, StepFormProps } from "../../../../../../types"
+import { IContactFormValues, StepFormProps } from "../../../../../../types"
 import Button from "../../../../shared/Button/Button.component"
-import { formStepVariants } from "./FormSteps.variants"
 import Icon from "../../../../shared/Icon/Icon.component"
+import { formStepVariants } from "./FormSteps.variants"
 
 const MessageForm = ({ updateForm, loading }: StepFormProps) => {
   const {
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<IMessageFormValue>()
+  } = useForm<Partial<IContactFormValues>>()
 
-  const onSubmit: SubmitHandler<IMessageFormValue> = data => updateForm(data, 3)
+  const onSubmit: SubmitHandler<Partial<IContactFormValues>> = data => updateForm({
+    message: data.message,
+  }, 3)
 
   return (
     <FormStepWrapper>
@@ -35,7 +37,6 @@ const MessageForm = ({ updateForm, loading }: StepFormProps) => {
         <Input
           icon={<Icon icon="FiMessageSquare" />}
           label="message"
-          errors={errors.message}
           errorMessage={
             (errors?.message?.type ?? "") === "required"
               ? "Message is required"

@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+'use client'
+import { useContext } from "react"
 import { IntersectionContext } from "../../../context/intersectionContext"
 import MaxWidth from "../../shared/MaxWidth/MaxWidth.component"
 import ProjectsGallery from "./ProjectsGallery/ProjectsGallery.component"
@@ -24,12 +25,9 @@ const ProjectsSection = () => {
           Developer portfolio
         </ProjectsSectionTitle>
         <ProjectsSectionDescription variants={projectsSectionVariants}>
-          I have worked for both companies and individuals around the globe. I
-          currently work remotely as a freelancer with a select client base and
-          open to hearing about new opportunities.
+          I’ve had the privilege of working with companies and individuals from around the world. Currently, I work remotely as a freelancer, collaborating with a select group of clients while staying open to exciting new opportunities.
           <br />
-          <br />
-          Here can you see some of the projects where i have participated:
+          Below, you’ll find some of the projects I’ve had the chance to contribute to:
         </ProjectsSectionDescription>
         <ProjectsSectionGalleryWrapper variants={projectsSectionVariants}>
           <ProjectsGallery />

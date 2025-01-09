@@ -68,6 +68,8 @@ import { SiPython } from "@react-icons/all-files/si/SiPython"
 import { SiAngularjs } from "@react-icons/all-files/si/SiAngularjs"
 import { SiRedis } from "@react-icons/all-files/si/SiRedis"
 import { SiFlask } from "@react-icons/all-files/si/SiFlask"
+import { SiVite } from "react-icons/si"
+import {TbPackages} from "react-icons/tb"
 
 const ICONS: {
   [key: string]: IconType
@@ -141,6 +143,8 @@ const ICONS: {
   FaSun,
   FaMoon,
   BsImage,
+  SiVite,
+  TbPackages
 }
 
 export const getIcon = (iconString: string): IconType => ICONS[`${iconString}`]

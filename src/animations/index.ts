@@ -1,7 +1,5 @@
 import { IAnimations, IAnimationVariants } from "../../types"
 
-const animationBase = {}
-
 const rubberBandKeyframes = {
   scaleX: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
   scaleY: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1],
@@ -43,7 +41,7 @@ export const getAnimationVariants = ({
   initialName = "initial",
   animateName = "animate",
   animationName,
-}: IAnimationVariants): any => {
+}: IAnimationVariants) => {
   return {
     [initialName]: {
       ...animations[animationName].initial,

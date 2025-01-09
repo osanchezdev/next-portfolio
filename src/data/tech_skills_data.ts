@@ -337,6 +337,12 @@ export const TECH_SKILLS_DATA: {
     bgColor: "#F05030",
     icon: "SiGit",
   },
+  microfrontends: {
+    key: "microfrontends",
+    text: "Microfrontends",
+    bgColor: "#1E78AB",
+    icon: "TbPackages",
+  },
   svn: {
     key: "svn",
     text: "Subversion",
@@ -348,6 +354,12 @@ export const TECH_SKILLS_DATA: {
     text: "Firebase",
     bgColor: "#EE7F0E",
     icon: "SiFirebase",
+  },
+  vite: {
+    key: "vite",
+    text: "Vite",
+    bgColor: "#646CFF",
+    icon: "SiVite",
   },
 }
 
@@ -377,6 +389,7 @@ export const TECH_SKILLS_BY_ROLE: ITechSkillsByRoles = {
       "styledcomponents",
       "cssmodules",
       "jquery",
+      "microfrontends",
     ],
   }),
   backend: completeGridColumns({

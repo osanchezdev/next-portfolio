@@ -1,6 +1,4 @@
 import { Variant } from "framer-motion"
-import React, { RefObject } from "react"
-import { IParticlesParams } from "react-tsparticles"
 
 export type SkillRoleTypes = "frontend" | "backend" | "mobile" | "others"
 
@@ -47,7 +45,7 @@ export interface ITechSkillsByRoles {
 }
 
 export interface ITabsRefs {
-  [key: string]: React.RefObject<HTMLSpanElement>
+  [key: string]: RefObject<HTMLSpanElement>
 }
 
 export interface IProjectDataItem {
@@ -59,24 +57,13 @@ export interface IProjectDataItem {
   tech_skills: Array<ITechSkillItem>
 }
 
-export interface INameFormValue {
+export interface IContactFormValues {
   name: string
-}
-
-export interface IEmailFormValue {
   email: string
-}
-export interface IMessageFormValue {
   message: string
 }
 
-export interface IContactFormValues {
-  [name: string]: INameFormValue
-  [email: string]: IEmailFormValue
-  [message: string]: IMessageFormValue
-}
-
 export interface StepFormProps {
-  updateForm: Function
+  updateForm: (data: Partial<IContactFormValues>, newStep: number) => void
   loading?: boolean
 }

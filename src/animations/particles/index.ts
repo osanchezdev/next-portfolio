@@ -1,56 +1,59 @@
-import { IParticlesParams } from "react-tsparticles"
+import { IOptions, RecursivePartial } from "@tsparticles/engine";
 
-export const welcomeParticlesConfig: IParticlesParams = {
-  id: "welcome-particles",
-  width: "100%",
-  height: "100%",
-  params: {
-    retina_detect: false,
-    background: {
-      position: "relative",
-    },
 
+export const welcomeParticlesConfig :RecursivePartial<IOptions> = {
+    fpsLimit: 120,
+    zIndex: -1,
     fullScreen: {
       enable: false,
       zIndex: -1,
     },
+    interactivity: {
+      events: {
+        onClick: {
+          enable: true,
+          mode: "push",
+        },
+      },
+    },
+    smooth: true,
     particles: {
       color: {
         value: "#b0bec5",
       },
-      twinkle: {
-        particles: {
-          enable: true,
-          frequency: 0.5,
-        },
+      links: {
+        color: "#455a64",
+        enable: true,
+        opacity: 0.7,
+        width: 1,
       },
-      size: {
-        value: {
-          min: 1,
-          max: 1,
+      move: {
+        enable: true,
+        random: true,
+        speed: 0.5,
+        straight: false,
+        attract: {
+          enable: true,
         },
       },
       number: {
         density: {
           enable: true,
-          value_area: 1500,
         },
+        value: 155,
       },
-      links: {
-        enable: true,
-        color: "#455a64",
-        opacity: 0.7,
+      opacity: {
+        value: 0.5,
       },
-      move: {
+      collisions: {
         enable: true,
-        speed: {
-          min: 0.5,
-          max: 0.5,
-        },
-        attract: {
-          enable: true,
-        },
+      },
+      shape: {
+        type: 'circle',
+      },
+      size: {
+        value: { min: 1, max: 1 },
       },
     },
-  },
-}
+    detectRetina: false,
+} ;

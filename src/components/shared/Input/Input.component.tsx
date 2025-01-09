@@ -1,6 +1,6 @@
-import React from "react"
+'use client'
+import { ReactElement } from "react"
 import { Path, UseFormRegister } from "react-hook-form"
-import { IContactFormValues } from "../../../../types"
 import {
   IconWrapper,
   InputLabel,
@@ -11,17 +11,18 @@ import {
   SuggestListItem,
 } from "./Input.styles"
 import { suggestListItemVariants, suggestListVariants } from "./Input.variants"
+import { IContactFormValues } from "../../../../types"
 
 interface InputProps {
-  icon?: React.ReactElement
+  icon?: ReactElement
   label: Path<IContactFormValues>
-  register: UseFormRegister<any>
-  errors?: Object
+  register: UseFormRegister<Partial<IContactFormValues>>
+  errors?: string
   errorMessage?: string
   required?: boolean
   pattern?: RegExp
   showSuggestList?: boolean
-  suggestCallback?: Function
+  suggestCallback?: (value: string) => void
   suggestList?: string[]
 }
 
@@ -41,11 +42,11 @@ const Input = ({
       <InputLabelWrapper>
         {label && <InputLabel htmlFor={label}>{label}</InputLabel>}
       </InputLabelWrapper>
-      {icon && <IconWrapper withError={!!errors}>{icon}</IconWrapper>}
+      {icon && <IconWrapper $withError={!!errors}>{icon}</IconWrapper>}
       <SInput
         id={label}
-        withError={!!errors}
-        withIcon={!!icon}
+        $withError={!!errors}
+        $withIcon={!!icon}
         {...register(label, {
           required,
           pattern,

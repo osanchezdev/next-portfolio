@@ -1,4 +1,5 @@
-import React from "react"
+'use client'
+import { createElement } from "react"
 import { getIcon } from "../../../utils/icons"
 
 interface IconProps {
@@ -6,7 +7,7 @@ interface IconProps {
 }
 
 const Icon = ({ icon = "RiQuestionLine" }: IconProps) => {
-  return <>{React.createElement(getIcon(icon))}</>
+  return <>{createElement(getIcon(icon))}</>
 }
 
 export default Icon

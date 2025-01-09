@@ -1,16 +1,30 @@
 import { createGlobalStyle } from "styled-components"
 import {
-  darken,
-  desaturate,
-  lighten,
   linearGradient,
   normalize,
-  saturate,
 } from "polished"
 import { device } from "./mediaQueries"
 
 export const GlobalStyles = createGlobalStyle`
 	${normalize()}
+	:root {
+		--background: #ffffff;
+		--foreground: #171717;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--background: #0a0a0a;
+			--foreground: #ededed;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html {
+			color-scheme: dark;
+		}
+	}
+
 	* {
 		user-select: none;
 			-webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
@@ -20,6 +34,8 @@ export const GlobalStyles = createGlobalStyle`
 	}
 	
 	body {
+		max-width: 100vw;
+		overflow-x: hidden;
 		font-family: ${({ theme }) => theme.font}, sans-serif;
 		color: ${({ theme }) => theme.colors.text};
     font-size: 15px;

@@ -1,10 +1,11 @@
-import React, { createContext, useState } from "react"
+'use client'
+import { createContext, ReactElement, ReactNode, useState } from "react"
 
 type FullScreenSliderState = {
   isVisible: boolean
   sliderImages: Array<string>
-  toggleShowSlider: Function
-  setSliderImages: Function
+  toggleShowSlider: () => void
+  setSliderImages: (images: Array<string>) => void
 }
 
 const initialState: FullScreenSliderState = {
@@ -18,12 +19,12 @@ export const FullScreenSliderContext =
   createContext<FullScreenSliderState>(initialState)
 
 interface FullScreenSliderProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const FullScreenSliderProvider = ({
   children,
-}: FullScreenSliderProviderProps): React.ReactElement => {
+}: FullScreenSliderProviderProps): ReactElement => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [sliderImages, setSliderImages] = useState<Array<string>>([])
 

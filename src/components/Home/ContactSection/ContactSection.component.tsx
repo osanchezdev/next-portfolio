@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+'use client'
+import { useContext } from "react"
 import { IntersectionContext } from "../../../context/intersectionContext"
 import ContactForm from "./ContactForm/ContactForm.component"
 import { contactSectionVariants } from "./ContactSection.variants"
@@ -27,8 +28,7 @@ const ContactSection = () => {
             Contact
           </ContactSectionTitle>
           <ContactSectionDescription variants={contactSectionVariants}>
-            Talk to me if you have a question, want a project collaboration or
-            just say hi, an animation awaits at the end of the form. <br />
+          Got a question, a project idea, or just want to say hello? Fill out the form below, and don’t miss the surprise animation waiting for you at the end!<br />
           </ContactSectionDescription>
         </ContactSectionTextWrapper>
         <ContactSectionFormWrapper variants={contactSectionVariants}>
