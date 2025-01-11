@@ -1,6 +1,5 @@
 'use client'
 import { useState } from "react"
-import { motion } from "motion/react"
 import { useDebounce } from "react-use"
 import Particles from "@tsparticles/react";
 

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
 import type { AppProps } from "next/app"
 import { AnimatePresence } from "framer-motion"
-import AppProvider from "src/context/appContext"
+import AppProvider from "@/context/appContext"
 
 const DynamicLoading = dynamic(
   () => import("../src/components/Loading/Loading.component")
@@ -16,17 +16,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    const handleStart = (url: string) => {
+    const handleStart = () => {
       setLoading(true)
     }
     const handleStop = () => {
-      window &&
+      if(window)
         window.setTimeout(() => {
           setLoading(false)
         }, 2000)
     }
     router.events.on("routeChangeStart", handleStart)
     router.events.on("routeChangeComplete", handleStop)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

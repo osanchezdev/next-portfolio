@@ -1,29 +1,21 @@
-const path = require("path")
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-})
-// TODO: Implement granular chunks or improve webpack splitting
-module.exports = withBundleAnalyzer({
+const path = require("path");
+
+module.exports = {
   reactStrictMode: true,
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // config.resolve.alias["@"] = path.join(__dirname, "/node_modules")
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@babel/runtime": path.resolve(
-        __dirname,
-        "node_modules/next/node_modules/@babel/runtime"
-      ),
-      "react-is": path.resolve(
-        __dirname,
-        "node_modules/next/node_modules/react-is"
-      ),
-      "strip-ansi": path.resolve(
-        __dirname,
-        "node_modules/next/dist/compiled/strip-ansi"
-      ),
-    }
-    config.plugins.push(new DuplicatePackageCheckerPlugin({ strict: true }))
-    return config
+  compiler: {
+    styledComponents: true,
   },
-})
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "@babel/runtime": path.resolve(__dirname, "node_modules/@babel/runtime"),
+    };
+
+    config.ignoreWarnings = [
+      { message: /Module\.issuer/ },
+      { message: /exceeds the max of 500KB/ },
+    ];
+
+    return config;
+  },
+};

@@ -7,9 +7,9 @@ import { lightTheme, darkTheme } from "../src/styles/themes"
 import { GlobalStyles } from "../src/styles/global"
 import { AnimatePresence } from "framer-motion"
 import { AppContext } from "../src/context/appContext"
-import ContactFormProvider from "src/context/contactFormContext"
-import FullScreenSliderProvider from "src/context/fullScreenSliderContext"
 import Layout from "../src/components/shared/layout/Layout.component"
+import FullScreenSliderProvider from "@/context/fullScreenSliderContext"
+import ContactFormProvider from "@/context/contactFormContext"
 
 const DynamicHomePage = dynamic(
   () => import("../src/components/Home/Home.component")
