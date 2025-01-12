@@ -11,8 +11,7 @@ const SlideItem = ({ image, index }: SlideItemProps) => {
   return (
     <SlideItemWrapper>
       <LazyImage
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        src={require(`../../../../assets/images/projects/${image}.jpg`).default}
+        src={`/assets/images/projects/${image}.jpg`}
         alt={`${image}-${index}`}
         quality={100}
       />

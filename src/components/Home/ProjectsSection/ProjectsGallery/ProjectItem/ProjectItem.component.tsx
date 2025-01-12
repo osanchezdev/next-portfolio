@@ -47,15 +47,11 @@ const ProjectItem = ({ projectItem }: ProjectItemProps): ReactElement => {
       </ProjectItemHeaderWrapper>
       <ProjectItemImageWrapper>
         <LazyImage
-          src={
-            // eslint-disable-next-line @typescript-eslint/no-require-imports
-            require(`../../../../../assets/images/projects/${images[0]}.jpg`)
-              .default
+          src={`/assets/images/projects/${images[0]}.jpg`
           }
           height={200}
           width={343}
           fit="cover"
-          layout="intrinsic"
           alt={name}
         />
       </ProjectItemImageWrapper>

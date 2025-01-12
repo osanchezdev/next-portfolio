@@ -109,11 +109,7 @@ const SkillsSection = () => {
                       ) : (
                         <TechSkillItemLogo>
                           <LazyImage
-                            src={
-                              // eslint-disable-next-line @typescript-eslint/no-require-imports
-                              require(`../../../../assets/icons/${TECH_SKILLS_DATA[item].key}.png`)
-                                .default
-                            }
+                            src={`/assets/icons/${TECH_SKILLS_DATA[item].key}.png`}
                             alt={TECH_SKILLS_DATA[item].text}
                           />
                         </TechSkillItemLogo>

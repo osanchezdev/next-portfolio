@@ -31,7 +31,7 @@ import {
   SidebarOverlay,
 } from "./Sidebar.styles"
 
-import PROFILE_IMAGE from "../../../../assets/images/profile.jpg"
+const PROFILE_IMAGE = "/assets/images/profile.jpg"
 
 const Sidebar: FC = () => {
   const { isSidebarExpanded, toggleExpandSidebar } = useContext(AppContext)
@@ -56,7 +56,7 @@ const Sidebar: FC = () => {
         <SSidebar variants={sidebarContentVariants()}>
           <SidebarTitle>Oscar Sánchez</SidebarTitle>
           <LogoWrapper>
-            <LazyImage src={PROFILE_IMAGE} alt="oscar-sanchez-profile-image" />
+            <LazyImage src={PROFILE_IMAGE} alt="oscar-sanchez-profile-image" fit="fill"/>
           </LogoWrapper>
           <SidebarDescription>
             Welcome to my personal website.
