@@ -5,8 +5,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: 'fpayuk',
     name: 'Funding Circle UK (FlexiPay)',
-    bgColor: '#a619c9',
-    textColor: '#fff',
+    $bgColor: '#a619c9',
+    $textColor: '#fff',
     images: ['fpay1', 'fpay2', 'fpay3'],
     tech_skills: [
       TECH_SKILLS_DATA['typescript'],
@@ -24,8 +24,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "aswebba",
   //   name: "AuroraSalud (website)",
-  //   bgColor: "#2BB3D4",
-  //   textColor: "#eee",
+  //   $bgColor: "#2BB3D4",
+  //   $textColor: "#eee",
   //   images: ["asweb1", "asweb2", "asweb3"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["javascript"],
@@ -39,7 +39,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "asappba",
     name: "AuroraSalud AR (app)",
-    bgColor: "#037982",
+    $bgColor: "#037982",
     images: ["asapp1", "asapp2", "asapp3"],
     tech_skills: [
       TECH_SKILLS_DATA["typescript"],
@@ -52,8 +52,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "fluxgaliciaba",
     name: "Banco Galicia AR (Flux)",
-    bgColor: "#F26100",
-    textColor: "#eee",
+    $bgColor: "#F26100",
+    $textColor: "#eee",
     images: ["fgal1", "fgal2", "fgal3"],
     tech_skills: [
       TECH_SKILLS_DATA["javascript"],
@@ -71,8 +71,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: 'ibfus',
     name: 'iBusinessFunding US (lenderAI)',
-    bgColor: '#166cb1',
-    textColor: '#fff',
+    $bgColor: '#166cb1',
+    $textColor: '#fff',
     images: ['ibf1', 'ibf2', 'ibf3'],
     tech_skills: [
       TECH_SKILLS_DATA['javascript'],
@@ -89,8 +89,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "cotiderba",
   //   name: "Cotiderweb",
-  //   bgColor: "#1ABC9C",
-  //   textColor: "#eee",
+  //   $bgColor: "#1ABC9C",
+  //   $textColor: "#eee",
   //   images: ["cw1", "cw2", "cw3"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["typescript"],
@@ -103,8 +103,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "dmwebba",
     name: "DistritoModa AR (website)",
-    bgColor: "#F92273",
-    textColor: "#eee",
+    $bgColor: "#F92273",
+    $textColor: "#eee",
     images: ["dmweb1", "dmweb2", "dmweb3"],
     tech_skills: [
       TECH_SKILLS_DATA["javascript"],
@@ -119,7 +119,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "dmstoresba",
     name: "DM AR (stores dashboard)",
-    bgColor: "#1F203C",
+    $bgColor: "#1F203C",
     images: ["dmstoresdashboard1", "dmstoresdashboard2", "dmstoresdashboard3"],
     tech_skills: [
       TECH_SKILLS_DATA["javascript"],
@@ -134,7 +134,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "dmadminba",
     name: "DM AR (admin dashboard)",
-    bgColor: "#eee",
+    $bgColor: "#eee",
     images: ["dmadmin1", "dmadmin2", "dmadmin3"],
     tech_skills: [
       TECH_SKILLS_DATA["javascript"],
@@ -151,8 +151,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "portefyes",
     name: "Portefy ES (dashboard)",
-    bgColor: "#F73231",
-    textColor: "#eee",
+    $bgColor: "#F73231",
+    $textColor: "#eee",
     images: ["portefyweb1", "portefyweb2", "portefyweb3"],
     tech_skills: [
       TECH_SKILLS_DATA["typescript"],
@@ -166,7 +166,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   {
     id: "productauthpa",
     name: "Product authenticator PA (app)",
-    bgColor: "#000",
+    $bgColor: "#000",
     images: ["prodauth1", "prodauth2", "prodauth3"],
     tech_skills: [
       TECH_SKILLS_DATA["typescript"],
@@ -181,7 +181,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   //   id: "digbangchallengeba",
   //   name: "Digbang (challenge)",
   //   images: ["dbchallenge1"],
-  //   bgColor: "#4F4F51",
+  //   $bgColor: "#4F4F51",
   //   tech_skills: [
   //     TECH_SKILLS_DATA["javascript"],
   //     TECH_SKILLS_DATA["reactnative"],
@@ -191,7 +191,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "musicappmx",
   //   name: "Music app",
-  //   bgColor: "#1ED760",
+  //   $bgColor: "#1ED760",
   //   images: ["musicapp1", "musicapp2", "musicapp3"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["javascript"],
@@ -203,7 +203,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "liteflixchallengeba",
   //   name: "Liteflix (challenge)",
-  //   bgColor: "#080102",
+  //   $bgColor: "#080102",
   //   images: ["litef1", "litef2", "litef3"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["javascript"],
@@ -216,7 +216,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "trelloexcelba",
   //   name: "Trello to excel (automatization)",
-  //   bgColor: "#0A6CA9",
+  //   $bgColor: "#0A6CA9",
   //   images: ["trex1"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["typescript"],
@@ -229,7 +229,7 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "casinoco",
   //   name: "CA casino",
-  //   bgColor: "#5B4DAD",
+  //   $bgColor: "#5B4DAD",
   //   images: ["caco1", "caco2", "caco3"],
   //   tech_skills: [
   //     TECH_SKILLS_DATA["typescript"],
@@ -245,8 +245,8 @@ export const PROJECTS_DATA: Array<IProjectDataItem> = [
   // {
   //   id: "bpapp",
   //   name: "Bolivarparalelo",
-  //   bgColor: "#1389FD",
-  //   textColor: "#fff",
+  //   $bgColor: "#1389FD",
+  //   $textColor: "#fff",
   //   images: ["bpapp1", "bpapp2", "bpapp3"],
   //   tech_skills: [TECH_SKILLS_DATA["dart"], TECH_SKILLS_DATA["flutter"]],
   // },

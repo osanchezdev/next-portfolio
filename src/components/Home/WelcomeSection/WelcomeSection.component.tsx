@@ -83,8 +83,8 @@ const WelcomeSection = () => {
           variants={welcomeButtonVariants}
         >
           <Button
-            variantColor="primary"
-            solid
+            $variantColor="primary"
+            $solid
             onClick={() =>
               document
                 ?.getElementById("contact-section")

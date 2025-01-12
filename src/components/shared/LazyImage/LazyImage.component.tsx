@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import Image, { StaticImageData } from "next/image"
+import Image, { StaticImageData } from "next/legacy/image"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 
 import { LazyImagePlaceholder, LazyImageWrapper } from "./LazyImage.styles"

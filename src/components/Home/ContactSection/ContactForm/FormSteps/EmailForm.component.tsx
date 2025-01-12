@@ -83,12 +83,12 @@ const EmailForm = ({ updateForm }: StepFormProps) => {
         <FormStepActionsWrapper>
           <Button
             type="button"
-            variantColor="text"
+            $variantColor="text"
             onClick={() => updateForm({ name: "" }, 0)}
           >
             Back
           </Button>
-          <Button type="submit" disabled={!_.isUndefined(errors.email)} solid>
+          <Button type="submit" $disabled={!_.isUndefined(errors.email)} $solid>
             Next
           </Button>
         </FormStepActionsWrapper>

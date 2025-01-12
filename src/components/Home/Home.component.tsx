@@ -1,10 +1,11 @@
 'use client'
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
-import { Scrollbar } from 'react-scrollbars-custom';
 import WelcomeSection from "./WelcomeSection/WelcomeSection.component"
 import { IntersectionProvider } from "../../context/intersectionContext"
 import Divider from "../shared/Divider/Divider.component"
+
+const Scrollbar = dynamic(() => import("react-custom-scrollbars-2"))
 
 const DynamicProjectsSection = dynamic(
   () => import("./ProjectsSection/ProjectsSection.component")
@@ -34,6 +35,14 @@ const PAGE_SECTIONS = [
 ]
 
 const Home: FC = () => {
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) return null
+
   return (
     <Scrollbar style={{ height: '100vh' }}>
       <WelcomeSection />

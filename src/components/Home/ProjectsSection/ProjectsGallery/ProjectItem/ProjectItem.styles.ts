@@ -15,8 +15,8 @@ export const ProjectItemWrapper = styled(motion.div)`
   }
 `
 interface ProjectItemHeaderWrapperProps {
-  bgColor?: string
-  textColor?: string
+  $bgColor?: string
+  $textColor?: string
 }
 
 export const ProjectItemHeaderWrapper = styled.div<ProjectItemHeaderWrapperProps>`
@@ -25,14 +25,14 @@ export const ProjectItemHeaderWrapper = styled.div<ProjectItemHeaderWrapperProps
   align-items: center;
   border-radius: 5px 5px 0 0;
   height: 25px;
-  color: ${({ theme, bgColor, textColor }) =>
-    textColor
-      ? textColor
-      : bgColor
-      ? readableColor(bgColor)
+  color: ${({ theme, $bgColor, $textColor }) =>
+    $textColor
+      ? $textColor
+      : $bgColor
+      ? readableColor($bgColor)
       : theme.colors.text};
-  background: ${({ theme, bgColor }) =>
-    bgColor ? bgColor : theme.colors.primary};
+  background: ${({ theme, $bgColor }) =>
+    $bgColor ? $bgColor : theme.colors.primary};
 `
 
 export const ProjectItemHeader = styled.span`

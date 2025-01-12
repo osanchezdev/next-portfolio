@@ -28,7 +28,7 @@ interface ProjectItemProps {
 }
 
 const ProjectItem = ({ projectItem }: ProjectItemProps): ReactElement => {
-  const { name, tech_skills, images, bgColor, textColor } = projectItem
+  const { name, tech_skills, images, $bgColor, $textColor } = projectItem
   const { toggleShowSlider, setSliderImages } = useContext(
     FullScreenSliderContext
   )
@@ -42,7 +42,7 @@ const ProjectItem = ({ projectItem }: ProjectItemProps): ReactElement => {
         toggleShowSlider()
       }}
     >
-      <ProjectItemHeaderWrapper bgColor={bgColor} textColor={textColor}>
+      <ProjectItemHeaderWrapper $bgColor={$bgColor} $textColor={$textColor}>
         <ProjectItemHeader>{name}</ProjectItemHeader>
       </ProjectItemHeaderWrapper>
       <ProjectItemImageWrapper>

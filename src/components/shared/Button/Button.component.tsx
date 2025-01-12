@@ -18,60 +18,60 @@ import {
 
 interface ButtonProps {
   children: ReactNode
-  variantColor?: ButtonVariantTypes
+  $variantColor?: ButtonVariantTypes
   variantAnimation?: ButtonAnimationTypes
-  loading?: boolean
-  solid?: boolean
-  disabled?: boolean
+  $loading?: boolean
+  $solid?: boolean
+  $disabled?: boolean
   type?: "reset" | "submit" | "button"
   onClick?: MouseEventHandler
 }
 
 const Button = ({
   children,
-  variantColor = "primary",
+  $variantColor = "primary",
   variantAnimation = "none",
-  loading = false,
-  solid = true,
-  disabled = false,
+  $loading = false,
+  $solid = true,
+  $disabled = false,
   type = "button",
   onClick,
 }: ButtonProps) => {
   return (
     <ButtonWrapper>
       <SButton
-        onClick={!loading ? onClick : () => {}}
-        variantColor={variantColor}
+        onClick={!$loading ? onClick : () => {}}
+        $variantColor={$variantColor}
         initial="initial"
-        whileHover={!loading ? (!disabled ? "hover" : "shake") : ""}
-        whileTap={!loading ? (!disabled ? "tapped" : "shake") : ""}
+        whileHover={!$loading ? (!$disabled ? "hover" : "shake") : ""}
+        whileTap={!$loading ? (!$disabled ? "tapped" : "shake") : ""}
         type={type}
-        solid={solid}
-        disabled={disabled}
+        $solid={$solid}
+        $$disabled={$disabled}
         variants={buttonVariants}
       >
         <ButtonAnimatedBg
-          disabled={disabled}
-          variantColor={variantColor}
+          $$disabled={$disabled}
+          $variantColor={$variantColor}
           variants={{
-            ...getButtonBgVariants(variantAnimation, solid),
+            ...getButtonBgVariants(variantAnimation, $solid),
           }}
         />
         <ButtonLoaderWrapper
           initial="hidden"
-          animate={loading ? "show" : "hidden"}
+          animate={$loading ? "show" : "hidden"}
           variants={buttonContentVariants}
-          variantColor={variantColor}
-          disabled={disabled}
+          $variantColor={$variantColor}
+          $$disabled={$disabled}
         >
           <Icon icon="CgSpinner" />
         </ButtonLoaderWrapper>
         <ButtonContentWrapper
           initial="show"
-          animate={loading ? "hidden" : "show"}
+          animate={$loading ? "hidden" : "show"}
           variants={buttonContentVariants}
-          variantColor={variantColor}
-          disabled={disabled}
+          $variantColor={$variantColor}
+          $$disabled={$disabled}
         >
           {children}
         </ButtonContentWrapper>
