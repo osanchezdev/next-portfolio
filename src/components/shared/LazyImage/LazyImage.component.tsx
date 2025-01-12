@@ -22,7 +22,7 @@ const LazyImage = ({
   width,
   layout = "fill",
   quality = 75,
-  fit = "scale-down",
+  fit = "cover",
 }: LazyImageProps) => {
   const [imageLoading, setImageLoading] = useState<boolean>(true)
 
@@ -35,9 +35,6 @@ const LazyImage = ({
       transition={{
         height: { delay: 0, duration: 0.4 },
         opacity: { delay: 0.5, duration: 0.4 },
-      }}
-      style={{
-        objectFit: fit,
       }}
     >
       {imageLoading && (
@@ -54,13 +51,16 @@ const LazyImage = ({
         {...(typeof src === "string"
           ? {
               src,
-              fill: fit === "fill",
+              layout,
               height: undefined,
               width: undefined,
+              style: { objectFit: fit },
             }
           : {
               src,
               layout,
+              height: Number(height),
+              width: Number(width),
               style: { objectFit: fit },
             })}
         alt={alt}

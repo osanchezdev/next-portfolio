@@ -6,7 +6,10 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
-  output: 'export',
+  images: {
+    domains: ['osanchez.me'],
+    formats: ['image/avif', 'image/webp'],
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
