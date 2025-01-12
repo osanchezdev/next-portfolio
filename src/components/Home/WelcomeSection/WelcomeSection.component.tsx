@@ -28,7 +28,7 @@ import {
 } from "./WelcomeSection.variants"
 
 //Hi, I'm a software developer who brings ideas to life with code.
-const ABOUT_TITLE = "Hi, \nI’m Oscar, \na software developer \nwho brings ideas to life \nwith code."
+const ABOUT_TITLE = "Hi, I’m Oscar, \na software developer \nwho brings ideas to life \nwith code."
 
 const WelcomeSection = () => {
   const { init } = useParticles();

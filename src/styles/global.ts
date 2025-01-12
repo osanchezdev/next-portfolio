@@ -115,4 +115,8 @@ export const GlobalStyles = createGlobalStyle`
 			-webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
 			-webkit-transition-delay: 9999s;
 	}
+
+	img {
+		object-fit: cover;
+	}
 `
