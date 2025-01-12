@@ -96,7 +96,7 @@ const SkillsSection = () => {
                     <TechSkillItem
                       suppressHydrationWarning
                       iconColor={TECH_SKILLS_DATA[item].iconColor}
-                      bgColor={TECH_SKILLS_DATA[item].bgColor}
+                      $bgColor={TECH_SKILLS_DATA[item].$bgColor}
                       initial="initial"
                       animate="animate"
                       whileHover="whileHoverOrTapScale"

@@ -69,7 +69,7 @@ export const TechSkillItemWrapper = styled.div`
 `
 
 interface TechSkillItemProps {
-  bgColor: string
+  $bgColor: string
   iconColor?: string
 }
 
@@ -85,11 +85,11 @@ export const TechSkillItem = styled(motion.div)<TechSkillItemProps>`
   position: absolute;
   border-radius: 50%;
   box-shadow: 4px 6px 5px rgb(0 0 0 / 35%);
-  ${({ bgColor }) =>
+  ${({ $bgColor }) =>
     linearGradient({
-      colorStops: [`${bgColor} 45%`, `${darken(0.2, bgColor)} 100%`],
+      colorStops: [`${$bgColor} 45%`, `${darken(0.2, $bgColor)} 100%`],
       toDirection: "to bottom left",
-      fallback: bgColor,
+      fallback: $bgColor,
     })}
 
   @media ${device.mobileS} {

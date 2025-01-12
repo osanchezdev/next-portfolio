@@ -36,7 +36,7 @@ export interface IAnimationVariants {
 export interface ITechSkillItem {
   key: string
   text: string
-  bgColor: string
+  $bgColor: string
   iconColor?: string
   icon?: string
 }
@@ -51,8 +51,8 @@ export interface ITabsRefs {
 export interface IProjectDataItem {
   id: string
   name: string
-  bgColor?: string
-  textColor?: string
+  $bgColor?: string
+  $textColor?: string
   images: Array<string>
   tech_skills: Array<ITechSkillItem>
 }

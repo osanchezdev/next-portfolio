@@ -4,7 +4,7 @@ import { readableColor } from "polished"
 
 const getButtonColors = (variant: string, theme: DefaultTheme) => {
   switch (variant) {
-    case "disabled":
+    case "$disabled":
       return { color: "darkgrey" }
     case "text":
       return { color: readableColor(theme.colors.bg1) }
@@ -16,7 +16,7 @@ const getButtonColors = (variant: string, theme: DefaultTheme) => {
 }
 const getButtonBg = (variant: string, theme: DefaultTheme) => {
   switch (variant) {
-    case "disabled":
+    case "$disabled":
       return {
         background: "gray",
       }
@@ -39,13 +39,13 @@ const getButtonBg = (variant: string, theme: DefaultTheme) => {
 export const ButtonWrapper = styled.div``
 
 interface SButtonVariantsProps {
-  variantColor: string
-  solid?: boolean
-  disabled?: boolean
+  $variantColor: string
+  $solid?: boolean
+  $disabled?: boolean
 }
 
 export const SButton = styled(motion.button)<SButtonVariantsProps>`
-  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
+  cursor: ${({ $disabled }) => ($disabled ? "default" : "pointer")};
   border: none;
   outline: none;
   display: flex;
@@ -64,20 +64,20 @@ export const SButton = styled(motion.button)<SButtonVariantsProps>`
 export const ButtonAnimatedBg = styled(motion.div)<SButtonVariantsProps>`
   position: absolute;
   z-index: -1;
-  ${({ theme, variantColor, disabled }) =>
-    getButtonBg(disabled ? "disabled" : variantColor, theme)};
+  ${({ theme, $variantColor, $disabled }) =>
+    getButtonBg($disabled ? "$disabled" : $variantColor, theme)};
   transition: background 300ms ease;
 `
 
 export const ButtonContentWrapper = styled(motion.div)<SButtonVariantsProps>`
   letter-spacing: 1px;
-  ${({ theme, variantColor, disabled }) =>
-    getButtonColors(disabled ? "disabled" : variantColor, theme)};
+  ${({ theme, $variantColor, $disabled }) =>
+    getButtonColors($disabled ? "$disabled" : $variantColor, theme)};
 `
 
 export const ButtonLoaderWrapper = styled(motion.div)<SButtonVariantsProps>`
-  ${({ theme, variantColor, disabled }) =>
-    getButtonColors(disabled ? "disabled" : variantColor, theme)};
+  ${({ theme, $variantColor, $disabled }) =>
+    getButtonColors($disabled ? "$disabled" : $variantColor, theme)};
   position: absolute;
   width: 30px;
   height: 30px;

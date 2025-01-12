@@ -5,4 +5,9 @@ export const SlideItemWrapper = styled.div`
   border-radius: 5px;
   overflow: hidden;
   background: #333;
+
+  & img {
+    object-fit: contain;
+    width: 100%;
+  }
 `
