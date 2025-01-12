@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require("path");
 
 module.exports = {
@@ -5,6 +6,7 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  output: 'export',
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
