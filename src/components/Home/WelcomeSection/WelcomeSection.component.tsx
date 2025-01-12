@@ -1,6 +1,5 @@
 'use client'
 import { useState } from "react"
-import { motion } from "motion/react"
 import { useDebounce } from "react-use"
 import Particles from "@tsparticles/react";
 
@@ -61,17 +60,20 @@ const WelcomeSection = () => {
           <WelcomeTitle>
             {aboutSplittedTitle.map((titleItem, parentI) => (
               <WelcomeTitleWord key={`word-${parentI}`}>
-                {Array.from(titleItem).map((charItem, i) => (
-                  <WelcomeTitleChar
-                    key={`${charItem}-${i}`}
-                    initial="hidden"
-                    animate="show"
-                    whileHover={finishTitleAnimation ? "hover" : "noHover"}
-                    variants={getCharDelay()}
-                  >
-                    {charItem}
-                  </WelcomeTitleChar>
-                ))}
+                {Array.from(titleItem).map((charItem, i) => {
+                  const variants = getCharDelay()
+                  return (
+                    <WelcomeTitleChar
+                      key={`${charItem}-${i}`}
+                      initial="hidden"
+                      animate="show"
+                      whileHover={finishTitleAnimation ? 'hover' : ''}
+                      variants={variants}
+                    >
+                      {charItem}
+                    </WelcomeTitleChar>
+                  )
+                })}
               </WelcomeTitleWord>
             ))}
           </WelcomeTitle>
@@ -84,8 +86,8 @@ const WelcomeSection = () => {
           variants={welcomeButtonVariants}
         >
           <Button
-            variantColor="primary"
-            solid
+            $variantColor="primary"
+            $solid
             onClick={() =>
               document
                 ?.getElementById("contact-section")

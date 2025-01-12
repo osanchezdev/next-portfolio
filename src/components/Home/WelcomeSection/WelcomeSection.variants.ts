@@ -16,29 +16,20 @@ export const welcomeTitleCharsVariants = (i: number): IVariants => {
     },
     show: {
       opacity: 1,
+      scaleX: 1,
+      scaleY: 1,
       transition: {
         duration: 0.3,
         ease: "easeIn",
         delay: calcDelay,
       },
     },
-    noHover: {
-      opacity: 1,
-      scaleX: 1,
-      scaleY: 1,
-      transition: {
-        duration: 0.3,
-        type: "spring",
-      }
-    },
     hover: {
       ...rubberBandAnimation.animate,
-      opacity: 1,
       transition: {
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-        repeat: 1,
-        repeatType: "reverse",
+        ease: "easeOut",
+        duration: 0.3,
+        times: [0, 0.2, 0.5, 0.7, 0.9, 1],
       },
     },
   }
@@ -51,7 +42,7 @@ export const welcomeParticlesWrapperVariants: IVariants = {
   show: {
     opacity: 1,
     transition: {
-      delay: 0.8,
+      delay: 6,
     },
   },
 }
@@ -66,7 +57,7 @@ export const welcomeButtonVariants: IVariants = {
     translateX: 0,
     transition: {
       times: [0.1, 0.3, 0.5, 0.8, 1],
-      delay: 2.7,
+      delay: 4.7,
       duration: 1,
     },
   },
@@ -94,7 +85,7 @@ export const welcomeScrollDownVariants: IVariants = {
     translateY: 0,
     transition: {
       times: [0.1, 0.3, 0.5, 0.8, 1],
-      delay: 3.2,
+      delay: 5.2,
       duration: 1,
     },
   },

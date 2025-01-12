@@ -46,7 +46,7 @@ const NameForm = ({ updateForm }: StepFormProps) => {
           required
         />
         <FormStepActionsWrapper>
-          <Button type="submit" disabled={errors.name ? true : false} solid>
+          <Button type="submit" $disabled={errors.name ? true : false} $solid>
             Next
           </Button>
         </FormStepActionsWrapper>

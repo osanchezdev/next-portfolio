@@ -15,8 +15,8 @@ export const projectItemOverlayVariants: IVariants = {
     height: "100%",
     transition: {
       delay: 0.4,
-      when: "beforeChildren",
-      ease: "easeIn",
+      staggerChildren: 0.2,
+      delayChildren: 0.6,
     },
   },
 }
@@ -34,7 +34,6 @@ export const projectItemTechPillsWrapperVariants: IVariants = {
   hover: {
     opacity: 1,
     transition: {
-      when: "beforeChildren",
       staggerChildren: 0.2,
     },
   },

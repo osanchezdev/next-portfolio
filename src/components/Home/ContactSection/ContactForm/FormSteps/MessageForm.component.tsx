@@ -48,16 +48,16 @@ const MessageForm = ({ updateForm, loading }: StepFormProps) => {
         <FormStepActionsWrapper>
           <Button
             type="button"
-            variantColor="text"
+            $variantColor="text"
             onClick={() => updateForm({ email: "" }, 1)}
           >
             Back
           </Button>
           <Button
             type="submit"
-            disabled={errors.message ? true : false}
-            loading={loading}
-            solid
+            $disabled={errors.message ? true : false}
+            $loading={loading}
+            $solid
           >
             Submit
           </Button>

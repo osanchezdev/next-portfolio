@@ -47,7 +47,7 @@ export const arrowButtonWrapperVariants: IVariants = {
     translateX: 0,
     transition: {
       when: "afterChildren",
-      delay: 4,
+      delay: 6,
     },
   },
 }
