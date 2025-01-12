@@ -36,6 +36,9 @@ const LazyImage = ({
         height: { delay: 0, duration: 0.4 },
         opacity: { delay: 0.5, duration: 0.4 },
       }}
+      style={{
+        objectFit: fit,
+      }}
     >
       {imageLoading && (
         <SkeletonTheme baseColor="#333" highlightColor="#444">
@@ -58,8 +61,6 @@ const LazyImage = ({
           : {
               src,
               layout,
-              height: height as number | `${number}` | undefined,
-              width: width as number | `${number}` | undefined,
               style: { objectFit: fit },
             })}
         alt={alt}

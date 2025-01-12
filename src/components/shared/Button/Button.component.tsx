@@ -47,11 +47,11 @@ const Button = ({
         whileTap={!$loading ? (!$disabled ? "tapped" : "shake") : ""}
         type={type}
         $solid={$solid}
-        $$disabled={$disabled}
+        $disabled={$disabled}
         variants={buttonVariants}
       >
         <ButtonAnimatedBg
-          $$disabled={$disabled}
+          $disabled={$disabled}
           $variantColor={$variantColor}
           variants={{
             ...getButtonBgVariants(variantAnimation, $solid),
@@ -62,7 +62,7 @@ const Button = ({
           animate={$loading ? "show" : "hidden"}
           variants={buttonContentVariants}
           $variantColor={$variantColor}
-          $$disabled={$disabled}
+          $disabled={$disabled}
         >
           <Icon icon="CgSpinner" />
         </ButtonLoaderWrapper>
@@ -71,7 +71,7 @@ const Button = ({
           animate={$loading ? "hidden" : "show"}
           variants={buttonContentVariants}
           $variantColor={$variantColor}
-          $$disabled={$disabled}
+          $disabled={$disabled}
         >
           {children}
         </ButtonContentWrapper>
